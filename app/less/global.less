@@ -1,0 +1,38 @@
+@charset "utf-8";
+@import "./base/base.less";
+@import "./_module.less";
+
+@font-face {
+  font-family: SiYuan;
+  src:url("../fonts/SourceHanSansCN-Regular.otf");
+ }
+
+.fSy{
+  // 思源字体
+  font-family: SiYuan;
+}
+ 
+.f14 {
+  &:extend(.fSy);
+  font-size: 0.16rem;
+}
+
+.f144 {
+  font-size: 16px;
+}
+.f18 {
+  &:extend(.fSy);
+  font-size: 0.18rem;
+}
+
+.f22 {
+  &:extend(.fSy);
+  font-size: 0.22rem;
+}
+
+.f58 {
+  &:extend(.fSy);
+  font-size: 0.58rem;
+}
+
+

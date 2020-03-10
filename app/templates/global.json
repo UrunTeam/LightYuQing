@@ -1,0 +1,16 @@
+{
+  "site": "ejs-demo",
+  "styles": [
+    "../css/custom-bootstrap.css",
+    "../libs/icheck/skins/flat/_all.css",
+    "../css/global.css"
+  ],
+  "scripts": [
+    "../libs/jquery/jquery.min.js",
+    "../js/resize.js",
+    "../js/vue.js",
+    "../libs/bootstrap/dist/bootstrap.min.js",
+    "../libs/icheck/icheck.min.js",
+    "../js/global.js"
+  ]
+}

@@ -1,0 +1,101 @@
+@charset "utf-8";
+body {
+  font-size: 14px;
+  color: #666;
+  background: #fff;
+}
+html,
+body,
+div,
+table,
+ul,
+li,
+ol,
+dl,
+dd,
+dt,
+a,
+img,
+label,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+input {
+  margin: 0;
+  padding: 0;
+}
+ul,
+ol {
+  list-style: none;
+}
+em,
+i {
+  font-style: normal;
+}
+strong {
+  font-weight: normal;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+textarea {
+  resize: none;
+}
+form {
+  margin: 0;
+}
+button {
+  outline: none!important;
+}
+button:focus {
+  outline: none!important;
+}
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+  outline: none;
+}
+.wrap {
+  width: 100%;
+  margin: 0 auto;
+}
+@font-face {
+  font-family: SiYuan;
+  src: url("../fonts/SourceHanSansCN-Regular.otf");
+}
+.fSy,
+.f14,
+.f18,
+.f22,
+.f58 {
+  font-family: SiYuan;
+}
+.f14 {
+  font-size: 0.16rem;
+}
+.f144 {
+  font-size: 16px;
+}
+.f18 {
+  font-size: 0.18rem;
+}
+.f22 {
+  font-size: 0.22rem;
+}
+.f58 {
+  font-size: 0.58rem;
+}
+
+/*# sourceMappingURL=global.css.map */
