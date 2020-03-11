@@ -146,6 +146,11 @@ gulp.task('copy', function(){
     ])
     .pipe(gulp.dest('./dist/libs/echarts'));
 
+    // gulp.src([
+    //   './app/libs/element-ui/**'
+    // ])
+    // .pipe(gulp.dest('./dist/libs/element-ui'));
+
     gulp.src([
       './app/fonts/**'
     ])
