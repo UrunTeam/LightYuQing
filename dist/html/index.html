@@ -20,11 +20,13 @@
 <body>
     
     <div class="yuQingContainer" >
-        <nav id='app'>
+        <!-- 头部 -->
+        <div id="app">
+<nav>
         <div class="container">
             <div class="navbar-header flexBetween">
                 <div class="navbar-title flexStatr">
-                    <div class="navbarIcon">图</div>
+                    <div class="navbarIcon" @click='showNav=!showNav'>图</div>
                     <span class="navbar-line"></span>
                     <h2>${pageDetail.name}</h2>
                     <div class="seachInput" v-if='pageDetail.seachInput'>dfsadfasdf</div>
@@ -56,8 +58,26 @@
             </div>
         </div>
     </nav>
+    <div id='navbar-right' v-show='showNav'>
+            <div class="container">
+               <ul class="navbar-ul">
+                   <li v-for='(item,index) in pageArr' :key='index'  :class="item.active?'active':''">
+                       <span :class="item.icon"></span>
+                       <!-- ${item.name} --> 图
+                    </li>
+               </ul>
+               <ul class="navbar-big">
+                   <li v-for='(item,index) in pageArr' :key='index' @click='checkActive(item,index)'  :class="item.active?'active':''">
+                        <span :class="item.icon">图</span>
+                        <br>   
+                        ${item.name.slice(0,4)}
+                    </li>
+               </ul>
+               
+            </div>
+        </div>
+    </div>
 
-        
         <div class="conter"></div>
         
 <script src="../libs/jquery/jquery.min.js"></script>

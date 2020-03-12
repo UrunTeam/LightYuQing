@@ -1,13 +1,46 @@
 @charset "utf-8";
 @import "./base/conn.less";
 @import "./_moduleColor.less";
-.yuQingContainer{
-    padding: 0.43rem 0.6rem ;
-    min-width: 19.2rem;
-    min-height: 10.8rem;
-    background-color: @theme-color3;
-}
 
+html,body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.yuQingContainer{
+  min-width: 19.2rem;
+  min-height: auto;
+  padding: 0.43rem 0.6rem ;
+  background-color: @theme-color3;
+  box-sizing: border-box;
+  color: #ffffff;
+  overflow: hidden;
+  // 布局左中右
+  .conter {
+    width: 100%;
+    height: calc(~'100% - .92rem');
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    
+    .conter-left {
+      width: 40%;
+      height: 100%;
+    }
+    .conter-middle {
+      width: 60%;
+    }
+    .conter-right {
+      width: 40%;
+    }
+   
+    .iconlujing1 {
+      font-size: .24rem;
+    }
+  }
+}
+//  头部样式
 #app{
     .flexBetween{
         display: flex;
@@ -27,7 +60,7 @@
         width: 100%;
         height: 0.92rem;
         padding: 0.22rem 0.22rem 0.19rem 0.4rem;
-        
+        box-sizing: border-box;
         background-color: @theme-color;
         h2{
             font-size: 0.58rem;
@@ -117,7 +150,61 @@
     }
 }
 
+// 侧边栏样式
+#navbar-right{
+    position: absolute;
+    left: 0;
+    margin-top: 0.04rem;
+    width: 0.6rem;
+    &:hover{
+        .navbar-big{
+            display: block;
+        }
+    }
+    .navbar-ul{
+        margin-top: 0.34rem;
+        li{
+            font-size: 0.42rem;
+            color: @graphic-color4;
+            margin-bottom: 0.8rem;
+            text-align: center;
+            width: 0.44rem;
+            height: 0.44rem;
+            line-height: 0.44rem;
+            cursor: pointer;
+            &:hover,&:active,&.active{
+                color:  @graphic-color2;
+            }
+        }
+    }
+    .navbar-big{
+        position: absolute;
+        display: none;
+        left: 100%;
+        top: 0;
+        width: 1.2rem;
+        color:  @graphic-color2;
+       
+        li{
+            width: 100%;
+            background-color: #052D7C;
+            height: 1.2rem;
+            // line-height: 1.2rem;
+            text-align: center;
+            cursor: pointer;
+            span{
+                display: inline-block;
+                margin: 0.24rem auto 0.15rem;
+            }
+            &:hover,&:active,&.active{
+                color:  @graphic-color4;
+                background-color: @theme-color2;
+            }
+        }
+    }
 
+
+}
 
 
 

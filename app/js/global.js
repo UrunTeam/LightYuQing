@@ -45,8 +45,9 @@ commonJs.fn = {
 
 };
 
-var vm_yuqing='';
-function initVue(){
+var vm_yuqing,vm_nav;
+//  头部页面实例
+function initHeardVue(){
      vm_yuqing = new Vue({ 
       el: '#app',
       delimiters: ['${','}'],
@@ -60,11 +61,20 @@ function initVue(){
             minutes:'',
             seconds:'',
             Week:'',
-            pageDetail:{name:'属地舆情研判',active:false,ordenar:false,setting:false,seachInput:false},
+            showNav:false,
+            pageArr:[
+                {name:'全网搜索',url:'index.html',active:false,ordenar:false,setting:false,seachInput:false,icon:'1'},
+                {name:'属地舆情研判',url:'opinion_warning.html',active:true,ordenar:false,setting:false,seachInput:false,icon:'1'},
+                {name:'事件跟踪',url:'index.html',active:false,ordenar:false,setting:false,seachInput:false,icon:'1'},
+                {name:'订阅监控',url:'index.html',active:false,ordenar:false,setting:false,seachInput:false,icon:'1'},
+                {name:'预警推送',url:'index.html',active:false,ordenar:false,setting:false,seachInput:false,icon:'1'},
+            ],
+            pageDetail:{},
         };
       },
       created() {
-       
+       this.pageDetail=sessionStorage.getItem('yuQingPage')?JSON.parse(sessionStorage.getItem('yuQingPage')):this.pageArr[1]
+       this.setActive()
       },
       mounted(){
           let that=this
@@ -88,16 +98,36 @@ function initVue(){
         },
         signOut(){
             console.log('退出登录')
+        },
+        checkActive(item,index){
+            if(item.active) return
+            this.pageArr.map(function(itemInfo,indexInfo){
+                itemInfo.active=false
+            })
+            this.pageArr[index].active=true
+            this.pageDetail=this.pageArr[index]
+            location.href=item.url
+            sessionStorage.setItem('yuQingPage',JSON.stringify(item))
+        },
+        setActive(){
+            let that=this;
+            this.pageArr.map(function(itemInfo,indexInfo){
+                
+                if(itemInfo.name!=that.pageDetail.name) itemInfo.active=false
+                else itemInfo.active=true
+            })
+
         }
       }
     });
 }
+
 function init(){
-    initVue()
+    initHeardVue()
 }
 
 init()
-console.log(vm_yuqing.$data)
+
   
     
     
