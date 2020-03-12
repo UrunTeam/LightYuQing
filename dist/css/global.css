@@ -71,6 +71,14 @@ a:focus {
   width: 100%;
   margin: 0 auto;
 }
+dl dt,
+dl dd {
+  font-weight: normal;
+}
+a {
+  font-weight: normal;
+  color: #ffffff;
+}
 .flex {
   display: -webkit-box;
   display: -webkit-flex;
