@@ -98,6 +98,7 @@ body {
   overflow: hidden;
 }
 .yuQingContainer {
+  height: 100%;
   min-width: 19.2rem;
   min-height: auto;
   padding: 0.43rem 0.6rem ;
@@ -118,15 +119,21 @@ body {
       -ms-flex-align: start;
           align-items: flex-start;
 }
+.yuQingContainer .conter .conter-left,
+.yuQingContainer .conter .conter-middle,
+.yuQingContainer .conter .conter-right {
+  height: 100%;
+}
 .yuQingContainer .conter .conter-left {
   width: 40%;
-  height: 100%;
 }
 .yuQingContainer .conter .conter-middle {
   width: 60%;
+  height: 100%;
 }
 .yuQingContainer .conter .conter-right {
   width: 40%;
+  height: 100%;
 }
 .yuQingContainer .conter .iconlujing1 {
   font-size: .24rem;
