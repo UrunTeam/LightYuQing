@@ -7,7 +7,7 @@
     min-height: 10.8rem;
     background-color: @theme-color3;
 }
-
+//  头部样式
 #app{
     .flexBetween{
         display: flex;
@@ -117,7 +117,61 @@
     }
 }
 
+// 侧边栏样式
+#navbar-right{
+    position: absolute;
+    left: 0;
+    margin-top: 0.04rem;
+    width: 0.6rem;
+    &:hover{
+        .navbar-big{
+            display: block;
+        }
+    }
+    .navbar-ul{
+        margin-top: 0.34rem;
+        li{
+            font-size: 0.42rem;
+            color: @graphic-color4;
+            margin-bottom: 0.8rem;
+            text-align: center;
+            width: 0.44rem;
+            height: 0.44rem;
+            line-height: 0.44rem;
+            cursor: pointer;
+            &:hover,&:active,&.active{
+                color:  @graphic-color2;
+            }
+        }
+    }
+    .navbar-big{
+        position: absolute;
+        display: none;
+        left: 100%;
+        top: 0;
+        width: 1.2rem;
+        color:  @graphic-color2;
+       
+        li{
+            width: 100%;
+            background-color: #052D7C;
+            height: 1.2rem;
+            // line-height: 1.2rem;
+            text-align: center;
+            cursor: pointer;
+            span{
+                display: inline-block;
+                margin: 0.24rem auto 0.15rem;
+            }
+            &:hover,&:active,&.active{
+                color:  @graphic-color4;
+                background-color: @theme-color2;
+            }
+        }
+    }
 
+
+}
 
 
 
