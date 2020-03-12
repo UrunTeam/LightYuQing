@@ -1,3 +1,9 @@
+.conter .conter-left .coner-box {
+  height: 100%;
+}
+.conter .conter-left .coner-box .box-middle {
+  height: calc(100% - 1.38rem);
+}
 .update-range-time {
   margin-bottom: .25rem;
   text-align: center;
