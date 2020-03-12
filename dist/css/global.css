@@ -1,7 +1,7 @@
 @charset "utf-8";
 body {
   font-size: 14px;
-  color: #666;
+  color: #fff;
   background: #fff;
 }
 html,
@@ -70,6 +70,136 @@ a:focus {
 .wrap {
   width: 100%;
   margin: 0 auto;
+}
+.flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.l_flex {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.yuQingContainer {
+  padding: 0.43rem 0.6rem ;
+  min-width: 19.2rem;
+  min-height: 10.8rem;
+  background-color: #1B418D;
+}
+#app .flexBetween {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#app .flexStatr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#app .flexAround {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#app .navbar-header {
+  width: 100%;
+  height: 0.92rem;
+  padding: 0.22rem 0.22rem 0.19rem 0.4rem;
+  background-color: #2551A2;
+}
+#app .navbar-header h2 {
+  font-size: 0.58rem;
+}
+#app .navbar-title {
+  height: 100%;
+}
+#app .navbar-title .navbarIcon {
+  width: 0.46rem;
+  font-size: 0.46rem;
+  cursor: pointer;
+  color: #F3Af1B;
+}
+#app .navbar-right {
+  height: 100%;
+}
+#app .navbar-line {
+  display: block;
+  height: 100%;
+  width: 1px;
+  margin: 0 0.2rem 0 0.4rem;
+  background-color: #4E74B5;
+}
+#app .navbar-time {
+  font-size: 0.24rem;
+}
+#app .timer-week {
+  margin: 0 0.32rem 0 0.14rem;
+}
+#app .time-hours {
+  font-size: 0.38rem;
+  color: #F3Af1B;
+  margin-right: 0.36rem;
+}
+#app .navbar-user {
+  font-size: 0.28rem;
+}
+#app .navbar-user .userImg {
+  width: 0.26rem;
+  margin-right: 0.12rem;
+}
+#app .rightIcon {
+  position: relative;
+  cursor: pointer;
+  font-size: 0.3rem;
+  margin-left: 0.2rem;
+}
+#app .rightIcon:hover .topTooltip {
+  display: block;
+}
+#app .rightIcon .topTooltip {
+  display: none;
+  padding: 0.1rem 0.18rem;
+  font-size: 0.16rem;
+  color: #000;
+  position: absolute;
+  white-space: nowrap;
+  bottom: 110%;
+  left: 50%;
+  border-radius: 0.06rem;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: #f3af1b;
+  box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.16);
+}
+#app .rightIcon .topTooltip::after {
+  content: '';
+  display: block;
+  width: 0.2rem;
+  height: 0.2rem;
+  background-color: #f3af1b;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  position: absolute;
+  left: 45%;
+  z-index: -1;
+  bottom: -12%;
 }
 @font-face {
   font-family: SiYuan;
