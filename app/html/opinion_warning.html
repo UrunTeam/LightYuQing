@@ -2,12 +2,12 @@
 <body>
    
 	
-    <div class="yuQingContainer" >
+    <div class="yuQingContainer" v-cloak>
 		 <%- include('../templates/header') %>
         
         <div class="conter">
 			<div class="warning-warp flex">
-				<div class="left-warp">
+				<div class="left-warp conter-left">
 					<div class="left-top">
 						<div class="title-tip">
 							<span><i></i></span>
@@ -84,7 +84,7 @@
 						</table>
 					</div>
 				</div>
-				<div class="center-warp">
+				<div class="center-warp conter-middle">
 					<div class="center-top">
 						
 					</div>
@@ -130,7 +130,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="right-warp">
+				<div class="right-warp conter-right">
 					<div class="right-top">
 						
 					</div>
@@ -140,9 +140,9 @@
 				</div>
 			</div>
 		</div>
-
+		 <%- include('../templates/foot') %>
     </div>
-      <%- include('../templates/foot') %>
+     
 </body>
 <script>
     

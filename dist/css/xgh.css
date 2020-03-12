@@ -7,17 +7,9 @@
       -ms-flex-direction: row ;
           flex-direction: row ;
 }
-.warning-warp .left-warp,
-.warning-warp .right-warp {
-  width: 5.08rem;
-}
-.warning-warp .center-warp {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
 .ranking-table {
   width: 100%;
+  text-align: center;
 }
 .ranking-table th {
   font-weight: normal;
