@@ -1,0 +1,33 @@
+html,body{
+	width: 100%;
+	height: 100%;
+}
+
+/*属性变量*/
+@maxHeight:{
+	width: 100%;
+	height: 100%;
+};
+
+.warning-container{
+	@maxHeight();
+	
+	background:@theme-color3;
+	margin-top: 0.6rem;
+	padding: 0.36rem 0.6rem 0;
+	
+	.warning-warp{
+		@maxHeight();
+		
+		flex-direction: row ;
+		
+		.left-warp,.right-warp{
+			width: 508px;
+		}
+		
+		.center-warp{
+			flex:1;
+		}
+	}
+
+}
