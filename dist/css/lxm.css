@@ -1,15 +1,50 @@
-body {
-  background-color: #1B418D;
-  color: #ffffff;
+.update-range-time {
+  margin-bottom: .25rem;
+  text-align: center;
+}
+.update-range-time i {
+  float: right;
+  margin-right: .49rem;
+}
+.number-total {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 6.4rem;
+  border-top: 0.01rem solid #5AB0F3;
+  border-bottom: 0.01rem solid #5AB0F3;
+  padding: 0.25rem 0;
+  margin: 0 auto .1rem;
+}
+.number-total dl {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+  border-right: .01rem solid #ffffff;
+}
+.number-total dl:last-child {
+  border-right-color: transparent;
+}
+.number-total dl dt {
+  font-size: .44rem;
+  color: #F3Af1B;
 }
 .trans {
-  width: 4.48rem;
+  padding-left: .18rem;
+  padding-right: .1rem;
 }
 .trans .title {
   text-align: justify;
 }
 .new-msg {
-  width: 4.48rem;
+  padding-right: .1rem;
 }
 
 /*# sourceMappingURL=lxm.css.map */

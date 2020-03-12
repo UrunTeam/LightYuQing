@@ -1,18 +1,48 @@
 @import "./_moduleColor.less";
 
-body{
-  background-color: @theme-color3;
-  color: #ffffff;
+
+
+// 更新时间
+.update-range-time {
+  margin-bottom: .25rem;
+  text-align: center;
+  i {
+    float: right;
+    margin-right: .49rem;
+  }
+}
+.number-total {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6.4rem;
+  border-top: .01rem solid @graphic-color2;
+  border-bottom: .01rem solid @graphic-color2;
+  padding: 0.25rem 0;
+  margin: 0 auto .1rem;
+  dl {
+    flex: 1;
+    text-align: center;
+    border-right: .01rem solid #ffffff;
+    &:last-child {
+      border-right-color: transparent;
+    }
+    dt {
+      &:extend(.fSy);
+      font-size: .44rem;
+      color: @graphic-color4;
+    }
+    
+  }
 }
 
 
 
 
-
-
+//传播分析
 .trans {
-  width: 4.48rem;
-
+  padding-left: .18rem;
+  padding-right: .1rem;
   .title {
     text-align: justify;
   }
@@ -21,7 +51,7 @@ body{
 
 // 最新消息
 .new-msg {
-  width: 4.48rem;
+  padding-right: .1rem;
 }
 
 

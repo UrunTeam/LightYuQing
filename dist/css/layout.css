@@ -11,11 +11,45 @@
   -ms-flex: 1;
   flex: 1;
 }
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 .yuQingContainer {
-  padding: 0.43rem 0.6rem ;
   min-width: 19.2rem;
-  min-height: 10.8rem;
+  min-height: auto;
+  padding: 0.43rem 0.6rem ;
   background-color: #1B418D;
+  box-sizing: border-box;
+  color: #ffffff;
+  overflow: hidden;
+}
+.yuQingContainer .conter {
+  width: 100%;
+  height: calc(100% - .92rem);
+  box-sizing: border-box;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.yuQingContainer .conter .conter-left {
+  width: 40%;
+  height: 100%;
+}
+.yuQingContainer .conter .conter-middle {
+  width: 60%;
+}
+.yuQingContainer .conter .conter-right {
+  width: 40%;
+}
+.yuQingContainer .conter .iconlujing1 {
+  font-size: .24rem;
 }
 #app .flexBetween {
   display: -webkit-box;
@@ -50,6 +84,7 @@
   width: 100%;
   height: 0.92rem;
   padding: 0.22rem 0.22rem 0.19rem 0.4rem;
+  box-sizing: border-box;
   background-color: #2551A2;
 }
 #app .navbar-header h2 {
