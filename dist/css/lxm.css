@@ -2,63 +2,14 @@ body {
   background-color: #1B418D;
   color: #ffffff;
 }
-dl dt,
-dl dd {
-  font-weight: normal;
-}
 .trans {
-  width: 5.08rem;
+  width: 4.48rem;
 }
 .trans .title {
   text-align: justify;
 }
-.trans .dot-line-list {
-  position: relative;
-  padding-left: .18rem;
-}
-.trans .dot-line-list::before {
-  position: absolute;
-  content: '';
-  left: 0;
-  top: 0;
-  width: .04rem;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: .02rem;
-}
-.trans .dot-line-list li {
+.new-msg {
   width: 4.48rem;
-  padding: .13rem .12rem .16rem;
-  box-sizing: border-box;
-  margin-bottom: .27rem;
-  background: #1B418D;
-  box-shadow: 0 0.03rem 0.06rem rgba(0, 0, 0, 0.16);
-}
-.trans .dot-line-list li .title {
-  margin-bottom: .05rem;
-}
-.trans .dot-line-list li .dl-info {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  color: #81A0D3;
-}
-.trans .dot-line-list li::before {
-  position: absolute;
-  left: 0;
-  top: 0;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  content: '';
-  width: 0;
-  height: 0;
-  border: 0.1rem solid #1B418D;
 }
 
 /*# sourceMappingURL=lxm.css.map */

@@ -1,6 +1,7 @@
 {
   "site": "ejs-demo",
   "styles": [
+    "http://at.alicdn.com/t/font_1684931_wpsmh78wgy.css",
     "../css/global.css",
     "https://unpkg.com/element-ui/lib/theme-chalk/index.css"
   ],

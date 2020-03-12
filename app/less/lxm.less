@@ -1,65 +1,30 @@
 @import "./_moduleColor.less";
 
 body{
-  background-color: #1B418D;
+  background-color: @theme-color3;
   color: #ffffff;
 }
 
-dl{
-  dt,dd {
-    font-weight: normal;
-  }
-}
+
+
+
+
 
 .trans {
-  width: 5.08rem;
+  width: 4.48rem;
 
   .title {
     text-align: justify;
   }
+}
+
+
+// 最新消息
+.new-msg {
+  width: 4.48rem;
+}
+
+
+.coner-box {
   
-  .dot-line-list {
-    position: relative;
-    padding-left: .18rem;
-    &::before {
-      position: absolute;
-      content: '';
-      left: 0;
-      top: 0;
-      width: .04rem;
-      height: 100%;
-      background-color: rgba(255,255,255,0.3);
-      border-radius: .02rem;
-    }
-    li {
-      width: 4.48rem;
-      padding: .13rem .12rem .16rem;
-      box-sizing: border-box;
-      margin-bottom: .27rem;
-      background: @theme-color3;
-      box-shadow:0 .03rem .06rem rgba(0,0,0,0.16);
-      .title {
-        margin-bottom: .05rem;
-      }
-      .dl-info {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        color: @graphic-color8;
-        span {
-          
-        }
-      }
-      &::before {
-        position: absolute;
-        left: 0;
-        top: 0;
-        transform: translate(-50%,-50%);
-        content: '';
-        width: 0;
-        height: 0;
-        border: .1rem solid @theme-color3;
-      }
-    }
-  }
 }
