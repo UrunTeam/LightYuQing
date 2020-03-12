@@ -74,6 +74,7 @@ function initHeardVue(){
       },
       created() {
        this.pageDetail=sessionStorage.getItem('yuQingPage')?JSON.parse(sessionStorage.getItem('yuQingPage')):this.pageArr[1]
+       this.setActive()
       },
       mounted(){
           let that=this
@@ -99,6 +100,7 @@ function initHeardVue(){
             console.log('退出登录')
         },
         checkActive(item,index){
+            if(item.active) return
             this.pageArr.map(function(itemInfo,indexInfo){
                 itemInfo.active=false
             })
@@ -106,6 +108,16 @@ function initHeardVue(){
             this.pageDetail=this.pageArr[index]
             location.href=item.url
             sessionStorage.setItem('yuQingPage',JSON.stringify(item))
+        },
+        setActive(){
+            let that=this;
+            this.pageArr.map(function(itemInfo,indexInfo){
+                
+                if(itemInfo.name!=that.pageDetail.name) itemInfo.active=false
+                else itemInfo.active=true
+            })
+            console.log( this.pageArr)
+
         }
       }
     });
