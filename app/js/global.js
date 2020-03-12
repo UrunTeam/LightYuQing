@@ -116,7 +116,6 @@ function initHeardVue(){
                 if(itemInfo.name!=that.pageDetail.name) itemInfo.active=false
                 else itemInfo.active=true
             })
-            console.log( this.pageArr)
 
         }
       }
