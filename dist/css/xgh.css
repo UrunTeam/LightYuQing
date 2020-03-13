@@ -7,10 +7,11 @@
       -ms-flex-direction: row ;
           flex-direction: row ;
 }
-.warning-warp .left-warp {
+.warning-warp .left-warp.conter-left {
   width: calc(40.6%);
+  padding: 0;
 }
-.warning-warp .left-warp .coner-box {
+.warning-warp .left-warp.conter-left .coner-box {
   background: url(../images/forense-left.png) no-repeat;
   background-size: 100% 100%;
   padding: 0.2rem 0.25rem;
@@ -33,6 +34,22 @@
 }
 .ranking-table thead tr th.add-th {
   text-align: left;
+}
+.ranking-table thead tr .triangle {
+  width: 0;
+  height: 0;
+  border-width: 0.06rem;
+  border-style: solid;
+  opacity: 0.3;
+  vertical-align: middle;
+  display: inline-block;
+  cursor: pointer;
+}
+.ranking-table thead tr .triangle.up {
+  border-color: transparent  transparent #FFFFFF transparent;
+}
+.ranking-table thead tr .triangle.down {
+  border-color: #FFFFFF transparent  transparent transparent;
 }
 .ranking-table tbody tr {
   height: 0.39rem;

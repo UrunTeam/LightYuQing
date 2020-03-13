@@ -8,8 +8,10 @@
 	flex-direction: row ;
 	
 	
-	.left-warp {
+	.left-warp.conter-left {
 		width: calc(40% + 0.6rem);
+		padding: 0;
+		
 		.coner-box{
 			background: url(../images/forense-left.png) no-repeat;
 			background-size: 100% 100%;
@@ -39,6 +41,25 @@
 		
 		th.add-th {
 			text-align: left;
+		}
+		
+		.triangle{
+			width: 0;
+			height: 0;
+			border-width: 0.06rem;
+			border-style: solid;
+			opacity: 0.3;
+			vertical-align: middle;
+			display: inline-block;
+			cursor: pointer;
+			
+			&.up{
+				border-color: transparent  transparent #FFFFFF transparent;
+			}
+			
+			&.down{
+				border-color:  #FFFFFF transparent  transparent transparent;
+			}
 		}
 	}
 	tbody tr{

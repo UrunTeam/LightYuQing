@@ -21,7 +21,7 @@ body {
   height: 100%;
   min-width: 19.2rem;
   min-height: auto;
-  padding: 0.43rem 0.6rem ;
+  padding: 0.43rem 0.38rem;
   background-color: #1B418D;
   box-sizing: border-box;
   color: #ffffff;
@@ -47,22 +47,14 @@ body {
   width: 40%;
   background: url(../images/forense-left.png) no-repeat;
 }
-.yuQingContainer .conter .conter-left .conterLeft-bottom-item {
-  border: 1px dashed #fff;
-}
 .yuQingContainer .conter .conter-left .conterLeft-bottom-item .sort-list {
   height: 0.84rem;
   padding: 0.12rem 0.2rem 0.1rem 0.18rem;
-  border-bottom: 1px dashed #fff;
-}
-.yuQingContainer .conter .conter-left .conterLeft-bottom-item .sort-list:last-child {
-  border: none;
 }
 .yuQingContainer .conter .conter-left .hostSort.img {
   width: 0.42rem;
   height: 0.59rem;
   margin-right: 0.19rem;
-  border: 1px dashed #fff;
 }
 .yuQingContainer .conter .conter-left .hostSort.sort0 {
   background: url('../images/sort1.png') no-repeat;
@@ -114,11 +106,9 @@ body {
 .yuQingContainer .conter .conter-right .radiusBox-top {
   padding-bottom: 0.12rem;
   margin-bottom: 0.08rem;
-  border-bottom: 1px dashed #fff;
 }
 .yuQingContainer .conter .conter-right .radiusBox-bottom {
   padding-top: 0.12rem;
-  border: 1px dashed #fff;
 }
 .yuQingContainer .conter .conter-left,
 .yuQingContainer .conter .conter-middle,
@@ -126,10 +116,12 @@ body {
   height: 100%;
   padding: 0.22rem;
   background-size: 100% 100%;
-  border: 1px dashed #fff;
 }
 .yuQingContainer .conter .iconlujing1 {
   font-size: .24rem;
+}
+#app {
+  padding: 0 0.22rem;
 }
 #app .flexBetween {
   display: -webkit-box;
@@ -277,6 +269,7 @@ body {
   left: 100%;
   top: 0;
   width: 1.2rem;
+  z-index: 9;
   color: #5AB0F3;
 }
 #navbar-right .navbar-big li {
