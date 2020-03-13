@@ -109,6 +109,7 @@ body {
 }
 .yuQingContainer .conter {
   width: 100%;
+  margin-top: 0.14rem;
   height: calc(100% - .92rem);
   box-sizing: border-box;
   overflow: hidden;
@@ -123,11 +124,13 @@ body {
 .yuQingContainer .conter .conter-middle,
 .yuQingContainer .conter .conter-right {
   height: 100%;
+  padding: 0.22rem;
 }
 .yuQingContainer .conter .conter-left {
   width: 40%;
 }
 .yuQingContainer .conter .conter-middle {
+  margin: 0 0.06rem;
   width: 60%;
   height: 100%;
 }
@@ -302,6 +305,23 @@ body {
 #navbar-right .navbar-big li.active {
   color: #F3Af1B;
   background-color: #305297;
+}
+.comTitleBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 0.78rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.modulTitle {
+  font-size: 0.22rem;
+}
+.modulTitle i {
+  font-size: 0.32rem;
+  color: #F3Af1B;
+  margin: 0 0.18rem 0 0.26rem;
 }
 @font-face {
   font-family: SiYuan;

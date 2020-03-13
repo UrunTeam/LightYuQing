@@ -19,6 +19,7 @@ html,body {
   // 布局左中右
   .conter {
     width: 100%;
+    margin-top: 0.14rem;
     height: calc(~'100% - .92rem');
     box-sizing: border-box;
     overflow: hidden;
@@ -26,12 +27,14 @@ html,body {
     align-items: flex-start;
     .conter-left,.conter-middle,.conter-right {
       height: 100%;
+      padding: 0.22rem;
     }
     
     .conter-left {
       width: 40%;
     }
     .conter-middle {
+      margin: 0 0.06rem;
       width: 60%;
       height: 100%;
     }
@@ -209,6 +212,22 @@ html,body {
     }
 
 
+}
+
+
+//    公用标题模块样式
+.comTitleBox{
+    display: flex;
+    height: 0.78rem;
+    align-items: center;
+}
+.modulTitle{
+    font-size: 0.22rem;
+    i{
+        font-size: 0.32rem;
+        color: @graphic-color4;
+        margin: 0 0.18rem 0 0.26rem;
+    }
 }
 
 
