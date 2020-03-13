@@ -1,10 +1,53 @@
 @import "./_moduleColor.less";
 #analisisForense{
 
-  
-//    公用标题模块样式
-    
-    
+.comTitleItem{
+    margin-right: 0.9rem;
+    font-size: 0.14rem;
+    .comTitleText{
+        margin: 0.04rem 0.06rem 0 0;
+    }
+    li{
+        height: 0.22rem;
+        width: 0.54rem;
+        line-height: 0.22rem;
+        box-sizing: border-box;
+        cursor: pointer;
+        text-align: center;
+        border: 1px solid transparent;
+        margin: 0.04rem 0.22rem 0 0;
+        &:last-child{
+            margin-right: 0;
+        }
+        &:active,&.active{
+            border-radius: 0.14rem;
+            color:@graphic-color1;
+            border-color: @graphic-color1;
+        }
+    }
+}
+.number-total {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.7rem;
+    border-bottom: .01rem solid @graphic-color2;
+    margin: 0 0.24rem;
+    dl {
+      flex: 1;
+      text-align: center;
+      border-right: .01rem solid #ffffff;
+      &:last-child {
+        border-right-color: transparent;
+      }
+      dt {
+        &:extend(.fSy);
+        font-size: .44rem;
+        color: @graphic-color4;
+      }
+      
+    }
+  }
        // 
     // 公用样式
     .flexStart{
