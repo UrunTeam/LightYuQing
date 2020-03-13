@@ -1,16 +1,35 @@
 <%- include('../templates/head') %>
+
 <body>
-    
-    <div class="yuQingContainer" >
-        <!-- 头部 -->
-        <%- include('../templates/header') %>
-        <div class="conter"></div>
-        <%- include('../templates/foot') %>
+  
+  <div id="vm_login">
+    <img class="decorate-pic" src="../images/login_pic.png" alt="">
+    <div class="login-box">
+      <p class="logo-name">微舆</p>
+      <p class="logo-name">舆情可视化分析系统</p>
+      <div class="login-form f14">
+        <el-input placeholder="账号" prefix-icon="iconfont iconzu14" v-model="username" style="margin-bottom: .33rem;"></el-input>
+        <el-input placeholder="密码" prefix-icon="iconfont iconzu12" v-model="password" show-password style="margin-bottom: .3rem;"></el-input>
+        <el-button type="primary">登录</el-button>
+      </div>
     </div>
-   
+  </div>
+  <p class="copyright">云润大数据服务有限公司</p>
+  <%- include('../templates/foot') %>
+
 </body>
 <script>
-    
-        
-    </script>
+  new Vue({
+    el: '#vm_login',
+    delimiters: ['${', '}'],
+    data() {
+      return {
+        username: '',
+        password: ''
+      }
+    }
+  })
+
+</script>
+
 </html>

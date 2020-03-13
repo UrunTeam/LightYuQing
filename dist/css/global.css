@@ -323,6 +323,38 @@ body {
   color: #F3Af1B;
   margin: 0 0.18rem 0 0.26rem;
 }
+input,
+textarea {
+  font-size: .14rem;
+  font-family: SiYuan;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #8DA0C6;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #8DA0C6;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #8DA0C6;
+}
+.el-button--primary:focus,
+.el-button--primary:hover {
+  background-color: #1B418D;
+  border-color: #1B418D;
+}
+.el-button--primary {
+  background-color: #1B418D;
+  border-color: #1B418D;
+}
+.el-input__prefix {
+  left: .2rem;
+}
+.el-input--prefix .el-input__inner {
+  padding-left: .54rem;
+}
 @font-face {
   font-family: SiYuan;
   src: url("../fonts/SourceHanSansCN-Regular.otf");
