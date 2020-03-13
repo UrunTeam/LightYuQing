@@ -17,6 +17,33 @@ body {
   height: 100%;
   overflow: hidden;
 }
+.scroll-container {
+  padding: .15rem;
+  overflow: auto;
+}
+.scroll-container .row {
+  margin: 0;
+  line-height: 1.5;
+}
+.scroll-container::-webkit-scrollbar {
+  width: .08rem;
+  background: transparent;
+}
+.scroll-container::-webkit-scrollbar-corner,
+.scroll-container::-webkit-scrollbar-thumb,
+.scroll-container::-webkit-scrollbar-track {
+  border-radius: .04rem;
+}
+.scroll-container::-webkit-scrollbar-corner,
+.scroll-container::-webkit-scrollbar-track {
+  /* 滚动条轨道 */
+  background-color: rgba(180, 160, 120, 0);
+  box-shadow: inset 0 0 0.01rem rgba(180, 160, 120, 0.5);
+}
+.scroll-container::-webkit-scrollbar-thumb {
+  /* 滚动条手柄 */
+  background-color: rgba(255, 255, 255, 0.3);
+}
 .yuQingContainer {
   height: 100%;
   min-width: 19.2rem;
@@ -136,7 +163,7 @@ body {
 .yuQingContainer .conter .conter-middle,
 .yuQingContainer .conter .conter-right {
   height: 100%;
-  padding: 0.22rem;
+  padding: 0.24rem;
   background-size: 100% 100%;
 }
 .yuQingContainer .conter .conter-right {
@@ -144,6 +171,49 @@ body {
 }
 .yuQingContainer .conter .iconlujing1 {
   font-size: .24rem;
+}
+.yuQingContainer .conter .conter-middle-reset {
+  background: none;
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+}
+.yuQingContainer .conter .conter-middle-reset .middle-top {
+  height: 1.88rem;
+  padding-top: .08rem;
+  box-sizing: border-box;
+  margin-bottom: .1rem;
+}
+.yuQingContainer .conter .conter-middle-reset .coner-wrap {
+  width: 100%;
+  height: calc(100% - 1.98rem);
+  padding: 0.24rem;
+  box-sizing: border-box;
+  background: url(../images/coner_box_pic.png) no-repeat center center;
+  background-size: 100% 100%;
+}
+.yuQingContainer .conter .conter-middle-reset .coner-wrap .wrap-top {
+  height: 43%;
+}
+.yuQingContainer .conter .conter-middle-reset .coner-wrap .wrap-bottom {
+  width: 100%;
+  height: 57%;
+  min-height: 2.92rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.yuQingContainer .conter .conter-middle-reset .coner-wrap .wrap-bottom .bottom-left {
+  width: 3.2rem;
+}
+.yuQingContainer .conter .conter-middle-reset .coner-wrap .wrap-bottom .bottom-right {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.yuQingContainer .conter .conter-middle-reset .coner-wrap .body-box {
+  height: calc(100% - .78rem);
 }
 #app {
   padding: 0 0.22rem;
@@ -337,6 +407,11 @@ body {
   font-size: 0.32rem;
   color: #F3Af1B;
   margin: 0 0.18rem 0 0.26rem;
+}
+.modulTitle .el-button {
+  padding: .08rem .16rem;
+  font-size: .22rem;
+  font-family: SiYuan;
 }
 
 /*# sourceMappingURL=layout.css.map */
