@@ -212,3 +212,122 @@
     }
   }
 }
+
+
+// 区域排行
+.ranking-table{
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+	
+
+	thead tr{
+		height:0.74rem;
+		background:#305297;
+		
+		th.add-th {
+			text-align: left;
+		}
+		
+		.iconicondown,.iconiconup{
+			font-size: 0.12rem;
+			color: rgba(255,255,255,0.3);
+			cursor: pointer;
+		}
+	}
+	tbody tr{
+		height:0.39rem;
+		 
+		.icon-images{
+			width: 0.22rem;
+			height: 0.3rem;
+			display: inline-block;
+			text-align: center;
+			line-height: .22rem;
+			vertical-align: top;
+		}
+		
+		.iconone1{
+			background: url(../../images/sort1.png) no-repeat center top;
+			background-size: 100%;
+		}
+		.iconone2{
+			background: url(../../images/sort2.png) no-repeat center top;
+			background-size: 100%;
+		}
+		.iconone3{
+			background: url(../../images/sort3.png) no-repeat center top;
+			background-size: 100%;
+		}
+	}
+	tbody tr:nth-child(even){
+		background:#29539E;
+	}
+	
+	th {
+		font-weight: normal;
+	}
+	.schedule {
+		.bar{
+			width:1.25rem;
+			height:0.16rem;
+			border-radius:0.09rem;
+			display: inline-block;
+			
+			div{
+				height:0.16rem;
+				border-radius:0.09rem;
+			}
+		}
+		span{
+			color:#fff;
+		}
+	}
+	
+	.add-color{
+		color: @graphic-color4;
+	}
+	
+	.iconredianguanzhu,.iconzu8{
+		color: @graphic-color4;
+		font-size: 0.28rem;
+	}
+	
+	.iconzu9{
+		color: #FFFFFF;
+		font-size: 0.12rem;
+		
+	}
+	.iconlujing1{
+		float: right;
+		margin-right: 0.26rem;
+		color: #FFFFFF;
+	}
+	
+	.suqare {
+	  display: inline-block;
+	  min-width: .22rem;
+	  height: .22rem;
+	  border-radius: .04rem;
+	  background-color: @graphic-color2;
+	  text-align: center;
+	  line-height: .22rem;
+	  vertical-align: middle;
+	}
+	
+	.rank-red{
+		background:@graphic-color3;
+	}
+	
+	.rank-yellow{
+		background:@graphic-color4;
+	}
+	
+	.rank-blue{
+		background:@graphic-color2;
+	}
+	
+	.rank-green{
+		background:@graphic-color1;
+	}
+}
