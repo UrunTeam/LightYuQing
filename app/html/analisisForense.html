@@ -16,6 +16,7 @@
                             声量趋势
                         </div>
                     </div>
+                    <div id="trendChart" ref='trendChart'></div>
                 </div>
                 <!-- 湖南热点 -->
                 <div class="conterLeft-bottom ">
@@ -124,6 +125,7 @@
                     // 属地舆情研判数据
                     analisisArr: [{ name: '声量总和', host: 1655 }, { name: '正面声量', host: 1655 }, { name: '负面声量', host: 1655 }, { name: '预警声量', host: 1655 }],
                     timeArr: [{ name: '24小时', active: false }, { name: '7天', active: true }, { name: '15天', active: false }, { name: '30天', active: false },],
+                    // 情绪分布饼图图表
                     pieChart: {
                         option: {
                             tooltip: {
@@ -176,7 +178,43 @@
                         eachart: null,
                         $el: null
                     },
-                    eachartNameList:['pieChart',],
+                    // 声量趋势图表数据
+                    trendChart:{
+                        option:{
+                            tooltip: {},
+    legend: {
+     
+    },
+    xAxis: {
+      data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+    },
+    yAxis: {},
+    series: [{
+      name: '微信',
+      type: 'line',
+      data: [5, 20, 36, 10, 10, 20]
+    },
+    {
+      name: 'APP',
+      type: 'line',
+      data: [5, 20, 36, 20, 10, 20]
+    },
+    {
+      name: '新闻',
+      type: 'line',
+      data: [5, 20, 36, 20, 10, 20]
+    },
+    {
+      name: '微博',
+      type: 'line',
+      data: [5, 20, 36, 20, 10, 20]
+    }
+  ]
+                        },
+                        eachart: null,
+                        $el: null
+                    },
+                    eachartNameList:['pieChart','trendChart',],
                 };
             },
             created() {
@@ -184,6 +222,7 @@
             mounted() {
                 this.initEachDom();
                 this.initPieChart()
+                this.initTrendChart()
             },
             methods: {
                 initEachDom() {
@@ -212,6 +251,10 @@
                     this.pieChart.option.series[0].data = dataList;
                     this.updateEach("pieChart");
                 },
+                initTrendChart(){
+                    // this.trendChart.option.series[0].data = dataList;
+                    this.updateEach("trendChart");
+                }
 
 
 
