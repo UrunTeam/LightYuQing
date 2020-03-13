@@ -93,7 +93,7 @@
                         </div>
                 </div>
                 <!-- 湖南热点 -->
-                <div class="conterLeft-bottom">
+                <div class="conterLeft-bottom scroll-container">
                     <div class="flatAngle comTitleBox">
                         <i class="iconfont iconlujing1 incnEdit"></i>
                         <div class="modulTitle">
@@ -107,7 +107,7 @@
                                     <span class="hostSort" :class="index>2?'number':'sort'+index+' img'">
                                         ${index>2?index+1:''}
                                     </span>
-                                    <div class="sortConter">
+                                    <div class="sortConter flexBetween">
                                         <p class="sortConter-top">
                                             ${item.title}
                                         </p>
@@ -128,13 +128,27 @@
                 </div>
             </div>
             <div class="conter-middle">
-                <div class="comTitleBox">
+                <div class="comTitleBox flexBetween">
                         <i class="iconfont iconlujing1 incnEdit"></i>
                         <div class="modulTitle">
                                 <i class="iconfont iconzu8"></i>
                                 属地舆情研判
                         </div>
+                        <div class="comTitleItem flexStart">
+                            <span class="comTitleText">分析时间：</span>
+                            <ul class="flexStart">
+                                <li  v-for='(item,index) in timeArr' @click='changeTime(item,index)' :class="item.active?'active':''" :key='index'>
+                                    ${item.name}
+                                </li>
+                            </ul>
+                        </div>
                 </div>
+                <div class="number-total">
+                        <dl v-for="(item,index) in analisisArr" :key='index'>
+                          <dt>${item.host}</dt>
+                          <dd class="f18">${item.name}</dd>
+                        </dl>
+                      </div>
             </div>
             <div class="conter-right">
                 <!-- 情绪分布 -->
@@ -182,7 +196,11 @@
       delimiters: ['${','}'],
       data() {
         return {
-            hostArr:Array(5).fill({title:'钟南山为何说有信息4月底基本控制疫情？这份研究给了答案',media:'澎湃新闻',host:3658,date:'03-03 13:18'})
+            // 湖南热点数据
+            hostArr:Array(5).fill({title:'钟南山为何说有信息4月底基本控制疫情？这份研究给了答案',media:'澎湃新闻',host:3658,date:'03-03 13:18'}),
+            // 属地舆情研判数据
+            analisisArr:[{name:'声量总和',host:1655},{name:'正面声量',host:1655},{name:'负面声量',host:1655},{name:'预警声量',host:1655}],
+            timeArr:[{name:'24小时',active:false},{name:'7天',active:true},{name:'15天',active:false},{name:'30天',active:false},],
         };
       },
       created() {
@@ -191,7 +209,12 @@
       },
       methods: {
        
-       
+        changeTime(item,index){
+            this.timeArr.map(function(item,index){
+                item.active=false
+            })
+            this.timeArr[index].active=true
+        }
          
 
         
