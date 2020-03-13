@@ -97,6 +97,33 @@ body {
   height: 100%;
   overflow: hidden;
 }
+.scroll-container {
+  padding: .15rem;
+  overflow: auto;
+}
+.scroll-container .row {
+  margin: 0;
+  line-height: 1.5;
+}
+.scroll-container::-webkit-scrollbar {
+  width: .08rem;
+  background: transparent;
+}
+.scroll-container::-webkit-scrollbar-corner,
+.scroll-container::-webkit-scrollbar-thumb,
+.scroll-container::-webkit-scrollbar-track {
+  border-radius: .04rem;
+}
+.scroll-container::-webkit-scrollbar-corner,
+.scroll-container::-webkit-scrollbar-track {
+  /* 滚动条轨道 */
+  background-color: rgba(180, 160, 120, 0);
+  box-shadow: inset 0 0 0.01rem rgba(180, 160, 120, 0.5);
+}
+.scroll-container::-webkit-scrollbar-thumb {
+  /* 滚动条手柄 */
+  background-color: rgba(255, 255, 255, 0.3);
+}
 .yuQingContainer {
   height: 100%;
   min-width: 19.2rem;
@@ -194,7 +221,7 @@ body {
 .yuQingContainer .conter .conter-middle,
 .yuQingContainer .conter .conter-right {
   height: 100%;
-  padding: 0.22rem;
+  padding: 0.24rem;
   background-size: 100% 100%;
 }
 .yuQingContainer .conter .iconlujing1 {
@@ -216,7 +243,7 @@ body {
 .yuQingContainer .conter .conter-middle-reset .coner-wrap {
   width: 100%;
   height: calc(100% - 1.98rem);
-  padding: 0.22rem;
+  padding: 0.24rem;
   box-sizing: border-box;
   background: url(../images/coner_box_pic.png) no-repeat center center;
   background-size: 100% 100%;
@@ -227,6 +254,7 @@ body {
 .yuQingContainer .conter .conter-middle-reset .coner-wrap .wrap-bottom {
   width: 100%;
   height: 57%;
+  min-height: 2.92rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -433,6 +461,11 @@ body {
   color: #F3Af1B;
   margin: 0 0.18rem 0 0.26rem;
 }
+.modulTitle .el-button {
+  padding: .08rem .16rem;
+  font-size: .22rem;
+  font-family: SiYuan;
+}
 input,
 textarea {
   font-size: .14rem;
@@ -450,14 +483,27 @@ input::placeholder,
 textarea::placeholder {
   color: #8DA0C6;
 }
-.el-button--primary:focus,
-.el-button--primary:hover {
-  background-color: #1B418D;
-  border-color: #1B418D;
+.el-button--warning {
+  background-color: #F3Af1B;
+  border-color: #F3Af1B;
+  color: #000000;
 }
-.el-button--primary {
-  background-color: #1B418D;
-  border-color: #1B418D;
+.el-button--warning:focus,
+.el-button--warning:hover {
+  background-color: #F3Af1B;
+  border-color: #F3Af1B;
+  color: #000000;
+}
+.el-button--none {
+  background-color: transparent;
+  border-color: transparent;
+  color: #ffffff;
+}
+.el-button--none:focus,
+.el-button--none:hover {
+  background-color: #F3Af1B;
+  border-color: #F3Af1B;
+  color: #000000;
 }
 .el-input__prefix {
   left: .2rem;

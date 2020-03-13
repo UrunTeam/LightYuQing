@@ -1,9 +1,10 @@
 {
   "title": "事件跟踪",
   "styles": [
+    "../css/xgh.css",
     "../css/lxm.css"
   ],
   "scripts":[
-    
+    "../js/chartsMap.js"
   ]
 }

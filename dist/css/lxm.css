@@ -38,7 +38,6 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 6.4rem;
   border-top: 0.01rem solid #5AB0F3;
   border-bottom: 0.01rem solid #5AB0F3;
   padding: 0.25rem 0;
@@ -61,12 +60,27 @@
 .trans {
   padding-left: .18rem;
   padding-right: .1rem;
+  padding-top: .38rem;
+  box-sizing: border-box;
+  height: calc(100% - .78rem);
 }
 .trans .title {
   text-align: justify;
 }
 .new-msg {
   padding-right: .1rem;
+  height: calc(100% - .78rem);
+}
+.flex-sbw {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 /*# sourceMappingURL=lxm.css.map */

@@ -47,7 +47,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 6.4rem;
   border-top: .01rem solid @graphic-color2;
   border-bottom: .01rem solid @graphic-color2;
   padding: 0.25rem 0;
@@ -75,6 +74,9 @@
 .trans {
   padding-left: .18rem;
   padding-right: .1rem;
+  padding-top: .38rem;
+  box-sizing: border-box;
+  height: calc(~'100% - .78rem');
   .title {
     text-align: justify;
   }
@@ -84,6 +86,13 @@
 // 最新消息
 .new-msg {
   padding-right: .1rem;
+  height: calc(~'100% - .78rem');
 }
 
 
+
+.flex-sbw {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
