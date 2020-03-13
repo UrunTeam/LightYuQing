@@ -7,15 +7,20 @@
       -ms-flex-direction: row ;
           flex-direction: row ;
 }
-.warning-warp .coner-box {
-  padding: 0 0.28rem 0 0;
+.warning-warp .left-warp {
+  width: calc(40.6%);
+}
+.warning-warp .left-warp .coner-box {
+  background: url(../images/forense-left.png) no-repeat;
+  background-size: 100% 100%;
+  padding: 0.2rem 0.25rem;
   height: 100%;
 }
 .warning-warp .left-top {
-  height: 37%;
+  height: 41%;
 }
 .warning-warp .left-bottom {
-  height: 63%;
+  height: 59%;
 }
 .ranking-table {
   width: 100%;
@@ -30,7 +35,27 @@
   text-align: left;
 }
 .ranking-table tbody tr {
-  height: 0.47rem;
+  height: 0.39rem;
+}
+.ranking-table tbody tr .icon-images {
+  width: 0.22rem;
+  height: 0.3rem;
+  display: inline-block;
+  text-align: center;
+  line-height: .22rem;
+  vertical-align: top;
+}
+.ranking-table tbody tr .iconone1 {
+  background: url(../../images/1.png) no-repeat center top;
+  background-size: 100%;
+}
+.ranking-table tbody tr .iconone2 {
+  background: url(../../images/2.png) no-repeat center top;
+  background-size: 100%;
+}
+.ranking-table tbody tr .iconone3 {
+  background: url(../../images/3.png) no-repeat center top;
+  background-size: 100%;
 }
 .ranking-table tbody tr:nth-child(even) {
   background: #29539E;
@@ -47,7 +72,6 @@
 }
 .ranking-table .schedule .bar div {
   height: 0.16rem;
-  background: #F2476B;
   border-radius: 0.09rem;
 }
 .ranking-table .schedule span {
@@ -59,7 +83,7 @@
 .ranking-table .iconredianguanzhu,
 .ranking-table .iconzu8 {
   color: #F3Af1B;
-  font-size: 0.3rem;
+  font-size: 0.28rem;
 }
 .ranking-table .iconzu9 {
   color: #FFFFFF;
@@ -78,7 +102,19 @@
   background-color: #5AB0F3;
   text-align: center;
   line-height: .22rem;
-  vertical-align: top;
+  vertical-align: middle;
+}
+.ranking-table .rank-red {
+  background: #F2476B;
+}
+.ranking-table .rank-yellow {
+  background: #F3Af1B;
+}
+.ranking-table .rank-blue {
+  background: #5AB0F3;
+}
+.ranking-table .rank-green {
+  background: #52D4E0;
 }
 .update-range-time {
   margin-bottom: .25rem;
