@@ -7,16 +7,23 @@
 	
 	flex-direction: row ;
 	
-	.coner-box{
-		padding: 0 0.28rem 0 0;
-		height: 100%;
+	
+	.left-warp {
+		width: calc(40% + 0.6rem);
+		.coner-box{
+			background: url(../images/forense-left.png) no-repeat;
+			background-size: 100% 100%;
+			padding: 0.2rem 0.25rem;
+			height: 100%;
+		}
 	}
+	
 	.left-top{
-		height: 37%;
+		height: 41%;
 	}
 	
 	.left-bottom{
-		height: 63%;
+		height: 59%;
 	}
 }
 
@@ -35,7 +42,29 @@
 		}
 	}
 	tbody tr{
-		height:0.47rem;
+		height:0.39rem;
+		 
+		.icon-images{
+			width: 0.22rem;
+			height: 0.3rem;
+			display: inline-block;
+			text-align: center;
+			line-height: .22rem;
+			vertical-align: top;
+		}
+		
+		.iconone1{
+			background: url(../../images/1.png) no-repeat center top;
+			background-size: 100%;
+		}
+		.iconone2{
+			background: url(../../images/2.png) no-repeat center top;
+			background-size: 100%;
+		}
+		.iconone3{
+			background: url(../../images/3.png) no-repeat center top;
+			background-size: 100%;
+		}
 	}
 	tbody tr:nth-child(even){
 		background:#29539E;
@@ -54,7 +83,6 @@
 			
 			div{
 				height:0.16rem;
-				background:@graphic-color3;
 				border-radius:0.09rem;
 			}
 		}
@@ -69,7 +97,7 @@
 	
 	.iconredianguanzhu,.iconzu8{
 		color: @graphic-color4;
-		font-size: 0.3rem;
+		font-size: 0.28rem;
 	}
 	
 	.iconzu9{
@@ -91,7 +119,23 @@
 	  background-color: @graphic-color2;
 	  text-align: center;
 	  line-height: .22rem;
-	  vertical-align: top;
+	  vertical-align: middle;
+	}
+	
+	.rank-red{
+		background:@graphic-color3;
+	}
+	
+	.rank-yellow{
+		background:@graphic-color4;
+	}
+	
+	.rank-blue{
+		background:@graphic-color2;
+	}
+	
+	.rank-green{
+		background:@graphic-color1;
 	}
 }
 
