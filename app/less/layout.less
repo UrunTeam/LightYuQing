@@ -25,10 +25,7 @@ html,body {
     overflow: hidden;
     display: flex;
     align-items: flex-start;
-    .conter-left,.conter-middle,.conter-right {
-      height: 100%;
-      padding: 0.22rem;
-    }
+    
     // 平角背景色
     .flatAngle{
         background-color: @theme-color2;
@@ -52,12 +49,20 @@ html,body {
         height: 0.59rem;
         margin-right: 0.19rem;
         border: 1px dashed #fff;
+        
     }
     .hostSort.sort0{
-        // background-color: #fff;
+        background: url('../images/sort1.png') no-repeat;
+        background-size: 100% 100%;
     }
-    .hostSort.sort1{}
-    .hostSort.sort2{}
+    .hostSort.sort1{
+        background: url('../images/sort2.png') no-repeat;
+        background-size: 100% 100%;
+    }
+    .hostSort.sort2{
+        background: url('../images/sort3.png') no-repeat;
+        background-size: 100% 100%;
+    }
     .hostSort.number{
         display: block;
         width: 0.48rem;
@@ -81,29 +86,33 @@ html,body {
       width: 60%;
       height: 100%;
       background:url(../images/forense-middle.png) no-repeat;
-
     }
     .conter-right {
       width: 40%;
       height: 100%;
       padding: 0;
-      .hostWord,.distribution{
+      .radiusBox-bottom,.radiusBox-top{
            padding: 0.22rem;
            height: 50%;
            background: url('../images/forense-right.png') no-repeat;
            background-size: 100% 100%;
        }
-       .distribution{
+       .radiusBox-top{
            padding-bottom: 0.12rem;
            margin-bottom: 0.08rem;
            border-bottom: 1px dashed #fff;
        }
-       .hostWord{
+       .radiusBox-bottom{
            padding-top: 0.12rem;
            border: 1px dashed #fff;
        }
     }
-   
+    .conter-left,.conter-middle,.conter-right {
+        height: 100%;
+        padding: 0.22rem;
+        background-size: 100% 100%;
+        border: 1px dashed #fff;
+      }
     .iconlujing1 {
       font-size: .24rem;
     }
