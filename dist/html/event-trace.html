@@ -396,6 +396,148 @@
 
 </body>
 <script>
+  //echart基本样式
+  var optionStyle = {
+    legend: {
+      textStyle: {
+        color: '#ffffff',
+        fontSize: '108%'
+      },
+      icon: 'path://m43.75,145.74l0,0c0,-51.64 41.86,-93.5 93.5,-93.5l0,0c24.8,0 48.58,9.85 66.11,27.38c17.53,17.53 27.38,41.32 27.38,66.11l0,0c0,51.64 -41.86,93.5 -93.5,93.5l0,0c-51.64,0 -93.5,-41.86 -93.5,-93.5zm46.75,0l0,0c0,25.82 20.93,46.75 46.75,46.75c25.82,0 46.75,-20.93 46.75,-46.75c0,-25.82 -20.93,-46.75 -46.75,-46.75l0,0c-25.82,0 -46.75,20.93 -46.75,46.75z',
+      itemGap: 30
+    },
+    tooltip: {
+      backgroundColor: 'rgba(164,179,209,1)',
+      textStyle: {
+        fontSize: '108%',
+        color: '#11254D'
+      },
+      extraCssText: 'box-shadow: 0px 0px 10px rgba(108,132,156,0.5)'
+    },
+    grid: {
+      top: '20%',
+      left: '5%',
+      right: '5%',
+      bottom: '8%',
+      containLabel: true
+    },
+    Axis: {
+      boundaryGap: false,
+      axisTick: {
+        show: true
+      },
+      axisLine: {
+        lineStyle: {
+          color: '#98B5F4'
+        }
+      },
+      axisLabel: {
+        fontSize: '104%',
+        color: '#8DA0C6'
+      },
+      splitLine: {
+        lineStyle: {
+          color: '#98B5F4',
+          type: 'dashed'
+        }
+      }
+    },
+  }
+
+  // 折线图
+  function line(id, Obj) {
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById(id));
+    var option = {
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          lineStyle: {
+            color: '#98B5F4'
+          }
+        },
+        backgroundColor: optionStyle.tooltip.backgroundColor,
+        textStyle: optionStyle.tooltip.textStyle,
+        extraCssText: optionStyle.tooltip.extraCssText
+      },
+      legend: optionStyle.legend,
+      grid: optionStyle.grid,
+      xAxis: {
+        boundaryGap: optionStyle.Axis.boundaryGap,
+        axisTick: optionStyle.Axis.axisTick,
+        axisLine: optionStyle.Axis.axisLine,
+        axisLabel: optionStyle.Axis.axisLabel,
+        data: ["02-14", "02-14", "02-14", "02-14", "02-14", "02-14"]
+      },
+      yAxis: {
+        axisTick: optionStyle.Axis.axisTick,
+        axisLabel: optionStyle.Axis.axisLabel,
+        axisLine: optionStyle.Axis.axisLine,
+        splitLine: optionStyle.Axis.splitLine
+      },
+      series: [{
+        name: '微信',
+        type: 'line',
+        hoverAnimation: false,
+        smooth: true,
+        symbolSize: 8,
+        itemStyle: {
+          color: '#44BC86'
+        },
+        lineStyle: {
+
+        },
+        data: [75, 56, 36, 67, 10, 20]
+      },
+      {
+        name: 'APP',
+        type: 'line',
+        hoverAnimation: false,
+        smooth: true,
+        symbolSize: 8,
+        itemStyle: {
+          color: '#F7B930'
+        },
+        lineStyle: {
+
+        },
+        data: [54, 65, 89, 20, 10, 20]
+      },
+      {
+        name: '新闻',
+        type: 'line',
+        hoverAnimation: false,
+        smooth: true,
+        symbolSize: 8,
+        itemStyle: {
+          color: '#5AB0F3'
+        },
+        lineStyle: {
+
+        },
+        data: [120, 20, 36, 56, 10, 20]
+      },
+      {
+        name: '微博',
+        type: 'line',
+        hoverAnimation: false,
+        smooth: true,
+        symbolSize: 8,
+        itemStyle: {
+          color: '#F2476B'
+        },
+        lineStyle: {
+
+        },
+        data: [5, 20, 36, 65, 10, 67]
+      }
+      ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+  }
+  
   $(function () {
 
     var vm_Container = new Vue({
@@ -410,7 +552,7 @@
       }
     })
 
-    
+
   })
 
 </script>
