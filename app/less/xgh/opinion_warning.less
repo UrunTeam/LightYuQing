@@ -1,168 +1,47 @@
 
 /*属性变量*/
-
-.warning-warp{
-	width: 100%;
-	height: 100%;
-	
-	flex-direction: row ;
-	
-	
-	.left-warp.conter-left {
-		width: calc(40% + 0.6rem);
-		padding: 0;
+.warning-warp {
+	.analysis-time {
+		justify-content: center;
+		width: 3.5rem;
+		display: flex;
+		align-items: center;
+		margin: 0 auto .1rem;
 		
-		.coner-box{
-			background: url(../images/forense-left.png) no-repeat;
-			background-size: 100% 100%;
-			padding: 0.2rem 0.25rem;
-			height: 100%;
+		ul {
+			flex: 1;
+			
+			li {
+				padding: 0 0.1rem;
+				display: inline-block;
+				margin: 0 0.04rem;
+				cursor: pointer;
+				&.active{
+					color: @graphic-color1;
+					border-radius: 50px;
+					border: 1px solid @graphic-color1;
+				}
+				&:last-child{
+					margin: 0;
+				}
+			}
 		}
 	}
 	
-	.left-top{
-		height: 41%;
-	}
-	
-	.left-bottom{
-		height: 59%;
+	.sort-list{
+		padding: 0 .07rem;
+		
+		.content {
+			width: calc(100% - .36rem);
+		}
 	}
 }
 
-.ranking-table{
-	width: 100%;
-	text-align: center;
-	border-collapse: collapse;
-	
 
-	thead tr{
-		height:0.78rem;
-		background:#305297;
-		
-		th.add-th {
-			text-align: left;
-		}
-		
-		.triangle{
-			width: 0;
-			height: 0;
-			border-width: 0.06rem;
-			border-style: solid;
-			opacity: 0.3;
-			vertical-align: middle;
-			display: inline-block;
-			cursor: pointer;
-			
-			&.up{
-				border-color: transparent  transparent #FFFFFF transparent;
-			}
-			
-			&.down{
-				border-color:  #FFFFFF transparent  transparent transparent;
-			}
-		}
-	}
-	tbody tr{
-		height:0.39rem;
-		 
-		.icon-images{
-			width: 0.22rem;
-			height: 0.3rem;
-			display: inline-block;
-			text-align: center;
-			line-height: .22rem;
-			vertical-align: top;
-		}
-		
-		.iconone1{
-			background: url(../../images/1.png) no-repeat center top;
-			background-size: 100%;
-		}
-		.iconone2{
-			background: url(../../images/2.png) no-repeat center top;
-			background-size: 100%;
-		}
-		.iconone3{
-			background: url(../../images/3.png) no-repeat center top;
-			background-size: 100%;
-		}
-	}
-	tbody tr:nth-child(even){
-		background:#29539E;
-		border: 0.01rem dashed #cccccc;
-	}
-	
-	th {
-		font-weight: normal;
-	}
-	.schedule {
-		.bar{
-			width:1.25rem;
-			height:0.16rem;
-			border-radius:0.09rem;
-			display: inline-block;
-			
-			div{
-				height:0.16rem;
-				border-radius:0.09rem;
-			}
-		}
-		span{
-			color:#fff;
-		}
-	}
-	
-	.add-color{
-		color: @graphic-color4;
-	}
-	
-	.iconredianguanzhu,.iconzu8{
-		color: @graphic-color4;
-		font-size: 0.28rem;
-	}
-	
-	.iconzu9{
-		color: #FFFFFF;
-		font-size: 0.12rem;
-		
-	}
-	.iconlujing1{
-		float: right;
-		margin-right: 0.26rem;
-		color: #FFFFFF;
-	}
-	
-	.suqare {
-	  display: inline-block;
-	  min-width: .22rem;
-	  height: .22rem;
-	  border-radius: .04rem;
-	  background-color: @graphic-color2;
-	  text-align: center;
-	  line-height: .22rem;
-	  vertical-align: middle;
-	}
-	
-	.rank-red{
-		background:@graphic-color3;
-	}
-	
-	.rank-yellow{
-		background:@graphic-color4;
-	}
-	
-	.rank-blue{
-		background:@graphic-color2;
-	}
-	
-	.rank-green{
-		background:@graphic-color1;
-	}
-}
+
 
 // 更新时间
 .update-range-time {
-  margin-bottom: .25rem;
   text-align: center;
   i {
     float: right;
