@@ -83,37 +83,65 @@
         <div id='analisisForense' class="conter">
             <div class="conter-left">
                 <!-- 声量趋势 -->
-                <div class="tendencias">
-                        
-                        <div class="comTitleBox">
+                <div class="conterLeft-top">
+                        <div class="comTitleBox flatAngle">
+                                <i class="iconfont iconlujing1 incnEdit"></i>
                                 <div class="modulTitle">
                                         <i class="iconfont iconqushi"></i>
-                                        属地舆情研判
+                                        声量趋势
                                 </div>
                         </div>
                 </div>
                 <!-- 湖南热点 -->
-                <div class="huNanHost">
-                    <div class="huNanHost-title comTitleBox">
+                <div class="conterLeft-bottom">
+                    <div class="flatAngle comTitleBox">
+                        <i class="iconfont iconlujing1 incnEdit"></i>
                         <div class="modulTitle">
                             <i class="iconfont iconredianguanzhu"></i>
                             湖南热点
                         </div>
                     </div>
+                    <div class="conterLeft-bottom-item">
+                            <ul>
+                                <li class="sort-list flexStart" v-for='(item,index) in hostArr' :key='index'>
+                                    <span class="hostSort" :class="index>2?'number':'sort'+index+' img'">
+                                        ${index>2?index+1:''}
+                                    </span>
+                                    <div class="sortConter">
+                                        <p class="sortConter-top">
+                                            ${item.title}
+                                        </p>
+                                        <div class="sortConter-bottom flexBetween">
+                                            <div class="host-media">
+                                                <span>${item.media}</span>
+                                                <span>${item.date}</span>
+                                            </div>
+                                            <div class="sortConter-host">
+                                                <i class="iconfont iconredianguanzhu"></i>
+                                                ${item.host}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                 </div>
             </div>
             <div class="conter-middle">
                 <div class="comTitleBox">
+                        <i class="iconfont iconlujing1 incnEdit"></i>
                         <div class="modulTitle">
-                                <i class="iconfont iconredianguanzhu"></i>
+                                <i class="iconfont iconzu8"></i>
                                 属地舆情研判
                         </div>
                 </div>
             </div>
             <div class="conter-right">
                 <!-- 情绪分布 -->
-                <div class="distribution">
-                        <div class="comTitleBox">
+                <div class="radiusBox-top">
+                        
+                        <div class="comTitleBox ">
+                                <i class="iconfont iconlujing1 incnEdit"></i>
                                 <div class="modulTitle">
                                         <i class="iconfont iconxiaolian"></i>
                                         情绪分布
@@ -121,13 +149,15 @@
                         </div>
                 </div>
                 <!-- 舆论热词 -->
-                <div class="hostWord">
+                <div class="radiusBox-bottom">
                         <div class="comTitleBox">
+                                <i class="iconfont iconlujing1 incnEdit"></i>
                                 <div class="modulTitle">
                                         <i class="iconfont iconciyun"></i>
                                         舆论热词
                                 </div>
                         </div>
+                        
                 </div>
             </div>
 
@@ -146,7 +176,31 @@
    
 </body>
 <script>
-    
+    function initAnalisisForense(){
+       var analisisForense = new Vue({ 
+      el: '#analisisForense',
+      delimiters: ['${','}'],
+      data() {
+        return {
+            hostArr:Array(5).fill({title:'钟南山为何说有信息4月底基本控制疫情？这份研究给了答案',media:'澎湃新闻',host:3658,date:'03-03 13:18'})
+        };
+      },
+      created() {
+      },
+      mounted(){
+      },
+      methods: {
+       
+       
+         
+
         
-    </script>
+      }
+    });
+    }
+    function init(){
+        initAnalisisForense()
+    }
+    init()
+</script>
 </html>
