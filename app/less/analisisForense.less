@@ -1,65 +1,21 @@
 @import "./_moduleColor.less";
 #analisisForense{
-    margin-top: 0.14rem;
-   .conter-left{
-       background:url(../images/forense-left.png) no-repeat;
-   }
-   .conter-middle{
-       margin: 0 0.06rem;
-       background:url(../images/forense-middle.png) no-repeat;
-   }
-   .conter-right,.conter-middle,.conter-left{
-       padding: 0.22rem;
-       background-size: 100% 100%;
-       border: 1px dashed #fff;
-   }
-   .conter-left{
-        .tendencias{
-            height: 3.53rem;
-        }
-        .huNanHost{
-            height: 100%;
-        }
-        .huNanHost-title{
-            
-            background-color: @theme-color2;
-        }
-   }
-   .conter-middle{
 
-   }
-   .conter-right{
-       padding: 0;
-       .hostWord,.distribution{
-            padding: 0.22rem;
-            height: 50%;
-            background: url('../images/forense-right.png') no-repeat;
-            background-size: 100% 100%;
-        }
-        .distribution{
-            padding-bottom: 0.12rem;
-            margin-bottom: 0.08rem;
-            border-bottom: 1px dashed #fff;
-        }
-        .hostWord{
-            padding-top: 0.12rem;
-            border: 1px dashed #fff;
-        }
-        
-   }
+  
 //    公用标题模块样式
-    .comTitleBox{
+    
+    
+       // 
+    // 公用样式
+    .flexStart{
         display: flex;
-        height: 0.78rem;
         align-items: center;
+        justify-content: start;
     }
-    .modulTitle{
-        font-size: 0.22rem;
-        i{
-            font-size: 0.32rem;
-            color: @graphic-color4;
-            margin: 0 0.18rem 0 0.26rem;
-        }
+    .flexBetween{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
    
 }
