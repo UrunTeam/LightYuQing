@@ -2,91 +2,208 @@
 <body>
    
 	
-    <div class="yuQingContainer" >
+    <div class="yuQingContainer" v-cloak>
 		 <%- include('../templates/header') %>
         
         <div class="conter">
 			<div class="warning-warp flex">
-				<div class="left-warp">
-					<div class="left-top">
-						<div class="title-tip">
-							<span><i></i></span>
-							<span>预警趋势</span>
-						</div>
-						<div class="line-charts">
-							
-						</div>
-					</div>
-					<div class="left-bottom ranking">
-						<table class="ranking-table">
-							<thead class="f22">
-								<th><i class="iconfont iconredianguanzhu"></i></th>
-								<th>区域排行</th>
-								<th><label class="add-color">今日新增</label></th>
-								<th class="add-color" width="38%">最近7天累计</th>
-							</thead>
-							<tbody class="f18">
-								<tr>
-									<td>
-										<span class="suqare f14">1</span>
-									</td>
-									<td>
-										湖南省
-									</td>
-									<td class="add-color">
-										86
-									</td>
-									<td class="schedule">
-										<div class="bar">
-											    <div style="width: 80%;"> 
-											    </div> 
-										</div> 
-										<span>1110</span> 
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<span class="suqare f14">2</span>
-									</td>
-									<td>
-										河北省
-									</td>
-									<td class="add-color">
-										86
-									</td>
-									<td class="schedule">
-										<div class="bar">
-											    <div style="width: 50%;"> 
-											    </div> 
-										</div> 
-										<span>1110</span> 
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<span class="suqare f14">3</span>
-									</td>
-									<td>
-										河北省
-									</td>
-									<td class="add-color">
-										86
-									</td>
-									<td class="schedule">
-										<div class="bar">
-											    <div style="width: 30%;"> 
-											    </div> 
-										</div> 
-										<span>1110</span> 
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+				<div class="left-warp conter-left">
+					 <div class="coner-box">
+						<div class="left-top">
+						 	<div class="title-tip">
+						 		<span><i></i></span>
+						 		<span>预警趋势</span>
+						 	</div>
+						 	<div class="line-charts">
+						 		
+						 	</div>
+						 </div>
+						 <div class="left-bottom ranking">
+						 	<table class="ranking-table">
+						 		<thead class="f22">
+						 			<tr>
+						 				<th><i class="iconfont iconredianguanzhu"></i></th>
+						 				<th>区域排行</th>
+						 				<th class="add-color f18">
+											今日新增
+											<i class="iconfont iconzu9 f12"></i>
+										</th>
+						 				<th class="add-color add-th f18" width="38%">
+											最近7天累计
+										    <i class="iconfont iconzu9 f12"></i>
+											<span>
+												<i class="iconfont iconlujing1"></i>
+											</span>
+										</th>
+						 			</tr>								
+						 		</thead>
+						 		<tbody class="f18">
+						 			<tr>
+						 				<td>
+						 					<span class="iconfont iconzu8"></span>
+						 				</td>
+						 				<td>
+						 					湖南省
+						 				</td>
+						 				<td class="add-color">
+						 					86
+						 				</td>
+						 				<td class="schedule">
+						 					<div class="bar">
+						 						    <div style="width: 80%;"> 
+						 						    </div> 
+						 					</div> 
+						 					<span>1110</span> 
+						 				</td>
+						 			</tr>
+						 			<tr>
+						 				<td>
+						 					<span class="iconfont iconzu8"></span>
+						 				</td>
+						 				<td>
+						 					河北省
+						 				</td>
+						 				<td class="add-color">
+						 					86
+						 				</td>
+						 				<td class="schedule">
+						 					<div class="bar">
+						 						    <div style="width: 50%;"> 
+						 						    </div> 
+						 					</div> 
+						 					<span>1110</span> 
+						 				</td>
+						 			</tr>
+						 			<tr>
+						 				<td>
+						 					<span class="iconfont iconzu8"></span>
+						 				</td>
+						 				<td>
+						 					河北省
+						 				</td>
+						 				<td class="add-color">
+						 					86
+						 				</td>
+						 				<td class="schedule">
+						 					<div class="bar">
+						 						    <div style="width: 30%;"> 
+						 						    </div> 
+						 					</div> 
+						 					<span>1110</span> 
+						 				</td>
+						 			</tr>
+									<tr>
+										<td>
+											<span class="suqare f14">4</span>
+										</td>
+										<td>
+											河北省
+										</td>
+										<td class="add-color">
+											86
+										</td>
+										<td class="schedule">
+											<div class="bar">
+												    <div style="width: 30%;"> 
+												    </div> 
+											</div> 
+											<span>1110</span> 
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="suqare f14">5</span>
+										</td>
+										<td>
+											河北省
+										</td>
+										<td class="add-color">
+											86
+										</td>
+										<td class="schedule">
+											<div class="bar">
+												    <div style="width: 30%;"> 
+												    </div> 
+											</div> 
+											<span>1110</span> 
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="suqare f14">6</span>
+										</td>
+										<td>
+											河北省
+										</td>
+										<td class="add-color">
+											86
+										</td>
+										<td class="schedule">
+											<div class="bar">
+												    <div style="width: 30%;"> 
+												    </div> 
+											</div> 
+											<span>1110</span> 
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="suqare f14">7</span>
+										</td>
+										<td>
+											河北省
+										</td>
+										<td class="add-color">
+											86
+										</td>
+										<td class="schedule">
+											<div class="bar">
+												    <div style="width: 30%;"> 
+												    </div> 
+											</div> 
+											<span>1110</span> 
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="suqare f14">8</span>
+										</td>
+										<td>
+											河北省
+										</td>
+										<td class="add-color">
+											86
+										</td>
+										<td class="schedule">
+											<div class="bar">
+												    <div style="width: 30%;"> 
+												    </div> 
+											</div> 
+											<span>1110</span> 
+										</td>
+									</tr>
+						 		</tbody>
+						 	</table>
+						 </div>
+					 </div>
 				</div>
-				<div class="center-warp">
+				<div class="center-warp conter-middle">
 					<div class="center-top">
-						
+						<p class="update-range-time">分析周期：2020-2-24 10:00 至 2020-3-3 14:00 <i class="iconfont iconlujing1"></i></p>
+						<div class="number-total">
+						  <dl>
+						    <dt>1689</dt>
+						    <dd class="f18">声量总和</dd>
+						  </dl>
+						  <dl>
+						    <dt>69</dt>
+						    <dd class="f18">正面声量</dd>
+						  </dl>
+						  <dl>
+						    <dt>127</dt>
+						    <dd class="f18">负面声量</dd>
+						  </dl>
+						</div>
 					</div>
 					<div class="center-bottom">
 						<ul class="sort-list f18">
@@ -130,7 +247,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="right-warp">
+				<div class="right-warp conter-right">
 					<div class="right-top">
 						
 					</div>
@@ -140,9 +257,9 @@
 				</div>
 			</div>
 		</div>
-
+		 <%- include('../templates/foot') %>
     </div>
-      <%- include('../templates/foot') %>
+     
 </body>
 <script>
     
