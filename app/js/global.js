@@ -64,10 +64,10 @@ function initHeardVue(){
             showNav:false,
             pageArr:[
                 {name:'全网搜索',url:'index.html',active:false,ordenar:false,setting:false,seachInput:false,icon:'1'},
-                {name:'属地舆情研判',url:'opinion_warning.html',active:true,ordenar:false,setting:false,seachInput:false,icon:'1'},
-                {name:'事件跟踪',url:'index.html',active:false,ordenar:false,setting:false,seachInput:false,icon:'1'},
+                {name:'属地舆情研判',url:'analisisForense.html',active:true,ordenar:false,setting:false,seachInput:false,icon:'1'},
+                {name:'事件跟踪',url:'event-trace.html',active:false,ordenar:false,setting:false,seachInput:false,icon:'1'},
                 {name:'订阅监控',url:'index.html',active:false,ordenar:false,setting:false,seachInput:false,icon:'1'},
-                {name:'预警推送',url:'index.html',active:false,ordenar:false,setting:false,seachInput:false,icon:'1'},
+                {name:'预警推送',url:'opinion_warning.html',active:false,ordenar:false,setting:false,seachInput:false,icon:'1'},
             ],
             pageDetail:{},
         };

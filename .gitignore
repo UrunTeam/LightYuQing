@@ -2,6 +2,3 @@ node_modules/*
 dist/*
 !.gitignore
 !.bowerrc
-/dist
-flat
-/dist/libs/icheck/skins/flat

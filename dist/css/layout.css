@@ -17,33 +17,6 @@ body {
   height: 100%;
   overflow: hidden;
 }
-.scroll-container {
-  padding: .15rem;
-  overflow: auto;
-}
-.scroll-container .row {
-  margin: 0;
-  line-height: 1.5;
-}
-.scroll-container::-webkit-scrollbar {
-  width: .08rem;
-  background: transparent;
-}
-.scroll-container::-webkit-scrollbar-corner,
-.scroll-container::-webkit-scrollbar-thumb,
-.scroll-container::-webkit-scrollbar-track {
-  border-radius: .04rem;
-}
-.scroll-container::-webkit-scrollbar-corner,
-.scroll-container::-webkit-scrollbar-track {
-  /* 滚动条轨道 */
-  background-color: rgba(180, 160, 120, 0);
-  box-shadow: inset 0 0 0.01rem rgba(180, 160, 120, 0.5);
-}
-.scroll-container::-webkit-scrollbar-thumb {
-  /* 滚动条手柄 */
-  background-color: rgba(255, 255, 255, 0.3);
-}
 .yuQingContainer {
   height: 100%;
   min-width: 19.2rem;
@@ -74,7 +47,11 @@ body {
   width: 40%;
   background: url(../images/forense-left.png) no-repeat;
 }
+.yuQingContainer .conter .conter-left .conterLeft-bottom-item {
+  font-size: 0.18rem;
+}
 .yuQingContainer .conter .conter-left .conterLeft-bottom-item .sort-list {
+  cursor: pointer;
   height: 0.84rem;
   padding: 0.12rem 0.2rem 0.1rem 0.18rem;
 }
@@ -121,7 +98,6 @@ body {
 .yuQingContainer .conter .conter-right {
   width: 40%;
   height: 100%;
-  padding: 0;
 }
 .yuQingContainer .conter .conter-right .radiusBox-bottom,
 .yuQingContainer .conter .conter-right .radiusBox-top {
@@ -137,58 +113,37 @@ body {
 .yuQingContainer .conter .conter-right .radiusBox-bottom {
   padding-top: 0.12rem;
 }
+.yuQingContainer .conter .sortConter {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.yuQingContainer .conter .sortConter-top {
+  width: 100%;
+}
+.yuQingContainer .conter .sortConter-bottom {
+  width: 100%;
+  color: #81A0D3;
+}
+.yuQingContainer .conter .sortConter-host {
+  color: #fdd835;
+}
+.yuQingContainer .conter .sortConter-host i {
+  color: #F3Af1B;
+}
 .yuQingContainer .conter .conter-left,
 .yuQingContainer .conter .conter-middle,
 .yuQingContainer .conter .conter-right {
   height: 100%;
-  padding: 0.24rem;
+  padding: 0.22rem;
   background-size: 100% 100%;
+}
+.yuQingContainer .conter .conter-right {
+  padding: 0;
 }
 .yuQingContainer .conter .iconlujing1 {
   font-size: .24rem;
-}
-.yuQingContainer .conter .conter-middle-reset {
-  background: none;
-  padding-top: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-bottom: 0;
-}
-.yuQingContainer .conter .conter-middle-reset .middle-top {
-  height: 1.88rem;
-  padding-top: .08rem;
-  box-sizing: border-box;
-  margin-bottom: .1rem;
-}
-.yuQingContainer .conter .conter-middle-reset .coner-wrap {
-  width: 100%;
-  height: calc(100% - 1.98rem);
-  padding: 0.24rem;
-  box-sizing: border-box;
-  background: url(../images/coner_box_pic.png) no-repeat center center;
-  background-size: 100% 100%;
-}
-.yuQingContainer .conter .conter-middle-reset .coner-wrap .wrap-top {
-  height: 43%;
-}
-.yuQingContainer .conter .conter-middle-reset .coner-wrap .wrap-bottom {
-  width: 100%;
-  height: 57%;
-  min-height: 2.92rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.yuQingContainer .conter .conter-middle-reset .coner-wrap .wrap-bottom .bottom-left {
-  width: 3.2rem;
-}
-.yuQingContainer .conter .conter-middle-reset .coner-wrap .wrap-bottom .bottom-right {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-.yuQingContainer .conter .conter-middle-reset .coner-wrap .body-box {
-  height: calc(100% - .78rem);
 }
 #app {
   padding: 0 0.22rem;
@@ -374,17 +329,14 @@ body {
   right: 0.18rem;
 }
 .modulTitle {
+  height: 100%;
+  line-height: 0.78rem;
   font-size: 0.22rem;
 }
 .modulTitle i {
   font-size: 0.32rem;
   color: #F3Af1B;
   margin: 0 0.18rem 0 0.26rem;
-}
-.modulTitle .el-button {
-  padding: .08rem .16rem;
-  font-size: .22rem;
-  font-family: SiYuan;
 }
 
 /*# sourceMappingURL=layout.css.map */

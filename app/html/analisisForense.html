@@ -1,23 +1,24 @@
 <%- include('../templates/head') %>
+
 <body>
-    
-    <div class="yuQingContainer" >
+
+    <div class="yuQingContainer">
         <!-- 头部 -->
         <%- include('../templates/header') %>
         <div id='analisisForense' class="conter">
             <div class="conter-left">
                 <!-- 声量趋势 -->
                 <div class="conterLeft-top">
-                        <div class="comTitleBox flatAngle">
-                                <i class="iconfont iconlujing1 incnEdit"></i>
-                                <div class="modulTitle">
-                                        <i class="iconfont iconqushi"></i>
-                                        声量趋势
-                                </div>
+                    <div class="comTitleBox flatAngle">
+                        <i class="iconfont iconlujing1 incnEdit"></i>
+                        <div class="modulTitle">
+                            <i class="iconfont iconqushi"></i>
+                            声量趋势
                         </div>
+                    </div>
                 </div>
                 <!-- 湖南热点 -->
-                <div class="conterLeft-bottom">
+                <div class="conterLeft-bottom ">
                     <div class="flatAngle comTitleBox">
                         <i class="iconfont iconlujing1 incnEdit"></i>
                         <div class="modulTitle">
@@ -26,98 +27,201 @@
                         </div>
                     </div>
                     <div class="conterLeft-bottom-item">
-                            <ul>
-                                <li class="sort-list flexStart" v-for='(item,index) in hostArr' :key='index'>
-                                    <span class="hostSort" :class="index>2?'number':'sort'+index+' img'">
-                                        ${index>2?index+1:''}
-                                    </span>
-                                    <div class="sortConter">
-                                        <p class="sortConter-top">
-                                            ${item.title}
-                                        </p>
-                                        <div class="sortConter-bottom flexBetween">
-                                            <div class="host-media">
-                                                <span>${item.media}</span>
-                                                <span>${item.date}</span>
-                                            </div>
-                                            <div class="sortConter-host">
-                                                <i class="iconfont iconredianguanzhu"></i>
-                                                ${item.host}
-                                            </div>
+                        <ul class="scroll-container">
+                            <li class="sort-list flexStart" v-for='(item,index) in hostArr' :key='index'>
+                                <span class="hostSort" :class="index>2?'number':'sort'+index+' img'">
+                                    ${index>2?index+1:''}
+                                </span>
+                                <div class="sortConter flexBetween">
+                                    <p class="sortConter-top">
+                                        ${item.title}
+                                    </p>
+                                    <div class="sortConter-bottom flexBetween">
+                                        <div class="host-media">
+                                            <span>${item.media}</span>
+                                            <span>${item.date}</span>
+                                        </div>
+                                        <div class="sortConter-host">
+                                            <i class="iconfont iconredianguanzhu"></i>
+                                            ${item.host}
                                         </div>
                                     </div>
-                                </li>
-                            </ul>
-                        </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="conter-middle">
-                <div class="comTitleBox">
-                        <i class="iconfont iconlujing1 incnEdit"></i>
-                        <div class="modulTitle">
-                                <i class="iconfont iconzu8"></i>
-                                属地舆情研判
-                        </div>
+                <div class="comTitleBox flexBetween">
+                    <i class="iconfont iconlujing1 incnEdit"></i>
+                    <div class="modulTitle">
+                        <i class="iconfont iconzu8"></i>
+                        属地舆情研判
+                    </div>
+                    <div class="comTitleItem flexStart">
+                        <span class="comTitleText">分析时间：</span>
+                        <ul class="flexStart">
+                            <li v-for='(item,index) in timeArr' @click='changeTime(item,index)'
+                                :class="item.active?'active':''" :key='index'>
+                                ${item.name}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="number-total">
+                    <dl v-for="(item,index) in analisisArr" :key='index'>
+                        <dt>${item.host}</dt>
+                        <dd class="f18">${item.name}</dd>
+                    </dl>
                 </div>
             </div>
             <div class="conter-right">
                 <!-- 情绪分布 -->
                 <div class="radiusBox-top">
-                        
-                        <div class="comTitleBox ">
-                                <i class="iconfont iconlujing1 incnEdit"></i>
-                                <div class="modulTitle">
-                                        <i class="iconfont iconxiaolian"></i>
-                                        情绪分布
-                                </div>
+
+                    <div class="comTitleBox ">
+                        <i class="iconfont iconlujing1 incnEdit"></i>
+                        <div class="modulTitle">
+                            <i class="iconfont iconxiaolian"></i>
+                            情绪分布
                         </div>
+                    </div>
+                    <div id="pieChart" ref='pieChart'>
+                        fsdfsdf
+                    </div>
                 </div>
                 <!-- 舆论热词 -->
                 <div class="radiusBox-bottom">
-                        <div class="comTitleBox">
-                                <i class="iconfont iconlujing1 incnEdit"></i>
-                                <div class="modulTitle">
-                                        <i class="iconfont iconciyun"></i>
-                                        舆论热词
-                                </div>
+                    <div class="comTitleBox">
+                        <i class="iconfont iconlujing1 incnEdit"></i>
+                        <div class="modulTitle">
+                            <i class="iconfont iconciyun"></i>
+                            舆论热词
                         </div>
-                        
+                    </div>
+
                 </div>
             </div>
 
 
-            
+
         </div>
         <%- include('../templates/foot') %>
     </div>
-   
+
 </body>
 <script>
-    function initAnalisisForense(){
-       var analisisForense = new Vue({ 
-      el: '#analisisForense',
-      delimiters: ['${','}'],
-      data() {
-        return {
-            hostArr:Array(5).fill({title:'钟南山为何说有信息4月底基本控制疫情？这份研究给了答案',media:'澎湃新闻',host:3658,date:'03-03 13:18'})
-        };
-      },
-      created() {
-      },
-      mounted(){
-      },
-      methods: {
-       
-       
-         
+    function initAnalisisForense() {
+        var analisisForense = new Vue({
+            el: '#analisisForense',
+            delimiters: ['${', '}'],
+            data() {
+                return {
+                    // 湖南热点数据
+                    
+                    hostArr: Array(50).fill({ title: '钟南山为何说有信息4月底基本控制疫情？这份研究给了答案', media: '澎湃新闻', host: 3658, date: '03-03 13:18' }),
+                    // 属地舆情研判数据
+                    analisisArr: [{ name: '声量总和', host: 1655 }, { name: '正面声量', host: 1655 }, { name: '负面声量', host: 1655 }, { name: '预警声量', host: 1655 }],
+                    timeArr: [{ name: '24小时', active: false }, { name: '7天', active: true }, { name: '15天', active: false }, { name: '30天', active: false },],
+                    pieChart: {
+                        option: {
+                            tooltip: {
+                                trigger: "item",
+                                formatter: "{a}"
+                            },
+                            color: [
+                                "#F7B930",
+                                "#F2476B",
+                                "#5AB0F3",
+                            ],
+                            series: [
+                                {
+                                    name: "",
+                                    type: "pie",
+                                    radius: ["40%", "70%"], //大小
+                                    center: ["52%", "55%"], // 图表在x y的位置
+                                    label: {
+                                        color: '#fff',
+                                        fontSize:18,
+                                        formatter: '{b|{b}}\n{d}%',
+                                        rich:{
+                                            b:{
+                                                lineHeight: 24,
+                                                color:'#fff',
+                                                fontSize:18,
+                                            }
+                                        },
+                                    },
+                                    data: [],
+                                    labelLine:{
+                                        show:true
+                                    },
+                                }
+                            ],
+                            legend: [
+                                {
+                                    orient: "vertical",
+                                    icon: "path://m43.75,145.74l0,0c0,-51.64 41.86,-93.5 93.5,-93.5l0,0c24.8,0 48.58,9.85 66.11,27.38c17.53,17.53 27.38,41.32 27.38,66.11l0,0c0,51.64 -41.86,93.5 -93.5,93.5l0,0c-51.64,0 -93.5,-41.86 -93.5,-93.5zm46.75,0l0,0c0,25.82 20.93,46.75 46.75,46.75c25.82,0 46.75,-20.93 46.75,-46.75c0,-25.82 -20.93,-46.75 -46.75,-46.75l0,0c-25.82,0 -46.75,20.93 -46.75,46.75z",
+                                    left: 20,
+                                    top: 40,
+                                    itemGap: 22,
+                                    textStyle: {
+                                        color: '#fff',
+                                        fontSize:18,
+                                    },
+                                }
+                            ]
+                        },
+                        eachart: null,
+                        $el: null
+                    },
+                    eachartNameList:['pieChart',],
+                };
+            },
+            created() {
+            },
+            mounted() {
+                this.initEachDom();
+                this.initPieChart()
+            },
+            methods: {
+                initEachDom() {
+                    let that = this;
+                    that.eachartNameList.map((item, index) => {
+                        that[item].$el = that.$refs[item];
+                        that[item].eachart = echarts.init(that[item].$el);
+                    });
+                },
+                changeTime(item, index) {
+                    this.timeArr.map(function (item, index) {
+                        item.active = false
+                    })
+                    this.timeArr[index].active = true
+                },
+                 // 实例化(更新)图表
+                updateEach(name) {
+                    this[name].eachart.setOption(this[name].option);
+                },
+                initPieChart() {
+                    let dataList = [
+                        { value: 300, name: "中立" },
+                        { value: 300, name: "负面" },
+                        { value: 100, name: "正面" },
+                    ];
+                    this.pieChart.option.series[0].data = dataList;
+                    this.updateEach("pieChart");
+                },
 
-        
-      }
-    });
+
+
+            }
+        });
     }
-    function init(){
+    function init() {
         initAnalisisForense()
     }
     init()
 </script>
+
 </html>

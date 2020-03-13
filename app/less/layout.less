@@ -66,7 +66,9 @@ html,body {
       width: 40%;
       background:url(../images/forense-left.png) no-repeat;
       .conterLeft-bottom-item{
+        font-size: 0.18rem;
         .sort-list{
+            cursor: pointer;
             height: 0.84rem;
             padding: 0.12rem 0.2rem 0.1rem 0.18rem;
         }
@@ -100,6 +102,7 @@ html,body {
         background-color: #4C91F5;
         border-radius: 0.06rem;
     }
+
     }
     .conterLeft-top{
         height: 3.53rem;
@@ -116,7 +119,6 @@ html,body {
     .conter-right {
       width: 40%;
       height: 100%;
-      padding: 0;
       .radiusBox-bottom,.radiusBox-top{
            padding: 0.22rem;
            height: 50%;
@@ -131,11 +133,29 @@ html,body {
            padding-top: 0.12rem;
        }
     }
+    .sortConter{
+        flex-direction: column;
+    }
+    .sortConter-top{
+        width: 100%;
+    }
+
+    .sortConter-bottom{
+        width: 100%;
+        color: #81A0D3;
+    }
+    .sortConter-host{
+        color: #fdd835;
+        i{
+            color: @graphic-color4;
+        }
+    }
     .conter-left,.conter-middle,.conter-right {
         height: 100%;
         padding: 0.24rem;
         background-size: 100% 100%;
       }
+    .conter-right{padding: 0;}
     .iconlujing1 {
       font-size: .24rem;
     }
@@ -364,6 +384,8 @@ html,body {
     }
 }
 .modulTitle{
+    height: 100%;
+    line-height: 0.78rem;
     font-size: 0.22rem;
     i{
         font-size: 0.32rem;
