@@ -1,0 +1,34 @@
+input,
+textarea {
+  font-size: .14rem;
+  font-family: SiYuan;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #8DA0C6;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #8DA0C6;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #8DA0C6;
+}
+.el-button--primary:focus,
+.el-button--primary:hover {
+  background-color: #1B418D;
+  border-color: #1B418D;
+}
+.el-button--primary {
+  background-color: #1B418D;
+  border-color: #1B418D;
+}
+.el-input__prefix {
+  left: .2rem;
+}
+.el-input--prefix .el-input__inner {
+  padding-left: .54rem;
+}
+
+/*# sourceMappingURL=template.css.map */

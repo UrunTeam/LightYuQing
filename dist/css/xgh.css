@@ -1,0 +1,175 @@
+/*属性变量*/
+.warning-warp {
+  width: 100%;
+  height: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row ;
+          flex-direction: row ;
+}
+.warning-warp .left-warp.conter-left {
+  width: calc(40.6%);
+  padding: 0;
+}
+.warning-warp .left-warp.conter-left .coner-box {
+  background: url(../images/forense-left.png) no-repeat;
+  background-size: 100% 100%;
+  padding: 0.2rem 0.25rem;
+  height: 100%;
+}
+.warning-warp .left-top {
+  height: 41%;
+}
+.warning-warp .left-bottom {
+  height: 59%;
+}
+.ranking-table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+.ranking-table thead tr {
+  height: 0.78rem;
+  background: #305297;
+}
+.ranking-table thead tr th.add-th {
+  text-align: left;
+}
+.ranking-table thead tr .triangle {
+  width: 0;
+  height: 0;
+  border-width: 0.06rem;
+  border-style: solid;
+  opacity: 0.3;
+  vertical-align: middle;
+  display: inline-block;
+  cursor: pointer;
+}
+.ranking-table thead tr .triangle.up {
+  border-color: transparent  transparent #FFFFFF transparent;
+}
+.ranking-table thead tr .triangle.down {
+  border-color: #FFFFFF transparent  transparent transparent;
+}
+.ranking-table tbody tr {
+  height: 0.39rem;
+}
+.ranking-table tbody tr .icon-images {
+  width: 0.22rem;
+  height: 0.3rem;
+  display: inline-block;
+  text-align: center;
+  line-height: .22rem;
+  vertical-align: top;
+}
+.ranking-table tbody tr .iconone1 {
+  background: url(../../images/1.png) no-repeat center top;
+  background-size: 100%;
+}
+.ranking-table tbody tr .iconone2 {
+  background: url(../../images/2.png) no-repeat center top;
+  background-size: 100%;
+}
+.ranking-table tbody tr .iconone3 {
+  background: url(../../images/3.png) no-repeat center top;
+  background-size: 100%;
+}
+.ranking-table tbody tr:nth-child(even) {
+  background: #29539E;
+  border: 0.01rem dashed #cccccc;
+}
+.ranking-table th {
+  font-weight: normal;
+}
+.ranking-table .schedule .bar {
+  width: 1.25rem;
+  height: 0.16rem;
+  border-radius: 0.09rem;
+  display: inline-block;
+}
+.ranking-table .schedule .bar div {
+  height: 0.16rem;
+  border-radius: 0.09rem;
+}
+.ranking-table .schedule span {
+  color: #fff;
+}
+.ranking-table .add-color {
+  color: #F3Af1B;
+}
+.ranking-table .iconredianguanzhu,
+.ranking-table .iconzu8 {
+  color: #F3Af1B;
+  font-size: 0.28rem;
+}
+.ranking-table .iconzu9 {
+  color: #FFFFFF;
+  font-size: 0.12rem;
+}
+.ranking-table .iconlujing1 {
+  float: right;
+  margin-right: 0.26rem;
+  color: #FFFFFF;
+}
+.ranking-table .suqare {
+  display: inline-block;
+  min-width: .22rem;
+  height: .22rem;
+  border-radius: .04rem;
+  background-color: #5AB0F3;
+  text-align: center;
+  line-height: .22rem;
+  vertical-align: middle;
+}
+.ranking-table .rank-red {
+  background: #F2476B;
+}
+.ranking-table .rank-yellow {
+  background: #F3Af1B;
+}
+.ranking-table .rank-blue {
+  background: #5AB0F3;
+}
+.ranking-table .rank-green {
+  background: #52D4E0;
+}
+.update-range-time {
+  margin-bottom: .25rem;
+  text-align: center;
+}
+.update-range-time i {
+  float: right;
+  margin-right: .49rem;
+}
+.number-total {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 6.4rem;
+  border-top: 0.01rem solid #5AB0F3;
+  border-bottom: 0.01rem solid #5AB0F3;
+  padding: 0.25rem 0;
+  margin: 0 auto .1rem;
+}
+.number-total dl {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+  border-right: .01rem solid #ffffff;
+}
+.number-total dl:last-child {
+  border-right-color: transparent;
+}
+.number-total dl dt {
+  font-size: .44rem;
+  color: #F3Af1B;
+}
+
+/*# sourceMappingURL=xgh.css.map */

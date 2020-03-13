@@ -1,9 +1,85 @@
-<%- include('../templates/head') %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>舆情预警 - ejs-demo</title>
+<meta name="renderer" content="webkit">
+
+<link rel="stylesheet" href="http://at.alicdn.com/t/font_1684931_b5nf1emf1ik.css">
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/xgh.css">
+
+
+<!--[if lt IE 9]>
+  <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
 <body>
    
 	
     <div class="yuQingContainer" v-cloak>
-		 <%- include('../templates/header') %>
+		 <div id="app">
+<nav>
+        <div class="container">
+            <div class="navbar-header flexBetween">
+                <div class="navbar-title flexStatr">
+                    <div class="navbarIcon" @click='showNav=!showNav'>图</div>
+                    <span class="navbar-line"></span>
+                    <h2>${pageDetail.name}</h2>
+                    <div class="seachInput" v-if='pageDetail.seachInput'>dfsadfasdf</div>
+                </div>
+                <div class="navbar-right flexAround">
+                        <div class="navbar-time">
+                            ${year}年${month}月${day}日 
+                            <span class="timer-week">${Week}</span> 
+                            <span class="time-hours">${hours+':'+minutes+":"+seconds}</span>
+                        </div>
+                        <div class="navbar-user flexAround">
+                            <img src="#" alt="" class="userImg">
+                             paul Sadler
+                        </div>
+                        <!-- 数据整理 -->
+                        <div class="navbar-Ordenar rightIcon" @click='pageDetail.ordenar=!pageDetail.ordenar'>
+                            <div class="topTooltip">数据整理</div>
+                            整
+                        </div> 
+                        <div class="navbar-setting rightIcon"  @click='pageDetail.setting=!pageDetail.setting'>
+                            <div class="topTooltip">基础设置</div>
+                            设
+                        </div> 
+                        <div class="navbar-signOut rightIcon"  @click='signOut'>
+                            <div class="topTooltip">退出登录</div>
+                            退
+                        </div> 
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id='navbar-right' v-show='showNav'>
+            <div class="container">
+               <ul class="navbar-ul">
+                   <li v-for='(item,index) in pageArr' :key='index'  :class="item.active?'active':''">
+                       <span :class="item.icon"></span>
+                       <!-- ${item.name} --> 图
+                    </li>
+               </ul>
+               <ul class="navbar-big">
+                   <li v-for='(item,index) in pageArr' :key='index' @click='checkActive(item,index)'  :class="item.active?'active':''">
+                        <span :class="item.icon">图</span>
+                        <br>   
+                        ${item.name.slice(0,4)}
+                    </li>
+               </ul>
+               
+            </div>
+        </div>
+    </div>
+
         
         <div class="conter">
 			<div class="warning-warp flex">
@@ -329,7 +405,14 @@
 				</div>
 			</div>
 		</div>
-		 <%- include('../templates/foot') %>
+		 
+<script src="../libs/jquery/jquery.min.js"></script>
+<script src="../js/resize.js"></script>
+<script src="../js/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="../js/global.js"></script>
+
+
     </div>
      
 </body>
