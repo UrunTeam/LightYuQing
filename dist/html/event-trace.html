@@ -22,7 +22,7 @@
 
 <body>
 
-  <div class="yuQingContainer" v-cloak>
+  <div class="yuQingContainer" id="vm_Container" v-cloak>
     <div id="app">
 <nav>
         <div class="container">
@@ -82,7 +82,6 @@
 
 
     <div class="conter">
-      
       <div class="conter-left">
         <!-- 切角容器 -->
         <div class="coner-box">
@@ -191,7 +190,7 @@
         <p class="update-range-time">分析周期：2020-2-24 10:00 至 2020-3-3 14:00 <i class="iconfont iconlujing1"></i></p>
         <div class="number-total">
           <dl>
-            <dt>1689</dt>
+            <dt>1688</dt>
             <dd class="f18">声量总和</dd>
           </dl>
           <dl>
@@ -210,7 +209,7 @@
             </div>
           </div>
           <div class="box-middle">
-            <div class="chart-box" style="height: 200px;"></div>
+            <div class="chart-box" style="height: 2.15rem;"></div>
             <div class="head-flex" style="background-color:#2F5296 ;">
               <div class="head">
                 <span><i class="iconfont iconredianguanzhu"></i>区域排行</span>
@@ -220,7 +219,7 @@
                 <i class="iconfont iconlujing1"></i>
               </div>
             </div>
-            <div class="chart-box" style="height: 200px;"></div>
+            <div class="chart-box" style="height: calc(100% - 2.93rem)"></div>
           </div>
           <div class="box-bottom"></div>
         </div>
@@ -235,7 +234,7 @@
             </div>
           </div>
           <div class="box-middle">
-            <div class="chart-box" style="height: 200px;"></div>
+            <!-- <div class="chart-box" style="height: 200px;"></div> -->
           </div>
           <div class="box-bottom"></div>
         </div>
@@ -247,23 +246,12 @@
             </div>
           </div>
           <div class="box-middle">
-            <div class="chart-box" style="height: 200px;"></div>
+            <!-- <div class="chart-box" style="height: 200px;"></div> -->
           </div>
           <div class="box-bottom"></div>
         </div>
       </div>
-
-
-
-      
-
-
-
     </div>
-
-
-
-
   </div>
   </div>
 
@@ -275,5 +263,16 @@
 
 
 </body>
+<script>
+  var vm_Container = new Vue({
+    el: '#vm_Container',
+    data() {
+      return {
+        
+      }
+    },
 
+  })
+
+</script>
 </html>

@@ -4,6 +4,22 @@
 .conter .conter-left .coner-box .box-middle {
   height: calc(100% - 1.38rem);
 }
+.conter .conter-middle .coner-box {
+  height: calc(100% - 1.97rem);
+}
+.conter .conter-middle .coner-box .box-middle {
+  height: calc(100% - 1.38rem);
+}
+.conter .conter-right .coner-box {
+  height: calc(50% - .15rem);
+  margin-bottom: 0.15rem;
+}
+.conter .conter-right .coner-box:last-child {
+  margin-bottom: 0;
+}
+.conter .conter-right .coner-box .box-middle {
+  height: calc(100% - 1.27rem);
+}
 .update-range-time {
   margin-bottom: .25rem;
   text-align: center;

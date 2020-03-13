@@ -9,6 +9,26 @@
       }
     }
   }
+  .conter-middle {
+    .coner-box {
+      height: calc(~'100% - 1.97rem');
+      .box-middle {
+        height: calc(~'100% - 1.38rem');
+      }
+    }
+  }
+  .conter-right {
+    .coner-box {
+      height: calc(~'50% - .15rem');
+      margin-bottom: 0.15rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .box-middle {
+        height: calc(~'100% - 1.27rem');
+      }
+    }
+  }
 }
 
 
@@ -21,6 +41,8 @@
     margin-right: .49rem;
   }
 }
+
+// 数据统计
 .number-total {
   display: flex;
   align-items: center;
