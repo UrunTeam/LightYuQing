@@ -147,6 +147,9 @@ body {
       -ms-flex-align: start;
           align-items: flex-start;
 }
+.yuQingContainer .conter .body-box {
+  height: calc(100% - .78rem);
+}
 .yuQingContainer .conter .flatAngle {
   background-color: #305297;
 }
@@ -214,7 +217,7 @@ body {
   background-size: 100% 100%;
 }
 .yuQingContainer .conter .conter-right .radiusBox-top {
-  padding-bottom: 0.12rem;
+  padding-bottom: 0.22rem;
   margin-bottom: 0.08rem;
 }
 .yuQingContainer .conter .conter-right .radiusBox-bottom {
@@ -291,9 +294,6 @@ body {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-}
-.yuQingContainer .conter .conter-middle-reset .coner-wrap .body-box {
-  height: calc(100% - .78rem);
 }
 #app {
   padding: 0 0.22rem;

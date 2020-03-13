@@ -57,7 +57,9 @@ html,body {
     overflow: hidden;
     display: flex;
     align-items: flex-start;
-    
+    .body-box {
+      height: calc(~'100% - .78rem');
+    }
     // 平角背景色
     .flatAngle{
         background-color: @theme-color2;
@@ -126,7 +128,7 @@ html,body {
            background-size: 100% 100%;
        }
        .radiusBox-top{
-           padding-bottom: 0.12rem;
+           padding-bottom: 0.22rem;
            margin-bottom: 0.08rem;
        }
        .radiusBox-bottom{
@@ -196,9 +198,7 @@ html,body {
             flex: 1;
           }
         }
-        .body-box {
-          height: calc(~'100% - .78rem');
-        }
+        
       }
     }
   }
