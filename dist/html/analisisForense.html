@@ -7,7 +7,7 @@
 <title>属地舆情研判 - ejs-demo</title>
 <meta name="renderer" content="webkit">
 
-<link rel="stylesheet" href="http://at.alicdn.com/t/font_1684931_1vu7g8q0j86.css">
+<link rel="stylesheet" href="http://at.alicdn.com/t/font_1684931_9d5u7tfi0a.css">
 <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 <link rel="stylesheet" href="../css/global.css">
 <link rel="stylesheet" href="../css/analisisForense.css">
@@ -92,6 +92,7 @@
                             声量趋势
                         </div>
                     </div>
+                    <div id="trendChart" ref='trendChart'></div>
                 </div>
                 <!-- 湖南热点 -->
                 <div class="conterLeft-bottom ">
@@ -203,11 +204,12 @@
             data() {
                 return {
                     // 湖南热点数据
-                    
+
                     hostArr: Array(50).fill({ title: '钟南山为何说有信息4月底基本控制疫情？这份研究给了答案', media: '澎湃新闻', host: 3658, date: '03-03 13:18' }),
                     // 属地舆情研判数据
                     analisisArr: [{ name: '声量总和', host: 1655 }, { name: '正面声量', host: 1655 }, { name: '负面声量', host: 1655 }, { name: '预警声量', host: 1655 }],
                     timeArr: [{ name: '24小时', active: false }, { name: '7天', active: true }, { name: '15天', active: false }, { name: '30天', active: false },],
+                    // 情绪分布饼图图表
                     pieChart: {
                         option: {
                             tooltip: {
@@ -227,19 +229,19 @@
                                     center: ["52%", "55%"], // 图表在x y的位置
                                     label: {
                                         color: '#fff',
-                                        fontSize:18,
+                                        fontSize: 18,
                                         formatter: '{b|{b}}\n{d}%',
-                                        rich:{
-                                            b:{
+                                        rich: {
+                                            b: {
                                                 lineHeight: 24,
-                                                color:'#fff',
-                                                fontSize:18,
+                                                color: '#fff',
+                                                fontSize: 18,
                                             }
                                         },
                                     },
                                     data: [],
-                                    labelLine:{
-                                        show:true
+                                    labelLine: {
+                                        show: true
                                     },
                                 }
                             ],
@@ -252,7 +254,7 @@
                                     itemGap: 22,
                                     textStyle: {
                                         color: '#fff',
-                                        fontSize:18,
+                                        fontSize: 18,
                                     },
                                 }
                             ]
@@ -260,7 +262,138 @@
                         eachart: null,
                         $el: null
                     },
-                    eachartNameList:['pieChart',],
+                    // 声量趋势图表数据
+                    trendChart: {
+                        option: {
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    lineStyle: {
+                                        color: '#98B5F4'
+                                    }
+                                },
+                                backgroundColor: 'rgba(164,179,209,1)',
+                                textStyle: {
+                                    fontSize: '108%',
+                                    color: '#11254D'
+                                },
+                                extraCssText: 'box-shadow: 0px 0px 10px rgba(108,132,156,0.5)'
+                            },
+                            legend: {
+                                textStyle: {
+                                    color: '#ffffff',
+                                    fontSize: '108%'
+                                },
+                                icon: 'path://m43.75,145.74l0,0c0,-51.64 41.86,-93.5 93.5,-93.5l0,0c24.8,0 48.58,9.85 66.11,27.38c17.53,17.53 27.38,41.32 27.38,66.11l0,0c0,51.64 -41.86,93.5 -93.5,93.5l0,0c-51.64,0 -93.5,-41.86 -93.5,-93.5zm46.75,0l0,0c0,25.82 20.93,46.75 46.75,46.75c25.82,0 46.75,-20.93 46.75,-46.75c0,-25.82 -20.93,-46.75 -46.75,-46.75l0,0c-25.82,0 -46.75,20.93 -46.75,46.75z',
+                                itemGap: 30,
+                                right: 10,
+                                top: 4,
+                            },
+                            grid: {
+                                top: '20%',
+                                left: '5%',
+                                right: '5%',
+                                bottom: '8%',
+                                containLabel: true
+                            },
+                            xAxis: {
+                                boundaryGap: false,
+                                axisTick: {
+                                    show: true
+                                },
+                                axisLine: {
+                                    lineStyle: {
+                                        color: '#98B5F4'
+                                    }
+                                },
+                                axisLabel: {
+                                    fontSize: '104%',
+                                    color: '#8DA0C6'
+                                },
+                                data: ["02-14", "02-14", "02-14", "02-14", "02-14", "02-14"]
+                            },
+                            yAxis: {
+                                axisTick: {
+                                    show: true
+                                },
+                                axisLine: {
+                                    lineStyle: {
+                                        color: '#98B5F4'
+                                    }
+                                },
+                                axisLabel: {
+                                    fontSize: '104%',
+                                    color: '#8DA0C6'
+                                },
+                                splitLine: {
+                                    lineStyle: {
+                                        color: '#98B5F4',
+                                        type: 'dashed'
+                                    }
+                                }
+                            },
+                            series: [{
+                                name: '',
+                                type: 'line',
+                                hoverAnimation: false,
+                                smooth: true,
+                                symbolSize: 8,
+                                itemStyle: {
+                                    color: '#44BC86'
+                                },
+                                lineStyle: {
+
+                                },
+                                data: []
+                            },
+                            {
+                                name: '',
+                                type: 'line',
+                                hoverAnimation: false,
+                                smooth: true,
+                                symbolSize: 8,
+                                itemStyle: {
+                                    color: '#F7B930'
+                                },
+                                lineStyle: {
+
+                                },
+                                data: []
+                            },
+                            {
+                                name: '',
+                                type: 'line',
+                                hoverAnimation: false,
+                                smooth: true,
+                                symbolSize: 8,
+                                itemStyle: {
+                                    color: '#5AB0F3'
+                                },
+                                lineStyle: {
+
+                                },
+                                data: []
+                            },
+                            {
+                                name: '',
+                                type: 'line',
+                                hoverAnimation: false,
+                                smooth: true,
+                                symbolSize: 8,
+                                itemStyle: {
+                                    color: '#F2476B'
+                                },
+                                lineStyle: {
+
+                                },
+                                data: []
+                            }
+                            ]
+                        },
+                        eachart: null,
+                        $el: null
+                    },
+                    eachartNameList: ['pieChart', 'trendChart',],
                 };
             },
             created() {
@@ -268,6 +401,7 @@
             mounted() {
                 this.initEachDom();
                 this.initPieChart()
+                this.initTrendChart()
             },
             methods: {
                 initEachDom() {
@@ -283,7 +417,7 @@
                     })
                     this.timeArr[index].active = true
                 },
-                 // 实例化(更新)图表
+                // 实例化(更新)图表
                 updateEach(name) {
                     this[name].eachart.setOption(this[name].option);
                 },
@@ -296,6 +430,18 @@
                     this.pieChart.option.series[0].data = dataList;
                     this.updateEach("pieChart");
                 },
+                initTrendChart() {
+                    let arr=[{name:'微信',data:[75, 56, 36, 67, 10, 20]},
+                             {name:'APP',data:[54, 65, 89, 20, 10, 20]},
+                             {name:'新闻',data:[120, 20, 36, 56, 10, 20]},
+                             {name:'微博',data:[5, 20, 36, 65, 10, 67]},
+                            ]
+                    this.trendChart.option.series.map(function(item,index){
+                        item.name=arr[index].name
+                        item.data=arr[index].data
+                    })
+                    this.updateEach("trendChart");
+                }
 
 
 
