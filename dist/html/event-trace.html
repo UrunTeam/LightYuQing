@@ -7,7 +7,7 @@
 <title>事件跟踪 - ejs-demo</title>
 <meta name="renderer" content="webkit">
 
-<link rel="stylesheet" href="http://at.alicdn.com/t/font_1684931_1vu7g8q0j86.css">
+<link rel="stylesheet" href="http://at.alicdn.com/t/font_1684931_9d5u7tfi0a.css">
 <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 <link rel="stylesheet" href="../css/global.css">
 <link rel="stylesheet" href="../css/xgh.css">
@@ -24,7 +24,7 @@
 
 <body>
 
-  <div class="yuQingContainer" id="vm_Container" v-cloak>
+  <div class="yuQingContainer">
     <div id="app">
 <nav>
         <div class="container">
@@ -83,7 +83,7 @@
     </div>
 
 
-    <div class="conter">
+    <div class="conter" id="vm_Container" v-cloak>
       <div class="conter-left">
 
         <div class="conterLeft-top" style="height: 100%;">
@@ -366,6 +366,7 @@
               来源分布
             </div>
           </div>
+          <div class="body-box" id="js_source"></div>
         </div>
         <!-- 舆论热词 -->
         <div class="radiusBox-bottom">
@@ -376,7 +377,7 @@
               舆论热词
             </div>
           </div>
-
+          <div class="body-box" id="js_mood"></div>
         </div>
       </div>
     </div>
@@ -443,7 +444,6 @@
       }
     },
   }
-
   // 折线图
   function line(id, Obj) {
     // 基于准备好的dom，初始化echarts实例
@@ -537,18 +537,176 @@
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
   }
-  
+
+  function pie(id, data) {
+    var myChart = echarts.init(document.getElementById(id));
+    var option = {
+      tooltip: {
+        trigger: "item",
+        formatter: "{a}"
+      },
+      color: [
+        "#F7B930",
+        "#F2476B",
+        "#5AB0F3",
+      ],
+      series: [
+        {
+          name: "",
+          type: "pie",
+          radius: ["40%", "70%"], //大小
+          center: ["52%", "55%"], // 图表在x y的位置
+          label: {
+            color: '#fff',
+            fontSize: 18,
+            formatter: '{b|{b}}\n{d}%',
+            rich: {
+              b: {
+                lineHeight: 24,
+                color: '#fff',
+                fontSize: 18,
+              }
+            },
+          },
+          data: data,
+          labelLine: {
+            show: true
+          },
+        }
+      ],
+      legend: [
+        {
+          orient: "vertical",
+          icon: "path://m43.75,145.74l0,0c0,-51.64 41.86,-93.5 93.5,-93.5l0,0c24.8,0 48.58,9.85 66.11,27.38c17.53,17.53 27.38,41.32 27.38,66.11l0,0c0,51.64 -41.86,93.5 -93.5,93.5l0,0c-51.64,0 -93.5,-41.86 -93.5,-93.5zm46.75,0l0,0c0,25.82 20.93,46.75 46.75,46.75c25.82,0 46.75,-20.93 46.75,-46.75c0,-25.82 -20.93,-46.75 -46.75,-46.75l0,0c-25.82,0 -46.75,20.93 -46.75,46.75z",
+          left: 20,
+          top: 40,
+          itemGap: 22,
+          textStyle: {
+            color: '#fff',
+            fontSize: 18,
+          },
+        }
+      ]
+    }
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+  }
+
+  function pie2(id, fn) {
+    var myChart = echarts.init(document.getElementById(id));
+    var option = {
+      tooltip: {
+        trigger: "item",
+        formatter: "{a}"
+      },
+      color: [
+        "#44BC86",
+        "#F7B930",
+        "#F2476B",
+        "#5AB0F3",
+        "#7C54C4"
+      ],
+      series: [
+        {
+          name: "",
+          type: "pie",
+          radius: ["40%", "70%"], //大小
+          center: ["50%", "45%"], // 图表在x y的位置
+          label: {
+            color: '#fff',
+            fontSize: 18,
+            formatter: '{b|{b}}\n{d}%',
+            rich: {
+              b: {
+                lineHeight: 24,
+                color: '#fff',
+                fontSize: 18,
+              }
+            },
+          },
+          data: [
+            { value: 300, name: "微信" },
+            { value: 300, name: "APP" },
+            { value: 100, name: "新闻" },
+            { value: 100, name: "微博" },
+            { value: 100, name: "其他" },
+          ],
+          labelLine: {
+            show: true
+          },
+        }
+      ],
+      legend: [
+        {
+          orient: "horizontal",
+          icon: "path://m43.75,145.74l0,0c0,-51.64 41.86,-93.5 93.5,-93.5l0,0c24.8,0 48.58,9.85 66.11,27.38c17.53,17.53 27.38,41.32 27.38,66.11l0,0c0,51.64 -41.86,93.5 -93.5,93.5l0,0c-51.64,0 -93.5,-41.86 -93.5,-93.5zm46.75,0l0,0c0,25.82 20.93,46.75 46.75,46.75c25.82,0 46.75,-20.93 46.75,-46.75c0,-25.82 -20.93,-46.75 -46.75,-46.75l0,0c-25.82,0 -46.75,20.93 -46.75,46.75z",
+          left: 'center',
+          bottom: 20,
+          itemGap: 22,
+          textStyle: {
+            color: '#fff',
+            fontSize: 18,
+          },
+        }
+      ]
+    }
+
+    if (fn) {
+      fn(option);
+      myChart.setOption(option);
+      return false;
+    }
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+  }
+
   $(function () {
 
     var vm_Container = new Vue({
       el: '#vm_Container',
+      delimiters: ['${', '}'],
       data() {
         return {
           CurrentTab: 1
         }
       },
+      methods: {
+        init() {
+          this.sound();
+          this.source(); // 来源分布
+          this.mood();
+
+        },
+        sound() {
+          var data = [
+            { value: 300, name: "中立" },
+            { value: 300, name: "负面" },
+            { value: 100, name: "正面" },
+          ];
+          line('js_sound', data);
+        },
+        source() {
+          var data = [
+            { value: 300, name: "微信" },
+            { value: 300, name: "APP" },
+            { value: 100, name: "新闻" },
+            { value: 100, name: "微博" },
+          ];
+          pie2('js_source');
+        },
+        mood() {
+          var data = [
+            { value: 300, name: "中立" },
+            { value: 300, name: "负面" },
+            { value: 100, name: "正面" },
+          ];
+          pie('js_mood', data)
+        }
+      },
       mounted() {
-        line('js_sound');
+        this.init();
       }
     })
 
