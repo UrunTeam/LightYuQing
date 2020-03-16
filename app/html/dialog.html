@@ -68,6 +68,12 @@
                   </div>
                 </div>
               </el-form-item>
+              <el-form-item label="默认完全匹配：" prop="date">
+                <el-date-picker v-model="ruleForm.date" type="datetime" placeholder="选择日期时间" align="right"
+                  :picker-options="pickerOptions">
+                </el-date-picker>
+              </el-radio-group>
+
             </el-form>
           </div>
 
@@ -133,9 +139,9 @@
           </el-table-column>
           <el-table-column prop="city" label="市区" width="120">
           </el-table-column>
-          <el-table-column prop="address" label="地址" >
+          <el-table-column prop="address" label="地址">
           </el-table-column>
-          <el-table-column prop="zip" label="邮编" >
+          <el-table-column prop="zip" label="邮编">
           </el-table-column>
           <el-table-column fixed="right" label="操作" width="200">
             <template slot-scope="scope">
@@ -183,7 +189,7 @@
         ruleForm: {
           name: '',
           region: '',
-          date1: '',
+          date: '',
           date2: '',
           delivery: false,
           source: '',
@@ -265,7 +271,31 @@
           city: '普陀区',
           address: '上海市普陀区金沙江路 1516 弄',
           zip: 200333
-        }]
+        }],
+
+        value2: '',
+        pickerOptions: {
+          shortcuts: [{
+            text: '今天',
+            onClick(picker) {
+              picker.$emit('pick', new Date());
+            }
+          }, {
+            text: '前三天',
+            onClick(picker) {
+              const date = new Date();
+              date.setTime(date.getTime() - 3600 * 1000 * 24 * 3);
+              picker.$emit('pick', date);
+            }
+          }, {
+            text: '最近七天',
+            onClick(picker) {
+              const date = new Date();
+              date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit('pick', date);
+            }
+          }]
+        },
       };
     },
     computed: {
@@ -332,12 +362,12 @@
           }
         });
       },
-      CellName({row, column, rowIndex, columnIndex}) {
+      CellName({ row, column, rowIndex, columnIndex }) {
         console.log(columnIndex)
-        if(columnIndex == 0) {
+        if (columnIndex == 0) {
           return "color: #F3AF1B;"
         }
-       
+
       }
     }
   })

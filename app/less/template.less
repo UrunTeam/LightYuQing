@@ -122,6 +122,13 @@
 
 
 // 表单form
+.el-input__inner {
+  height: .4rem;
+  background-color: @theme-color;
+  border-color: @theme-color;
+  font-size: .18rem;
+  color: #ffffff;
+}
 .el-form {
   .el-form-item {
     display: flex;
@@ -139,13 +146,6 @@
   .el-form-item__content {
     width: 100%;
     margin-left: 0 !important;
-    .el-input__inner {
-      height: .4rem;
-      background-color: @theme-color;
-      border-color: @theme-color;
-      font-size: .18rem;
-      color: #ffffff;
-    }
     .el-select .el-input.is-focus .el-input__inner {
       border-color: @graphic-color2;
     }
@@ -380,4 +380,73 @@ input,textarea {
   font-weight: normal;
   font-size: .18rem;
   color: @graphic-color1;
+}
+
+
+// 日期选择
+.el-date-picker__time-header {
+  border-color: @graphic-color2;
+}
+.el-picker-panel__body-wrapper {
+  background-color: @theme-color3;
+}
+.el-picker-panel__sidebar {
+  width: 1.1rem;
+  min-width: 110px;
+  background-color: @theme-color3;  
+  border-color: @graphic-color2;
+}
+.el-picker-panel__footer {
+  background-color: @theme-color3;
+  border-color: @graphic-color2;
+  .el-button.is-plain{
+    background-color: @graphic-color4;
+    border-color: @graphic-color4;
+    color: #000000;
+  }
+}
+.el-picker-panel__shortcut {
+  font-size: .18rem;
+  color: #ffffff;
+}
+.el-date-table {
+  font-size: .14rem;
+}
+.el-date-table th, .el-date-table__row {
+  color: #ffffff;
+}
+.el-date-table th {
+  border-color: @graphic-color2;
+}
+.prev-month {
+  color: @graphic-color12;
+}
+.el-popper[x-placement^=top] .popper__arrow {
+  border-top-color: @graphic-color2;
+  border-bottom-color: @graphic-color2;
+}
+.el-popper[x-placement^=top] .popper__arrow::after {
+  border-top-color: @graphic-color2;
+}
+.el-popper[x-placement^=bottom] .popper__arrow::after {
+  border-bottom-color: @graphic-color2;
+}
+.el-picker-panel {
+  border-color: @graphic-color2;
+  line-height: .3rem;
+}
+.el-picker-panel__icon-btn, .el-date-picker__header-label {
+  color: @graphic-color2;
+}
+.el-date-picker.has-sidebar.has-time {
+  width: 4.34rem;
+  min-width: 434px;
+}
+.el-picker-panel__sidebar+.el-picker-panel__body {
+  margin-left: 1.1rem;
+}
+@media screen and (max-height: 1080px) {
+  .el-picker-panel__sidebar+.el-picker-panel__body {
+    margin-left: 110px;
+  }
 }
