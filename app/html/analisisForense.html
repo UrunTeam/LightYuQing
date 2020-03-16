@@ -76,6 +76,7 @@
                         <dd class="f18">${item.name}</dd>
                     </dl>
                 </div>
+                <div id="mapChart" ref='mapChart'></div>
             </div>
             <div class="conter-right">
                 <!-- 情绪分布 -->
@@ -112,12 +113,25 @@
     </div>
 
 </body>
+<!-- <script src='../libs/echarts/mapJson/china.json'></script> -->
 <script>
+    // import hunanMap from "../libs/echarts/mapJson/hunan.json";
     function initAnalisisForense() {
         var analisisForense = new Vue({
             el: '#analisisForense',
             delimiters: ['${', '}'],
             data() {
+                function tipFunction(prams){
+                    //地图tooptip样式
+                    var name = prams.data.value;
+                            var divWarp = $('<div class="div-tip-warp"/>') ;
+                            var divContent = $('<div class = "tip-background">');
+                            var span = $('<span>').text(name);
+                            var divTriangle = $('<div class ="triangle-down hotel-triangle-position">');
+                            var divFirst =divContent.append(span);
+                            var div = divWarp.append(divFirst).append(divTriangle);
+                            return div.html();
+                }
                 return {
                     // 湖南热点数据
 
@@ -309,15 +323,93 @@
                         eachart: null,
                         $el: null
                     },
-                    eachartNameList: ['pieChart', 'trendChart',],
+                    // 地图图表
+                    mapChart: {
+                        option: {
+                            // backgroundColor: '#044060',
+                            // title: {
+                            //     text: "长清区示例",
+
+                            //     left: 'center',
+                            //     textStyle: {
+                            //         color: '#ffffff'
+                            //     }
+                            // },
+                            tooltip:{
+                                trigger:'item',
+                                formatter:function(params){
+                                    return tipFunction(params)
+                                },
+                                position: function (point, params, dom, rect, size) {
+                                    // 固定在顶部
+                                    return [point[0]-20, point[1]-46];
+                                },
+                                backgroundColor:'',
+                            },
+                            visualMap: {
+                                min: 0,
+                                max: 200,
+                                left: '70',
+                                bottom: '40',
+                                text: ['200', '0'], // 文本，默认为数值文本
+                                calculable: false, //小三角提示数据
+                                orient:'horizontal', //是否横向
+                                inverse:true, //是否翻转
+                                inRange: {
+                                    color: ['#009CF3', '#71DEBF', '#FDD835']
+                                },
+                                textStyle: {
+                                    color: '#ffffff'
+                                },
+                                show:true,
+                            },
+                            series: [{
+                                type: 'map',
+                                mapType: 'hunan',
+                                label: {
+                                    normal: {
+                                        show: true
+                                    },
+                                    emphasis: {
+                                        textStyle: {
+                                            color: '#000'
+                                        }
+                                    }
+                                },
+                                itemStyle: {
+                                    normal: {
+                                        borderColor: '#fff',
+                                        areaColor: '#fff',
+                                    },
+                                    emphasis: {
+                                        areaColor: '#fcdd33',
+                                        borderWidth: 0
+                                    }
+                                },
+                                animation: false,
+                                // roam: true,
+                                data: []
+                                // animationDurationUpdate: 1000,
+                                // animationEasingUpdate: 'quinticInOut'
+                            }]
+                        },
+                        eachart: null,
+                        $el: null
+                    },
+                    mapName: 'hunan',
+                    eachartNameList: ['pieChart', 'trendChart','mapChart'],
                 };
             },
             created() {
+               
             },
             mounted() {
+                let that = this
+                // echarts.registerMap(that.mapName, that.hunan);
                 this.initEachDom();
                 this.initPieChart()
                 this.initTrendChart()
+                this.initMapChart()
             },
             methods: {
                 initEachDom() {
@@ -347,16 +439,33 @@
                     this.updateEach("pieChart");
                 },
                 initTrendChart() {
-                    let arr=[{name:'微信',data:[75, 56, 36, 67, 10, 20]},
-                             {name:'APP',data:[54, 65, 89, 20, 10, 20]},
-                             {name:'新闻',data:[120, 20, 36, 56, 10, 20]},
-                             {name:'微博',data:[5, 20, 36, 65, 10, 67]},
-                            ]
-                    this.trendChart.option.series.map(function(item,index){
-                        item.name=arr[index].name
-                        item.data=arr[index].data
+                    let arr = [{ name: '微信', data: [75, 56, 36, 67, 10, 20] },
+                    { name: 'APP', data: [54, 65, 89, 20, 10, 20] },
+                    { name: '新闻', data: [120, 20, 36, 56, 10, 20] },
+                    { name: '微博', data: [5, 20, 36, 65, 10, 67] },
+                    ]
+                    this.trendChart.option.series.map(function (item, index) {
+                        item.name = arr[index].name
+                        item.data = arr[index].data
                     })
                     this.updateEach("trendChart");
+                },
+                initMapChart(){
+                    let data=[{name:'常德市',value:0},{name:'张家界市',value:100},
+                              {name:'湘西土家族苗族自治州',value:20},{name:'岳阳市',value:80},
+                              {name:'益阳市',value:40},{name:'长沙市',value:77},
+                              {name:'怀化市',value:50},{name:'娄底市',value:30},
+                              {name:'邵阳市',value:60},{name:'衡阳市',value:50},
+                              {name:'永州市',value:10},{name:'郴州市',value:66},
+                              {name:'湘潭市',value:10},{name:'株洲市',value:66},
+                            ]
+                    let that=this
+                    that.mapChart.option.series[0].data=data
+                    $.get('../libs/echarts/mapJson/hunan.json', function (chinaJson) {
+                    echarts.registerMap('hunan', chinaJson);
+                    console.log(chinaJson)
+                    that.updateEach("mapChart");
+                });
                 }
 
 
