@@ -1,40 +1,95 @@
 
 /*属性变量*/
-.warning-warp {
-	.analysis-time {
-		justify-content: center;
-		width: 3.5rem;
-		display: flex;
-		align-items: center;
-		margin: 0 auto .1rem;
-		
-		ul {
-			flex: 1;
+.warning-warp.conter {
+	
+	// 中间
+	.conter-middle-reset {
+		// 时间
+		.analysis-time {
+			justify-content: center;
+			width: 3.6rem;
+			display: flex;
+			align-items: center;
+			margin: 0 auto .1rem;
 			
-			li {
-				padding: 0 0.1rem;
-				display: inline-block;
-				margin: 0 0.04rem;
-				cursor: pointer;
-				&.active{
-					color: @graphic-color1;
-					border-radius: 50px;
-					border: 1px solid @graphic-color1;
-				}
-				&:last-child{
-					margin: 0;
+			ul {
+				flex: 1;
+				
+				li {
+					padding: 0 0.1rem;
+					display: inline-block;
+					margin: 0 0.04rem;
+					cursor: pointer;
+					&.active{
+						color: @graphic-color1;
+						border-radius: 50px;
+						border: 1px solid @graphic-color1;
+					}
+					&:last-child{
+						margin: 0;
+					}
 				}
 			}
 		}
+		
+		.coner-wrap .wrap-top {
+			height: 100%;
+			
+			.comTitleBox {
+				justify-content: space-between;
+				
+				.modulSelect {
+					padding: 0 0.6rem;
+					
+					.el-select{
+						width: 1.1rem;
+						height: 0.51rem;
+						font-size: 0.18rem;
+						border-radius: 3px;
+						
+						.el-input input {
+							background: #1B418D;
+							border-color: #1B418D;
+						}
+					}
+				}
+			}
+			
+			.sort-list{
+				padding: 0 0rem 0 0.05rem;
+				height: 5.6rem;
+				.content {
+					width: calc(100% - .36rem);
+				}
+			}
+		}
+		
+		
+	}	
+	
+	
+	
+	#wordClouds{
+		height: 3.5rem;
+		width: 100%; 
+		
+		background:url(../images/world_bg.png) no-repeat center center;
+		background-size: 100% 93%;
+		//margin: .15rem auto;
 	}
 	
-	.sort-list{
-		padding: 0 .07rem;
-		
-		.content {
-			width: calc(100% - .36rem);
+	
+	#warnpieChart{
+		height: 3.3rem;
+	}
+	
+	.conterLeft-top {
+		.body-box{
+			height: 2.75rem;
+			box-shadow: 0 0 black;
 		}
 	}
+	
 }
 
 
