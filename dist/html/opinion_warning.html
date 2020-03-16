@@ -20,8 +20,6 @@
 </head>
 
 <body>
-
-
 	<div class="yuQingContainer" v-cloak>
 		<div id="app">
 <nav>
@@ -81,17 +79,19 @@
     </div>
 
 
-		<div class="conter warning-warp">
+		<div id="warningWarp" class="conter warning-warp">
 
 			<div class="conter-left">
 				<!-- 预警趋势 -->
 				<div class="conterLeft-top">
 					<div class="comTitleBox flatAngle">
+						<i class="iconfont iconlujing1 incnEdit"></i>
 						<div class="modulTitle">
 							<i class="iconfont iconqushi"></i>
 							预警趋势
 						</div>
 					</div>
+					<div id="warn-line" class="body-box"></div>
 				</div>
 				<!-- 区域排行 -->
 				<div class="conterLeft-bottom">
@@ -322,7 +322,7 @@
 				<div class="middle-top">
 					<div class="analysis-time">
 						<span class="update-range-time">分析周期:</span>
-						<ul>
+						<ul class="f18">
 							<li>24小时</li>
 							<li class="active">7天</li>
 							<li>15天</li>
@@ -351,9 +351,21 @@
 				<div class="coner-wrap ">
 					<div class="wrap-top">
 						<div class="comTitleBox">
+							<i class="iconfont iconlujing1 incnEdit"></i>
 							<div class="modulTitle">
 								<i class="iconfont iconlujing4"></i>
 								最新预警
+							</div>
+							<div class="modulSelect">
+								<label>信息状态：</label>
+								<el-select v-model="value" clearable placeholder="请选择">
+								    <el-option
+								      v-for="item in infoOptions"
+								      :key="item.value"
+								      :label="item.label"
+								      :value="item.value">
+								    </el-option>
+								</el-select>
 							</div>
 						</div>
 						<ul class="sort-list f18 scroll-container">
@@ -511,7 +523,7 @@
 							</li>
 						</ul>
 					</div>
-					
+
 				</div>
 			</div>
 			<div class="conter-right">
@@ -524,6 +536,10 @@
 							<i class="iconfont iconxiaolian"></i>
 							来源分布
 						</div>
+
+					</div>
+					<div id="warnpieChart">
+						fsdfsdf
 					</div>
 				</div>
 				<!-- 舆论热词 -->
@@ -535,7 +551,7 @@
 							舆论热词
 						</div>
 					</div>
-
+					<div id="wordClouds"></div>
 				</div>
 			</div>
 
@@ -544,6 +560,7 @@
 		
 <script src="../libs/jquery/jquery.min.js"></script>
 <script src="../libs/echarts/echarts.min.js"></script>
+<script src="../libs/echarts/echarts-wordcloud.min.js"></script>
 <script src="../js/resize.js"></script>
 <script src="../js/vue.js"></script>
 <script src="../libs/ElementUI/index.js"></script>
@@ -554,7 +571,333 @@
 
 </body>
 <script>
+	//echart基本样式
+	var optionStyle = {
+		legend: {
+			textStyle: {
+				color: '#ffffff',
+				fontSize: '108%'
+			},
+			icon: 'path://m43.75,145.74l0,0c0,-51.64 41.86,-93.5 93.5,-93.5l0,0c24.8,0 48.58,9.85 66.11,27.38c17.53,17.53 27.38,41.32 27.38,66.11l0,0c0,51.64 -41.86,93.5 -93.5,93.5l0,0c-51.64,0 -93.5,-41.86 -93.5,-93.5zm46.75,0l0,0c0,25.82 20.93,46.75 46.75,46.75c25.82,0 46.75,-20.93 46.75,-46.75c0,-25.82 -20.93,-46.75 -46.75,-46.75l0,0c-25.82,0 -46.75,20.93 -46.75,46.75z',
+			itemGap: 30
+		},
+		tooltip: {
+			backgroundColor: 'rgba(164,179,209,1)',
+			textStyle: {
+				fontSize: '108%',
+				color: '#11254D'
+			},
+			extraCssText: 'box-shadow: 0px 0px 10px rgba(108,132,156,0.5)'
+		},
+		grid: {
+			top: '10%',
+			left: '5%',
+			right: '5%',
+			bottom: '8%',
+			containLabel: true
+		},
+		Axis: {
+			boundaryGap: false,
+			axisTick: {
+				show: true
+			},
+			axisLine: {
+				lineStyle: {
+					color: '#98B5F4'
+				}
+			},
+			axisLabel: {
+				fontSize: '104%',
+				color: '#8DA0C6'
+			},
+			splitLine: {
+				lineStyle: {
+					color: '#98B5F4',
+					type: 'dashed'
+				}
+			}
+		},
+	}
+
+	// 折线图
+	function line(id, Obj) {
+		// 基于准备好的dom，初始化echarts实例
+		var myChart = echarts.init(document.getElementById(id));
+		var option = {
+			tooltip: {
+				trigger: 'axis',
+				axisPointer: {
+					lineStyle: {
+						color: '#98B5F4'
+					}
+				},
+				backgroundColor: optionStyle.tooltip.backgroundColor,
+				textStyle: optionStyle.tooltip.textStyle,
+				extraCssText: optionStyle.tooltip.extraCssText
+			},
+			grid: optionStyle.grid,
+			xAxis: {
+				boundaryGap: optionStyle.Axis.boundaryGap,
+				axisTick: optionStyle.Axis.axisTick,
+				axisLine: optionStyle.Axis.axisLine,
+				axisLabel: optionStyle.Axis.axisLabel,
+				data: ["02-14", "02-14", "02-14", "02-14", "02-14", "02-14"]
+			},
+			yAxis: {
+				axisTick: optionStyle.Axis.axisTick,
+				axisLabel: optionStyle.Axis.axisLabel,
+				axisLine: optionStyle.Axis.axisLine,
+				splitLine: optionStyle.Axis.splitLine
+			},
+			series: [{
+					name: '预警',
+					type: 'line',
+					hoverAnimation: false,
+					smooth: true,
+					symbolSize: 8,
+					itemStyle: {
+						color: '#44BC86'
+					},
+					lineStyle: {
+
+					},
+					areaStyle: {
+							color:'rgba(82,212,224,0.3)'
+					},
+					data: [75, 56, 36, 67, 298, 20]
+				},
+			
+			]
+		};
+
+		// 使用刚指定的配置项和数据显示图表。
+		myChart.setOption(option);
+	}
+
+	function initWaringVue() {
+
+		vm_yuqing = new Vue({
+			el: '#warningWarp',
+			delimiters: ['${', '}'],
+			data() {
+				return {
+					word: [{
+							"name": "武汉加油",
+							"value": 1446
+						},
+						{
+							"name": "野生动物",
+							"value": 928
+						},
+						{
+							"name": "境外疫情",
+							"value": 906
+						},
+						{
+							"name": "新增病历",
+							"value": 825
+						},
+						{
+							"name": "武汉加油",
+							"value": 15
+						},
+						{
+							"name": "野生动物",
+							"value": 10
+						},
+						{
+							"name": "境外疫情",
+							"value": 60
+						},
+						{
+							"name": "新增病历",
+							"value": 22
+						},
+						{
+							"name": "武汉加油",
+							"value": 15
+						},
+						{
+							"name": "野生动物",
+							"value": 10
+						},
+						{
+							"name": "境外疫情",
+							"value": 60
+						},
+						{
+							"name": "境外疫情",
+							"value": 60
+						},
+						{
+							"name": "新增病历",
+							"value": 22
+						},
+						{
+							"name": "武汉加油",
+							"value": 15
+						},
+
+					],
+					warnpieChart: {
+						option: {
+							tooltip: {
+								trigger: "item",
+								formatter: "{a}"
+							},
+							color: [
+								"#F7B930",
+								"#F2476B",
+								"#5AB0F3",
+								"#44BC86",
+								"#7C54C4",
+							],
+							series: [{
+								name: "",
+								type: "pie",
+								radius: ["30%", "60%"], //大小
+								center: ["52%", "50%"], // 图表在x y的位置
+								label: {
+									color: '#fff',
+									fontSize: 18,
+									formatter: '{b|{b}}\n{d}%',
+									rich: {
+										b: {
+											lineHeight: 24,
+											color: '#fff',
+											fontSize: 18,
+										}
+									},
+								},
+								data: [],
+								labelLine: {
+									show: true
+								},
+							}],
+							legend: [{
+								icon: "path://m43.75,145.74l0,0c0,-51.64 41.86,-93.5 93.5,-93.5l0,0c24.8,0 48.58,9.85 66.11,27.38c17.53,17.53 27.38,41.32 27.38,66.11l0,0c0,51.64 -41.86,93.5 -93.5,93.5l0,0c-51.64,0 -93.5,-41.86 -93.5,-93.5zm46.75,0l0,0c0,25.82 20.93,46.75 46.75,46.75c25.82,0 46.75,-20.93 46.75,-46.75c0,-25.82 -20.93,-46.75 -46.75,-46.75l0,0c-25.82,0 -46.75,20.93 -46.75,46.75z",
+								left: 'center',
+								bottom: 10,
+								itemGap: 22,
+								textStyle: {
+									color: '#fff',
+									fontSize: 18,
+								},
+							}]
+						},
+						eachart: null,
+						$el: null
+					},
+
+					infoOptions:[{
+						value:"微信",
+						id:"1"
+					},{
+						value:"微博",
+						id:"2"
+					},{
+						value:"APP",
+						id:"3"
+					},{
+						value:"新闻",
+						id:"4"
+					},{
+						value:"其他",
+						id:"5"
+					}]
+				}
+			},
+			created() {
+
+			},
+			mounted() {
+				this.initWorldCloud()
+				line('warn-line');
+				this.initPieChart()
+			},
+			methods: {
+				initWorldCloud() {
+
+					var myChart = echarts.init(document.getElementById('wordClouds'));
+					var wordCloudList = this.word;
+
+					var option = {
+						tooltip: {
+							show: true
+						},
+						series: [{
+							type: 'wordCloud', //类型为字符云
+							//shape: 'triangle', //平滑
+							// size: ['50%', '50%'],
+							left: 'center',// 居中
+							width: '100%', //图像宽高
+							height: '100%', //图像宽高
+							gridSize: 10, //词与词之间的距离
+							sizeRange: [12, 32],// 字体大小范围
+							rotationRange: [0, 90],// 旋转的角度范围
+							rotationStep: 90,// 每次旋转的角度步数
+							drawOutOfBound: false, //设置为true以允许部分在画布外部绘制单词。允许字号大于要绘制的画布大小
+							textStyle: {
+								normal: {
+									fontFamily: 'sans-serif',
+									color: function() {
+										var colors = ['#71DEBF', '#04C6D5'];
+										return colors[parseInt(Math.random() * 2)];
+									}
+								},
+								emphasis: {
+									shadowBlur: 5, //阴影距离
+									shadowColor: '#333' //阴影颜色
+								}
+							},
+							data: wordCloudList,
+						}]
+					};
 
 
+
+					var maskImage = new Image();
+					maskImage.src = "../images/bgworld.png"
+					maskImage.onload = function() {
+						option.series[0].maskImage = maskImage;
+						myChart.setOption(option)
+					}
+
+				},
+				// 实例化(更新)图表
+				updateEach(name) {
+					var myChart = echarts.init(document.getElementById(name));
+					myChart.setOption(this[name].option);
+				},
+				initPieChart() {
+					let dataList = [{
+							value: 300,
+							name: "微信"
+						},
+						{
+							value: 300,
+							name: "微博"
+						},
+						{
+							value: 100,
+							name: "新闻"
+						},
+						{
+							value: 50,
+							name: "APP"
+						},
+						{
+							value: 20,
+							name: "其他"
+						},
+					];
+					this.warnpieChart.option.series[0].data = dataList;
+					this.updateEach("warnpieChart");
+				},
+			}
+		});
+	}
+
+	initWaringVue();
 </script>
 </html>
