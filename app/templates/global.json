@@ -8,6 +8,7 @@
   "scripts": [
     "../libs/jquery/jquery.min.js",
     "../libs/echarts/echarts.min.js",
+	"../libs/echarts/echarts-wordcloud.min.js",
     "../js/resize.js",
     "../js/vue.js",
     "../libs/ElementUI/index.js",
