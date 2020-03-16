@@ -39,8 +39,6 @@
   color: #ffffff;
 }
 .el-dialog {
-  width: 7.84rem;
-  max-height: 8.8rem;
   background-color: #1B418D;
   border-radius: .04rem;
 }
@@ -49,6 +47,32 @@
 }
 .el-dialog__body {
   padding: .3rem .6rem;
+  max-height: 6.34rem;
+  overflow-y: auto;
+  overflow: auto;
+}
+.el-dialog__body .row {
+  margin: 0;
+  line-height: 1.5;
+}
+.el-dialog__body::-webkit-scrollbar {
+  width: .08rem;
+  background: transparent;
+}
+.el-dialog__body::-webkit-scrollbar-corner,
+.el-dialog__body::-webkit-scrollbar-thumb,
+.el-dialog__body::-webkit-scrollbar-track {
+  border-radius: .04rem;
+}
+.el-dialog__body::-webkit-scrollbar-corner,
+.el-dialog__body::-webkit-scrollbar-track {
+  /* 滚动条轨道 */
+  background-color: rgba(180, 160, 120, 0);
+  box-shadow: inset 0 0 0.01rem rgba(180, 160, 120, 0.5);
+}
+.el-dialog__body::-webkit-scrollbar-thumb {
+  /* 滚动条手柄 */
+  background-color: rgba(255, 255, 255, 0.3);
 }
 .el-dialog__title {
   font-weight: 500;
@@ -90,10 +114,16 @@
   display: flex;
 }
 .el-form .el-form-item__label {
-  font-family: SiYuan;
-  font-size: .18rem;
   width: 1.04rem;
   min-width: 98px;
+  font-family: SiYuan;
+  font-size: .18rem;
+  line-height: .4rem;
+  text-align: justify;
+}
+.el-form .el-form-item__content {
+  width: 100%;
+  margin-left: 0 !important;
 }
 .el-form .el-form-item__content .el-input__inner {
   height: .4rem;
@@ -104,6 +134,23 @@
 }
 .el-form .el-form-item__content .el-select .el-input.is-focus .el-input__inner {
   border-color: #5AB0F3;
+}
+.el-textarea .el-textarea__inner {
+  min-height: 1.48rem !important;
+  border-radius: .04rem;
+  background-color: #2551A2;
+  border-color: #2551A2;
+  font-size: .14rem;
+  color: #ffffff;
+  resize: none;
+}
+.el-textarea .el-input__count {
+  right: .1rem;
+  bottom: .1rem;
+  background-color: #2551A2;
+  font-size: .14rem;
+  line-height: .22rem;
+  color: #8DA0C6;
 }
 input,
 textarea {
@@ -128,10 +175,19 @@ textarea::placeholder {
 .el-input--prefix .el-input__inner {
   padding-left: .54rem;
 }
+.el-form-item__error {
+  color: #F2476B;
+}
+.el-form-item {
+  margin-bottom: .2rem;
+}
 .el-tag {
   height: .4rem;
-  padding: 0 .14rem;
+  margin-right: .18rem;
+  margin-bottom: .1rem;
+  padding: 0 .1rem;
   font-size: .18rem;
+  line-height: .4rem;
   border-radius: .04rem;
 }
 .el-tag.el-tag--primary {
@@ -150,6 +206,7 @@ textarea::placeholder {
   width: .18rem;
   height: .18rem;
   right: -0.05rem;
+  font-size: .12rem;
 }
 .el-radio-group .el-radio-button__inner {
   padding: .13rem .22rem;

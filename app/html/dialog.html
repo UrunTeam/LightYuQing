@@ -8,43 +8,125 @@
     <div class="conter" id="conter">
       <el-button type="text" @click="dialogFormVisible = true">打开嵌套表单的 Dialog</el-button>
 
-      <el-dialog :visible.sync="dialogFormVisible">
-        <div slot="title" class="el-dialog__title">
+      <el-dialog :visible.sync="dialogFormVisible" title="基础数据配置" :width="dialogWidth">
+        <!-- <div slot="title" class="el-dialog__title">
           收获<el-tooltip class="item" effect="dark" content="Right Center 提示文字" placement="top">
-            <i class="iconfont iconzu8"></i>
-                    </div>
-        <el-form :model="form">
-          <el-form-item label="活动名称：">
-            <el-input v-model="form.name" autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item label="活动区域：">
-            <el-select v-model="form.region" placeholder="请选择活动区域">
-              <el-option label="区域一" value="shanghai"></el-option>
-              <el-option label="区域二" value="beijing"></el-option>
-            </el-select>
-          </el-form-item>
-        </el-form>
-        <!-- 标签 -->
-        <el-tag v-for="tag in tags" :key="tag.name" closable :type="tag.type" @close="handleClose(tag)">
-          ${tag.name}
-        </el-tag>
+          <i class="iconfont iconzu8"></i>
+        </div> -->
         <!-- 单选框 -->
-        <el-radio-group v-model="radio1">
-          <el-radio-button label="全局数据调控"></el-radio-button>
-          <el-radio-button label="属地舆情研判-配置"></el-radio-button>
-          <el-radio-button label="舆情预警-配置"></el-radio-button>
+        <el-radio-group v-model="radio1" style="margin-bottom: .14rem;">
+          <el-radio-button label="1">全局数据调控</el-radio-button>
+          <el-radio-button label="2">属地舆情研判-配置</el-radio-button>
+          <el-radio-button label="3">舆情预警-配置</el-radio-button>
         </el-radio-group>
-        <el-radio v-model="radio" label="1">备选项</el-radio>
-        <el-radio v-model="radio" label="2">备选项</el-radio>
 
-        <el-tree :props="props" :load="loadNode" lazy show-checkbox @check-change="handleCheckChange">
-        </el-tree>
+        <div style="display: flex;">
+          <div class="configuration f18" v-show="radio1==1">
+            <div class="border-dash f14">
+              注意：1.该组内容，将默认作用于全系统的数据过滤配置；
+              2.当某项功能组，具备下面独立的配置时，将优先应用其独立配置；
+            </div>
+            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+              <el-form-item label="默认不匹配关键词：">
+                <el-input type="textarea" maxlength="1000" show-word-limit
+                  placeholder="该组关键词将用于“境内综合（不含微博）”和“微博”的分析，作用为过滤目的无效数据；支持汉字、英文字母、阿拉伯数字作为关键词，上限为1000个汉字；仅支持以“|”英文字符分隔号为指定表达符号，“|”表示或关系；例子:招聘|[招聘启事|合租广告"
+                  v-model="ruleForm.name" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="活动区域：">
+                <el-select v-model="ruleForm.region" placeholder="请选择活动区域">
+                  <el-option label="区域一" value="shanghai"></el-option>
+                  <el-option label="区域二" value="beijing"></el-option>
+                </el-select>
+              </el-form-item>
+    
+              <el-form-item label="默认完全匹配：" prop="isNeed">
+                <el-radio-group v-model="ruleForm.isNeed">
+                  <el-radio label="1">需要</el-radio>
+                  <el-radio label="2">不需要</el-radio>
+                </el-radio-group>
+              </el-form-item>
+    
+              <el-form-item label="默认数据来源" prop="source">
+                <div class="trans-wrap f18">
+                  <div class="left">
+                    <!-- 搜索框 -->
+                    <el-input class="search" placeholder="站点或标签名称" suffix-icon="iconfont iconlujing"
+                      v-model="ruleForm.source"></el-input>
+                    <!-- 树 -->
+                    <el-tree :props="props" :load="loadNode" lazy show-checkbox @check-change="handleCheckChange">
+                    </el-tree>
+                  </div>
+                  <div class="right">
+                    <div class="top f18">
+                      <span>已选择:<em class="count warn">3</em></span>
+                      <span>还可选择:<em class="count primary">12</em></span>
+                    </div>
+                    <!-- 标签 -->
+                    <el-tag v-for="tag in tags" :key="tag.name" closable :type="tag.type" @close="handleClose(tag)">
+                      ${tag.name}
+                    </el-tag>
+                  </div>
+                </div>
+              </el-form-item>
+            </el-form>
+          </div>
+  
+          <div class="configuration f18" v-show="radio1==2">属地舆情研判-配置</div>
+          <div class="configuration f18" v-show="radio1==3">舆情预警-配置</div>
+          <div class="data-preview f18" v-show="radio1==2" style="width: 600px;">
+            <el-radio-group v-model="preview">
+              <el-radio-button label="1">
+                <span>新闻</span>
+                <p>（约3786）</p>
+              </el-radio-button>
+              <el-radio-button label="2">
+                <span>微博</span>
+                <p>（约3786）</p>
+              </el-radio-button>
+              <el-radio-button label="3">
+                <span>微信</span>
+                <p>（约3786）</p>
+              </el-radio-button>
+              <el-radio-button label="4">
+                <span>APP</span>
+                <p>（约3786）</p>
+              </el-radio-button>
+              <el-radio-button label="4">
+                <span>其他</span>
+                <p>（约3786）</p>
+              </el-radio-button>
+            </el-radio-group>
 
-        <el-input class="search" placeholder="站点或标签名称" suffix-icon="iconfont iconlujing" v-model="input2">
-        </el-input>
+            <!-- 新闻列表 -->
+            <div class="news-list">
+              <ul class="sort-list f18">
+                <li v-for="item in 12">
+                  <div>
+                    <span class="suqare f14">1</span>
+                  </div>
+                  <div class="content">
+                    <p class="title">
+                      <a href="javascript:;">王忠林主持召开市防控指挥部视频会议 保持定力 慎终如始 统筹做好疫情防控各项工作</a>
+                    </p>
+                    <dl class="dl-info">
+                      <dt>
+                        <span class="source">澎湃新闻</span>
+                      </dt>
+                      <dd>
+                        <span class="time">03-03 13:18</span>
+                      </dd>
+                    </dl>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
         <div slot="footer" class="dialog-footer">
           <el-button type="warning" @click="dialogFormVisible = false">取 消</el-button>
-          <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+          <el-button type="primary" @click="submitForm('ruleForm')">确 定</el-button>
         </div>
       </el-dialog>
     </div>
@@ -53,7 +135,7 @@
 
 </body>
 <script>
-  new Vue({
+  var vm_container = new Vue({
     el: '#conter',
     delimiters: ['${', '}'],
     data() {
@@ -77,16 +159,45 @@
         }],
         dialogTableVisible: false,
         dialogFormVisible: false,
-        form: {
+        ruleForm: {
           name: '',
           region: '',
           date1: '',
           date2: '',
           delivery: false,
+          source: '',
           type: [],
-          resource: '',
+          isNeed: '',
           desc: ''
         },
+        rules: {
+          name: [
+            { required: true, message: '请输入活动名称', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+          region: [
+            { required: true, message: '请选择活动区域', trigger: 'change' }
+          ],
+          date1: [
+            { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
+          ],
+          date2: [
+            { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
+          ],
+          type: [
+            { type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
+          ],
+          isNeed: [
+            { required: true, message: '请选择匹配项', trigger: 'change' }
+          ],
+          source: [
+            { required: true, message: '默认数据来源不能为空', trigger: 'change' }
+          ],
+          desc: [
+            { required: true, message: '请填写活动形式', trigger: 'blur' }
+          ]
+        },
+
         tags: [
           { name: '标签一', type: 'primary' },
           { name: '标签二', type: 'primary' },
@@ -94,7 +205,7 @@
           { name: '标签四', type: 'primary' },
           { name: '标签五', type: 'primary' }
         ],
-        radio1: '全局数据调控',
+        radio1: 1,
         radio: '1',
 
         props: {
@@ -102,8 +213,16 @@
           children: 'zones'
         },
         count: 1,
-        input2: ''
+        input2: '',
+        preview: 1
       };
+    },
+    computed: {
+      dialogWidth() {
+        // return '7.84rem'
+        return '15.8rem'
+
+      }
     },
     methods: {
       handleClose(tag) {
@@ -145,7 +264,20 @@
 
           resolve(data);
         }, 500);
-      }
+      },
+
+      submitForm(formName) {
+        // this.dialogFormVisible = false;
+        console.log(this.ruleForm.isNeed)
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('submit!');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
     }
   })
 

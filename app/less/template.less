@@ -40,8 +40,8 @@
   color: #ffffff;
 }
 .el-dialog {
-  width: 7.84rem;
-  max-height: 8.8rem;
+  // width: 7.84rem;
+  // max-height: 8.8rem;
   background-color: @theme-color3;
   border-radius: .04rem;
 }
@@ -50,6 +50,34 @@
 }
 .el-dialog__body {
   padding: .3rem .6rem;
+  max-height: 6.34rem;
+  overflow-y: auto;
+  overflow: auto;
+  .row {
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  &::-webkit-scrollbar {
+    // 底色
+    width: .08rem;
+    background: transparent; 
+  }
+  &::-webkit-scrollbar-corner, /* 滚动条角落 */
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-track {
+    border-radius: .04rem;
+  }
+  &::-webkit-scrollbar-corner,
+  &::-webkit-scrollbar-track {
+    /* 滚动条轨道 */
+    background-color: rgba(180, 160, 120, 0);
+    box-shadow: inset 0 0 .01rem rgba(180, 160, 120, 0.5);
+  }
+  &::-webkit-scrollbar-thumb {
+    /* 滚动条手柄 */
+    background-color: rgba(255,255,255,.3);
+  }
 }
 .el-dialog__title {
   font-weight: 500;
@@ -98,14 +126,18 @@
     display: flex;
   }
   .el-form-item__label {
-    font-family: SiYuan;
-    font-size: .18rem;
+    &:extend(.whiteColor);
     width: 1.04rem;
     min-width: 98px;
-    &:extend(.whiteColor);
+    // padding-top: .12rem;
+    font-family: SiYuan;
+    font-size: .18rem;
+    line-height: .4rem;
+    text-align: justify;
   }
   .el-form-item__content {
-
+    width: 100%;
+    margin-left: 0 !important;
     .el-input__inner {
       height: .4rem;
       background-color: @theme-color;
@@ -116,6 +148,25 @@
     .el-select .el-input.is-focus .el-input__inner {
       border-color: @graphic-color2;
     }
+  }
+}
+.el-textarea {
+  .el-textarea__inner {
+    min-height: 1.48rem !important;
+    border-radius: .04rem;
+    background-color: @theme-color;
+    border-color: @theme-color;
+    font-size: .14rem;
+    color: #ffffff;
+    resize: none;
+  }
+  .el-input__count {
+    right: .1rem;
+    bottom: .1rem;
+    background-color: @theme-color;
+    font-size: .14rem;
+    line-height: .22rem;
+    color: @graphic-color12;
   }
 }
 input,textarea {
@@ -131,13 +182,22 @@ input,textarea {
 .el-input--prefix .el-input__inner {
   padding-left: .54rem;
 }
+.el-form-item__error {
+  color: @graphic-color3;
+}
+.el-form-item {
+  margin-bottom: .2rem;
+}
 
 
 //标签
 .el-tag {
   height: .4rem;
-  padding: 0 .14rem;
+  margin-right: .18rem;
+  margin-bottom: .1rem;
+  padding: 0 .1rem;
   font-size: .18rem;
+  line-height: .4rem;
   border-radius: .04rem;
   &.el-tag--primary {
     background-color: @graphic-color2;
@@ -156,6 +216,7 @@ input,textarea {
     width: .18rem;
     height: .18rem;
     right: -.05rem;
+    font-size: .12rem;
   }
 }
 
@@ -277,3 +338,4 @@ input,textarea {
 .el-tree-node.is-focusable.is-checked .el-tree-node__label{
   color: @graphic-color4;
 }
+

@@ -335,7 +335,7 @@
 // 搜索框
 .search.el-input {
   .el-input__inner {
-    background-color: @theme-color;
+    background-color: @theme-color3;
     border: .01rem solid @theme-color;
     height: .4rem;
     line-height: .4rem;
@@ -350,3 +350,87 @@
     line-height: .4rem;
   }
 } 
+.el-input--suffix .el-input__inner {
+  padding-right: .45rem;
+}
+
+
+// 弹窗内控制
+
+.border-dash {
+  padding: .14rem;
+  border:.01rem dashed @graphic-color2;
+  border-radius: .04rem;
+  color: @graphic-color12;
+  margin-bottom: .2rem;
+}
+.el-select {
+  width: 100%;
+}
+
+// 穿梭框
+.trans-wrap {
+  display: flex;
+  padding: .2rem 0;
+  border-radius: .04rem;
+  background-color: @theme-color;
+  color: #ffffff;
+  .left,.right {
+    width: 50%;
+    &.left {
+      padding-right: .2rem;
+      padding-left: .2rem;
+      border-right: .01rem solid @graphic-color2;
+    }
+    &.right {
+      padding-left: .34rem;
+      padding-right: 0;
+      span:first-child {
+        margin-right: .2rem;
+      }
+      .warn {
+        color: @graphic-color4;
+      }
+      .primary {
+        color: @graphic-color2;
+      }
+    }
+  }
+}
+
+// 单选框内容箭头设置
+.el-radio.is-checked:nth-child(2) .el-radio__input {
+  position: relative;
+  &::before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    content: "";
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%,60%);
+    border: .1rem solid transparent;
+  }
+  &.is-checked {
+    &::before {
+      border-color: transparent transparent @theme-color transparent;
+    }
+  }
+}
+.radio-select-wrap {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-color: @theme-color;
+}
+
+// 配置框
+.configuration {
+  width: 7rem;
+  color: #ffffff;
+}
+
+.data-preview {
+  flex: 1;
+  color: #ffffff;
+}
