@@ -98,5 +98,85 @@
         justify-content: space-between;
         align-items: center;
     }
+
+
+
+ 
+
+
    
+}
+   // 全网检索功能弹窗样式
+   .webSearch{
+    .searchInput{
+        width: 5.84rem;
+        height: 0.6rem;
+        margin: 0 auto 0.4rem;
+        position: relative;
+        input{
+            height: 100%;
+            width: 100%;
+            background-color: @theme-color;
+            background-image: none;
+            color: #fff;
+            border-radius: 0.04rem;
+            border: 1px solid transparent;
+            box-sizing: border-box;
+            display: inline-block;
+            font-size: 0.22rem;
+            line-height: 0.6rem;
+            outline: 0;
+            padding: 0 0.14rem 0 0.18rem;
+            transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+            &:hover{
+            //    border-color: #C0C4CC;
+            }
+        }
+        .searchInput-icon{
+            position: absolute;
+            top: 0;
+            height: 100%;
+            line-height: 0.6rem;
+            color: @graphic-color1;
+            text-align: center;
+            right: 0.12rem;
+            text-align: center;
+            i{
+                font-size: 0.34rem;
+            }
+
+        }
+        .el-input__prefix{
+            right: 0.12rem;
+        }
+    }
+    .el-dialog__body{
+        max-height: 9.4rem;
+    }
+    .radioGroup{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.24rem;
+    }
+    .groupRight{
+        color: #fff;
+        font-size: 0.18rem;
+    }
+    .scroll-container{
+        height: 6.4rem;
+    }
+    .el-dialog__footer .dialog-footer {
+        text-align:left;
+        .el-pager li{
+            background-color: transparent;
+            border:1px solid rgba(90,176,243,1);
+            color: #81A0D3;
+            // font-size: 0.18rem;
+        }
+        .btn-prev,.btn-next{
+            background-color: transparent;
+            border:1px solid rgba(90,176,243,1);
+            color: #fff;
+        }
+    }
 }

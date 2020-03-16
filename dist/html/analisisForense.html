@@ -86,9 +86,9 @@
                 <!-- 声量趋势 -->
                 <div class="conterLeft-top">
                     <div class="comTitleBox flatAngle">
-                        <i class="iconfont iconlujing1 incnEdit"></i>
+                        <i class="iconfont iconlujing1 incnEdit" @click='dialog=true'></i>
                         <div class="modulTitle">
-                            <i class="iconfont iconqushi"></i>
+                            <i class="iconfont iconqushi" ></i>
                             声量趋势
                         </div>
                     </div>
@@ -183,6 +183,48 @@
             </div>
 
 
+            <!-- 弹窗 全网检索功能-->
+
+            <el-dialog :visible.sync="dialog" title="" width="12.68rem"  top='6vh' class="webSearch">
+                <div class="searchInput">
+                    <input type="text" autocomplete="off" v-model='seachValue' placeholder="请输入关键词">
+                    <span class="searchInput-icon">
+                        <i class="iconfont iconlujing"></i>
+                    </span>
+                </div>
+                <div class="radioGroup">
+                    <el-radio-group v-model="mediaType" size="medium">
+                        <el-radio-button label="1">综合</el-radio-button>
+                        <el-radio-button label="2">新闻</el-radio-button>
+                        <el-radio-button label="3">微博</el-radio-button>
+                        <el-radio-button label="4">微信</el-radio-button>
+                        <el-radio-button label="5">APP</el-radio-button>
+                        <el-radio-button label="6">其他</el-radio-button>
+                      </el-radio-group>
+                      <div class="groupRight">
+                        <span>时间：</span>
+                        <el-radio-group v-model="timeType" size="medium">
+                            <el-radio-button label="1">近24小时</el-radio-button>
+                            <el-radio-button label="2">近7天</el-radio-button>
+                            <el-radio-button label="3">近15天</el-radio-button>
+                            <el-radio-button label="4">近30天</el-radio-button>
+                          </el-radio-group>
+                      </div>
+                    
+                </div>
+                <div class="resultConten scroll-container" >
+                    <div class="aaa " style="height: 2000px"></div>
+                </div>
+                <div slot="footer" class="dialog-footer">
+                    <el-pagination
+                    background
+                    layout="prev, pager, next"
+                    :total="1000">
+                    </el-pagination>
+                    <!-- <el-button type="warning" @click="dialog = false">取 消</el-button>
+                    <el-button type="primary" @click="dialog= false">确 定</el-button> -->
+                  </div>
+            </el-dialog>
 
         </div>
         
@@ -217,6 +259,13 @@
                             return div.html();
                 }
                 return {
+                    // 以下为全网检索数据
+                    dialog:true,
+                    mediaType:1,// 媒体类型
+                    timeType:1,// 时间类型
+                    seachValue:'',
+                    // 全网检索数据结束
+
                     // 湖南热点数据
 
                     hostArr: Array(50).fill({ title: '钟南山为何说有信息4月底基本控制疫情？这份研究给了答案', media: '澎湃新闻', host: 3658, date: '03-03 13:18' }),
@@ -550,7 +599,7 @@
                     console.log(chinaJson)
                     that.updateEach("mapChart");
                 });
-                }
+                },
 
 
 

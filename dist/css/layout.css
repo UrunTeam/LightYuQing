@@ -396,6 +396,7 @@ body {
 }
 .comTitleBox .incnEdit {
   position: absolute;
+  cursor: pointer;
   right: 0.18rem;
 }
 .modulTitle {
