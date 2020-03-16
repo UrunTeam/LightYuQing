@@ -1,8 +1,8 @@
 {
   "site": "ejs-demo",
   "styles": [
-    "http://at.alicdn.com/t/font_1684931_1vu7g8q0j86.css",
-    "https://unpkg.com/element-ui/lib/theme-chalk/index.css",
+    "http://at.alicdn.com/t/font_1684931_9d5u7tfi0a.css",
+    "../libs/ElementUI/index.css",
     "../css/global.css"
   ],
   "scripts": [
@@ -11,7 +11,7 @@
 	"../libs/echarts/echarts-wordcloud.min.js",
     "../js/resize.js",
     "../js/vue.js",
-    "https://unpkg.com/element-ui/lib/index.js",
+    "../libs/ElementUI/index.js",
     "../js/global.js"
   ]
 }
