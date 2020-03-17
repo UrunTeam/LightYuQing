@@ -650,7 +650,13 @@
                 };
             },
             created() {
-               
+                let that=this 
+                // 视口发生变化重置所有图表大小
+                window.onresize = function () {
+                    that.eachartNameList.map((item,index)=>{
+                        that[item].eachart.resize();
+                    })
+                };
             },
             mounted() {
                 let that = this
