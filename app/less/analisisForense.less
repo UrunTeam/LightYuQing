@@ -87,19 +87,6 @@
  }
 
 
-       // 
-    // 公用样式
-    .flexStart{
-        display: flex;
-        align-items: center;
-        justify-content: start;
-    }
-    .flexBetween{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
 }
    // 全网检索功能弹窗样式
    .webSearch{
@@ -226,14 +213,132 @@
         }
     }
    
-    .flexStart{
-        display: flex;
-        align-items: center;
-        justify-content: start;
+}
+
+// 微博详情弹窗样式
+.weiboDetail{
+    overflow: hidden;
+    
+    .el-dialog{
+           position: relative;
+           top:50%;
+           transform: translateY(-50%);
     }
-    .flexBetween{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    .el-dialog__body{
+        max-height: 9.4rem;
+        padding-top: 0;
+        padding-bottom: 0;
+        color: #fff;
+    }
+    .weiboTitle{
+        margin-bottom: 0.18rem;
+        img{
+            border-radius: 50%;
+            width: 0.5rem;
+            height: 0.5rem;
+            margin-right:0.1rem;
+        }
+        .weiboHead{
+            font-size: 0.18rem;
+        }
+        .weiboMedia{
+            font-size: 0.22rem;
+        }
+    }
+    .weiboContent{
+        .text{
+            font-size: 0.18rem;
+        }
+        .picture{
+            margin: 0.16rem 0;
+            height: 3.75rem;
+            img{
+                width: 100%;
+                height: 3.75rem;
+            }
+        }
+    }
+    .weiboHost{
+        .weiboHost-total{
+            display: flex;
+            background:rgba(68,121,186,.5);
+            li{
+                flex:1;
+                height: 0.4rem;
+                line-height: 0.4rem;
+                text-align: center;
+                position: relative;
+                &::after{
+                    content:'';
+                    display: block;
+                    height: 0.14rem;
+                    width: 1px;
+                    background-color: #fff;
+                    opacity: .2;
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+                &:last-child::after{
+                    display: none;
+                }
+                &.active::before{
+                    content:'';
+                    display: block;
+                    width:0;
+                    height: 0;
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    z-index: 9;
+                    border-left: 0.08rem solid transparent;
+                    border-right: 0.08rem solid transparent;
+                    border-bottom: 0.08rem solid @theme-color3;
+                }
+            }
+            
+        }
+        // 评论模块样式
+        .weibo-comment{
+            font-size: 0.18rem;
+            li{
+                padding: 0.2rem 0;
+                align-items: flex-start;
+                border-bottom: 1px solid #3262A9;
+                &:last-child{
+                    border:none;
+                }
+            }
+            img{
+                width: 0.4rem;
+                height: 0.4rem;
+                margin-right:0.18rem;
+            }
+            .userName{
+                color: @graphic-color4;
+            }
+            .detailTime{
+                padding-top: 0.18rem;
+            }
+        }
+    }
+    
+
+
+    .el-dialog__footer{
+        padding: 0.22rem 0;
+        border-top: 1px solid #3262A9;
+    }
+    .dialog-footer{
+        font-size: 0.14rem;
+        color: #fff;
+        span{
+            cursor: pointer;
+        }
+        i{
+            font-size: 0.14rem;
+        }
     }
 }
