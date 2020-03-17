@@ -23,6 +23,14 @@
   border-color: @graphic-color4;
   color: #000000;
 }
+.el-button--success {
+  background-color: @graphic-color6;
+  border-color: @graphic-color6;
+}
+.el-button--success:focus, .el-button--success:hover {
+  background-color: @graphic-color6;
+  border-color: @graphic-color6;
+}
 
 .el-button--none {
   background-color: transparent;
@@ -191,6 +199,7 @@ input,textarea {
   padding-left: .54rem;
 }
 .el-form-item__error {
+  font-size: .14rem;
   color: @graphic-color3;
 }
 .el-form-item {
@@ -537,7 +546,54 @@ input,textarea {
     margin-left: 110px;
   }
 }
-
+.el-date-table td.in-range div {
+  background-color: @graphic-color4;
+  &:hover {
+    background-color: @graphic-color4;
+  }
+}
+.el-range-editor .el-range-input {
+  background-color: @theme-color3;
+  color: #ffffff;
+  &::placeholder {
+    color: @graphic-color12;
+  }
+}
+.el-input.is-disabled .el-input__inner {
+  background-color: @theme-color3;
+  border-color: @graphic-color2;
+  color: @graphic-color12;
+}
+.el-date-range-picker__time-header {
+  border-color: @graphic-color2;
+}
+.el-date-range-picker__content.is-left {
+  border-color: @graphic-color2;
+}
+.el-date-range-picker__editor,.el-input el-input--small {
+  font-size: .14rem;
+}
+.el-date-range-picker__time-header>.el-icon-arrow-right {
+  color: @graphic-color2;
+}
+.el-date-range-picker__header div {
+  color: @graphic-color2;
+}
+.el-date-editor .el-range__icon, .el-input__icon.el-range__close-icon {
+  font-size: .2rem;
+  line-height: .4rem;
+  color: #ffffff;
+}
+.el-date-editor .el-range-separator {
+  width: 10%;
+  padding: 0 .1rem;
+  font-size: .18rem;
+  line-height: .4rem;
+  color: #ffffff;
+}
+.el-range-editor.el-input__inner {
+  padding: .03rem .1rem;
+}
 // 下拉菜单
 .el-select-dropdown {
   border: none;

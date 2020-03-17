@@ -1,0 +1,386 @@
+<%- include('../templates/head') %>
+
+<body>
+
+  <div class="yuQingContainer">
+    <!-- 头部 -->
+    <%- include('../templates/header') %>
+    <div class="conter" id="conter">
+      <el-button type="text" @click="dialogFormVisible = true">打开嵌套表单的 Dialog</el-button>
+
+      <el-dialog :visible.sync="dialogFormVisible" title="基础数据配置" :width="dialogWidth">
+        <!-- <div slot="title" class="el-dialog__title">
+          收获<el-tooltip class="item" effect="dark" content="Right Center 提示文字" placement="top">
+          <i class="iconfont iconzu8"></i>
+        </div> -->
+        <!-- 单选框 -->
+        <el-radio-group v-model="radio1" style="margin-bottom: .14rem;">
+          <el-radio-button label="1">全局数据调控</el-radio-button>
+          <el-radio-button label="2">属地舆情研判-配置</el-radio-button>
+          <el-radio-button label="3">舆情预警-配置</el-radio-button>
+        </el-radio-group>
+
+        <div style="display: flex;">
+          <div class="configuration f18" v-show="radio1==1">
+            <div class="border-dash f14">
+              注意：1.该组内容，将默认作用于全系统的数据过滤配置；
+              2.当某项功能组，具备下面独立的配置时，将优先应用其独立配置；
+            </div>
+            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+              <el-form-item label="默认不匹配关键词：">
+                <el-input type="textarea" maxlength="1000" show-word-limit
+                  placeholder="该组关键词将用于“境内综合（不含微博）”和“微博”的分析，作用为过滤目的无效数据；支持汉字、英文字母、阿拉伯数字作为关键词，上限为1000个汉字；仅支持以“|”英文字符分隔号为指定表达符号，“|”表示或关系；例子:招聘|[招聘启事|合租广告"
+                  v-model="ruleForm.name" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="活动区域：">
+                <el-select v-model="ruleForm.region" placeholder="请选择活动区域">
+                  <el-option label="区域一" value="shanghai"></el-option>
+                  <el-option label="区域二" value="beijing"></el-option>
+                </el-select>
+              </el-form-item>
+
+              <el-form-item label="默认完全匹配：" prop="isNeed">
+                <el-radio-group v-model="ruleForm.isNeed">
+                  <el-radio label="1">需要</el-radio>
+                  <el-radio label="2">不需要</el-radio>
+                </el-radio-group>
+                <div class="independent" v-show="ruleForm.isNeed==2">
+                  <el-input type="textarea" maxlength="1000" show-word-limit
+                    placeholder="该组关键词将用于“境内综合（不含微博）”和“微博”的分析，作用为过滤目的无效数据；支持汉字、英文字母、阿拉伯数字作为关键词，上限为1000个汉字；仅支持以“|”英文字符分隔号为指定表达符号，“|”表示或关系；例子:招聘|[招聘启事|合租广告"
+                    v-model="ruleForm.name" autocomplete="off"></el-input>
+                </div>
+              </el-form-item>
+
+              <el-form-item label="默认数据来源" prop="source">
+                <div class="trans-wrap f18">
+                  <div class="left">
+                    <!-- 搜索框 -->
+                    <el-input class="search" placeholder="站点或标签名称" v-model="ruleForm.source"><i slot="suffix"
+                        class="iconfont iconlujing"></i></el-input>
+                    <!-- 树 -->
+                    <el-tree :props="props" :load="loadNode" lazy show-checkbox @check-change="handleCheckChange">
+                    </el-tree>
+                  </div>
+                  <div class="right">
+                    <div class="top f18">
+                      <span>已选择:<em class="count warn">3</em></span>
+                      <span>还可选择:<em class="count primary">12</em></span>
+                    </div>
+                    <!-- 标签 -->
+                    <el-tag v-for="tag in tags" :key="tag.name" closable :type="tag.type" @close="handleClose(tag)">
+                      ${tag.name}
+                    </el-tag>
+                  </div>
+                </div>
+              </el-form-item>
+              <el-form-item label="默认完全匹配：" prop="date">
+                <!-- <el-date-picker v-model="ruleForm.date" type="datetime" placeholder="选择日期时间" align="right"
+                  :picker-options="pickerOptions">
+                </el-date-picker> -->
+                
+                <el-date-picker v-model="ruleForm.date" type="datetimerange" :picker-options="pickerOptions"
+                  range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" align="right">
+                </el-date-picker>
+              </el-radio-group>
+
+            </el-form>
+          </div>
+
+          <div class="configuration f18" v-show="radio1==2">属地舆情研判-配置</div>
+          <div class="configuration f18" v-show="radio1==3">舆情预警-配置</div>
+          <div class="data-preview f18" v-show="radio1==2" style="width: 600px;">
+            <el-radio-group v-model="preview">
+              <el-radio-button label="1">
+                <span>新闻</span>
+                <p>（约3786）</p>
+              </el-radio-button>
+              <el-radio-button label="2">
+                <span>微博</span>
+                <p>（约3786）</p>
+              </el-radio-button>
+              <el-radio-button label="3">
+                <span>微信</span>
+                <p>（约3786）</p>
+              </el-radio-button>
+              <el-radio-button label="4">
+                <span>APP</span>
+                <p>（约3786）</p>
+              </el-radio-button>
+              <el-radio-button label="4">
+                <span>其他</span>
+                <p>（约3786）</p>
+              </el-radio-button>
+            </el-radio-group>
+
+            <!-- 新闻列表 -->
+            <div class="news-list">
+              <ul class="sort-list f18">
+                <li v-for="item in 12">
+                  <div>
+                    <span class="suqare f14">1</span>
+                  </div>
+                  <div class="content">
+                    <p class="title">
+                      <a href="javascript:;">王忠林主持召开市防控指挥部视频会议 保持定力 慎终如始 统筹做好疫情防控各项工作</a>
+                    </p>
+                    <dl class="dl-info">
+                      <dt>
+                        <span class="source">澎湃新闻</span>
+                      </dt>
+                      <dd>
+                        <span class="time">03-03 13:18</span>
+                      </dd>
+                    </dl>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <el-table :data="tableData" border style="width: 100%" :cell-style="CellName">
+          <el-table-column fixed prop="date" label="日期" width="150">
+          </el-table-column>
+          <el-table-column prop="name" label="姓名" width="120">
+          </el-table-column>
+          <el-table-column prop="province" label="省份" width="120">
+          </el-table-column>
+          <el-table-column prop="city" label="市区" width="120">
+          </el-table-column>
+          <el-table-column prop="address" label="地址">
+          </el-table-column>
+          <el-table-column prop="zip" label="邮编">
+          </el-table-column>
+          <el-table-column fixed="right" label="操作" width="200">
+            <template slot-scope="scope">
+              <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+              <el-button type="text" size="small">编辑</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+        <el-button type="primary">新增一项</el-button>
+        <div slot="footer" class="dialog-footer">
+          <el-button type="warning" @click="dialogFormVisible = false">取 消</el-button>
+          <el-button type="primary" @click="submitForm('ruleForm')">确 定</el-button>
+        </div>
+      </el-dialog>
+    </div>
+    <%- include('../templates/foot') %>
+  </div>
+
+</body>
+<script>
+  var vm_container = new Vue({
+    el: '#conter',
+    delimiters: ['${', '}'],
+    data() {
+      return {
+        gridData: [{
+          date: '2016-05-02',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-04',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-01',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-03',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }],
+        dialogTableVisible: false,
+        dialogFormVisible: false,
+        ruleForm: {
+          name: '',
+          region: '',
+          date: '',
+          date2: '',
+          delivery: false,
+          source: '',
+          type: [],
+          isNeed: '',
+          desc: ''
+        },
+        rules: {
+          name: [
+            { required: true, message: '请输入活动名称', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+          region: [
+            { required: true, message: '请选择活动区域', trigger: 'change' }
+          ],
+          date1: [
+            { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
+          ],
+          date2: [
+            { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
+          ],
+          type: [
+            { type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
+          ],
+          isNeed: [
+            { required: true, message: '请选择匹配项', trigger: 'change' }
+          ],
+          source: [
+            { required: true, message: '默认数据来源不能为空', trigger: 'change' }
+          ],
+          desc: [
+            { required: true, message: '请填写活动形式', trigger: 'blur' }
+          ]
+        },
+
+        tags: [
+          { name: '标签一', type: 'primary' },
+          { name: '标签二', type: 'primary' },
+          { name: '标签三', type: 'primary' },
+          { name: '标签四', type: 'primary' },
+          { name: '标签五', type: 'primary' }
+        ],
+        radio1: 1,
+        radio: '1',
+
+        props: {
+          label: 'name',
+          children: 'zones'
+        },
+        count: 1,
+        input2: '',
+        preview: 1,
+
+        tableData: [{
+          date: '2016-05-02',
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          zip: 200333
+        }, {
+          date: '2016-05-04',
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1517 弄',
+          zip: 200333
+        }, {
+          date: '2016-05-01',
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1519 弄',
+          zip: 200333
+        }, {
+          date: '2016-05-03',
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1516 弄',
+          zip: 200333
+        }],
+
+        value2: '',
+        pickerOptions: {
+          shortcuts: [{
+            text: '今天',
+            onClick(picker) {
+              picker.$emit('pick', new Date());
+            }
+          }, {
+            text: '前三天',
+            onClick(picker) {
+              const date = new Date();
+              date.setTime(date.getTime() - 3600 * 1000 * 24 * 3);
+              picker.$emit('pick', date);
+            }
+          }, {
+            text: '最近七天',
+            onClick(picker) {
+              const date = new Date();
+              date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit('pick', date);
+            }
+          }]
+        },
+      };
+    },
+    computed: {
+      dialogWidth() {
+        // return '7.84rem'
+        return '15.8rem'
+
+      }
+    },
+    methods: {
+      handleClose(tag) {
+        this.tags.splice(this.tags.indexOf(tag), 1);
+      },
+
+      handleCheckChange(data, checked, indeterminate) {
+        console.log(data, checked, indeterminate);
+      },
+      handleNodeClick(data) {
+        console.log(data);
+      },
+      loadNode(node, resolve) {
+        if (node.level === 0) {
+          return resolve([{ name: 'region1' }, { name: 'region2' }]);
+        }
+        if (node.level > 3) return resolve([]);
+
+        var hasChild;
+        if (node.data.name === 'region1') {
+          hasChild = true;
+        } else if (node.data.name === 'region2') {
+          hasChild = false;
+        } else {
+          hasChild = Math.random() > 0.5;
+        }
+
+        setTimeout(() => {
+          var data;
+          if (hasChild) {
+            data = [{
+              name: 'zone' + this.count++
+            }, {
+              name: 'zone' + this.count++
+            }];
+          } else {
+            data = [];
+          }
+
+          resolve(data);
+        }, 500);
+      },
+      handleClick(row) {
+        console.log(row);
+      },
+
+      submitForm(formName) {
+        // this.dialogFormVisible = false;
+        console.log(this.ruleForm.isNeed)
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('submit!');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      CellName({ row, column, rowIndex, columnIndex }) {
+        console.log(columnIndex)
+        if (columnIndex == 0) {
+          return "color: #F3AF1B;"
+        }
+
+      }
+    }
+  })
+
+</script>
+
+</html>

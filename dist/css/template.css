@@ -22,6 +22,15 @@
   border-color: #F3Af1B;
   color: #000000;
 }
+.el-button--success {
+  background-color: #44BC86;
+  border-color: #44BC86;
+}
+.el-button--success:focus,
+.el-button--success:hover {
+  background-color: #44BC86;
+  border-color: #44BC86;
+}
 .el-button--none {
   background-color: transparent;
   border-color: transparent;
@@ -184,6 +193,7 @@ textarea::placeholder {
   padding-left: .54rem;
 }
 .el-form-item__error {
+  font-size: .14rem;
   color: #F2476B;
 }
 .el-form-item {
@@ -505,6 +515,62 @@ textarea::placeholder {
   .el-picker-panel__sidebar + .el-picker-panel__body {
     margin-left: 110px;
   }
+}
+.el-date-table td.in-range div {
+  background-color: #F3Af1B;
+}
+.el-date-table td.in-range div:hover {
+  background-color: #F3Af1B;
+}
+.el-range-editor .el-range-input {
+  background-color: #1B418D;
+  color: #ffffff;
+}
+.el-range-editor .el-range-input::-webkit-input-placeholder {
+  color: #8DA0C6;
+}
+.el-range-editor .el-range-input:-ms-input-placeholder {
+  color: #8DA0C6;
+}
+.el-range-editor .el-range-input::placeholder {
+  color: #8DA0C6;
+}
+.el-input.is-disabled .el-input__inner {
+  background-color: #1B418D;
+  border-color: #5AB0F3;
+  color: #8DA0C6;
+}
+.el-date-range-picker__time-header {
+  border-color: #5AB0F3;
+}
+.el-date-range-picker__content.is-left {
+  border-color: #5AB0F3;
+}
+.el-date-range-picker__editor,
+.el-input el-input--small {
+  font-size: .14rem;
+}
+.el-date-range-picker__time-header > .el-icon-arrow-right {
+  color: #5AB0F3;
+}
+.el-date-range-picker__header div {
+  color: #5AB0F3;
+}
+.el-date-editor .el-range__icon,
+.el-input__icon.el-range__close-icon {
+  font-size: .2rem;
+  line-height: .4rem;
+  color: #ffffff;
+}
+.el-date-editor .el-range-separator {
+  width: 10%;
+  padding: 0 .1rem;
+  font-size: .18rem;
+  line-height: .4rem;
+  color: #ffffff;
+}
+.el-range-editor.el-input__inner {
+  padding: .03rem .1rem;
 }
 .el-select-dropdown {
   border: none;
