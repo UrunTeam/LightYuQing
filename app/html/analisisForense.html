@@ -137,7 +137,29 @@
                     
                 </div>
                 <div class="resultConten scroll-container" >
-                    <div class="aaa " style="height: 2000px"></div>
+                    <ul class="resultBox flexBetween">
+                        <li v-for='(item,index) in 20'>
+                            <div class="itemTop flexStart">
+                                <img src="../images/hj.png" alt="">
+                                <div class="rightText">
+                                    <div class="textTitle">湖南<em>长沙</em>"黑老大"犯10宗罪判死刑</div>
+                                    <div class="textContent">
+                                        长沙环江滨水大道附近，一辆白色SUV驶过中心线，撞上一辆正常行驶的摩托车，
+                                        造成摩托车上一家四口3死1伤
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="itemBottom flexStart">
+                                <div class="bottomleft">
+                                    <span><i class="iconfont" :class='getIconClass(mediaType)'></i></span>
+                                    澎湃新闻
+                                </div>
+                                <div class="rightTime">
+                                    2018-08-19 19:00 发布
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
                 <div slot="footer" class="dialog-footer">
                     <el-pagination
@@ -517,7 +539,18 @@
                 });
                 },
 
-
+                // 分割线--------全网检索方法
+                // 根矩新闻来源返回不同的图标
+                getIconClass(type){
+                    let obj={
+                        2:'iconzu1',//新闻
+                        3:'iconzu13',//微博
+                        4:'iconzu3',//微信
+                        5:'iconzu1',//APP
+                        6:'iconzu1',//其他
+                    }
+                    return obj[type]||'iconzu1'
+                },
 
             }
         });

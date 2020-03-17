@@ -494,6 +494,9 @@ body {
   font-size: .22rem;
   font-family: SiYuan;
 }
+em {
+  color: #F2476B;
+}
 .el-button {
   font-family: SiYuan;
   font-size: .18rem;
