@@ -89,9 +89,7 @@
                             情绪分布
                         </div>
                     </div>
-                    <div id="pieChart" ref='pieChart'>
-                        fsdfsdf
-                    </div>
+                    <div id="pieChart" ref='pieChart'></div>
                 </div>
                 <!-- 舆论热词 -->
                 <div class="radiusBox-bottom">
@@ -102,6 +100,7 @@
                             舆论热词
                         </div>
                     </div>
+                    <div id="hostWordChart" ref="hostWordChart"></div>
 
                 </div>
             </div>
@@ -461,15 +460,6 @@
                     // 地图图表
                     mapChart: {
                         option: {
-                            // backgroundColor: '#044060',
-                            // title: {
-                            //     text: "长清区示例",
-
-                            //     left: 'center',
-                            //     textStyle: {
-                            //         color: '#ffffff'
-                            //     }
-                            // },
                             tooltip:{
                                 trigger:'item',
                                 formatter:function(params){
@@ -496,6 +486,9 @@
                                 textStyle: {
                                     color: '#ffffff'
                                 },
+                                // 翻转的原因宽高对调
+                                itemWidth:10,//长条的高度度
+                                itemHeight:90,//长条的宽度
                                 show:true,
                             },
                             series: [{
@@ -531,8 +524,44 @@
                         eachart: null,
                         $el: null
                     },
-                    mapName: 'hunan',
-                    eachartNameList: ['pieChart', 'trendChart','mapChart'],
+                    // 舆论热词图表
+                    hostWordChart:{
+                        option:{
+                            tooltip: {
+							show: true
+						},
+						series: [{
+							type: 'wordCloud', //类型为字符云
+							//shape: 'triangle', //平滑
+							// size: ['50%', '50%'],
+							left: 'center',// 居中
+							width: '100%', //图像宽高
+							height: '100%', //图像宽高
+							gridSize: 10, //词与词之间的距离
+							sizeRange: [12, 32],// 字体大小范围
+							rotationRange: [0, 90],// 旋转的角度范围
+							rotationStep: 90,// 每次旋转的角度步数
+							drawOutOfBound: false, //设置为true以允许部分在画布外部绘制单词。允许字号大于要绘制的画布大小
+							textStyle: {
+								normal: {
+									fontFamily: 'sans-serif',
+									color: function() {
+										var colors = ['#71DEBF', '#04C6D5'];
+										return colors[parseInt(Math.random() * 2)];
+									}
+								},
+								emphasis: {
+									shadowBlur: 5, //阴影距离
+									shadowColor: '#333' //阴影颜色
+								}
+							},
+							data: [],
+						}]
+                        },
+                        eachart:null,
+                        $el:null,
+                    },
+                    eachartNameList: ['pieChart', 'trendChart','mapChart','hostWordChart'],
                 };
             },
             created() {
@@ -540,13 +569,14 @@
             },
             mounted() {
                 let that = this
-                // echarts.registerMap(that.mapName, that.hunan);
                 this.initEachDom();
                 this.initPieChart()
                 this.initTrendChart()
                 this.initMapChart()
+                this.initHostWordChart()
             },
             methods: {
+                // 实例所有图表
                 initEachDom() {
                     let that = this;
                     that.eachartNameList.map((item, index) => {
@@ -564,6 +594,7 @@
                 updateEach(name) {
                     this[name].eachart.setOption(this[name].option);
                 },
+                // 情绪分布饼图图表
                 initPieChart() {
                     let dataList = [
                         { value: 300, name: "中立" },
@@ -573,6 +604,7 @@
                     this.pieChart.option.series[0].data = dataList;
                     this.updateEach("pieChart");
                 },
+                // 声量趋势图表数据
                 initTrendChart() {
                     let arr = [{ name: '微信', data: [75, 56, 36, 67, 10, 20] },
                     { name: 'APP', data: [54, 65, 89, 20, 10, 20] },
@@ -585,6 +617,7 @@
                     })
                     this.updateEach("trendChart");
                 },
+                //  地图图表
                 initMapChart(){
                     let data=[{name:'常德市',value:0},{name:'张家界市',value:100},
                               {name:'湘西土家族苗族自治州',value:20},{name:'岳阳市',value:80},
@@ -602,7 +635,32 @@
                     that.updateEach("mapChart");
                 });
                 },
-
+                // 舆论热词图表
+                initHostWordChart(){
+                    let that=this
+                    var maskImage = new Image();
+					maskImage.src = "../images/bgworld.png"
+                    let arr=[{"name": "武汉加油","value": 1446},
+						{"name": "野生动物","value": 928},
+						{"name": "境外疫情","value": 906},
+						{"name": "新增病历","value": 825},
+						{"name": "武汉加油","value": 15},
+						{"name": "野生动物","value": 10},
+						{"name": "境外疫情","value": 60},
+						{"name": "新增病历","value": 22},
+						{"name": "武汉加油","value": 15},
+						{"name": "野生动物","value": 10},
+						{"name": "境外疫情","value": 60},
+						{"name": "境外疫情","value": 60},
+						{"name": "新增病历","value": 22},
+						{"name": "武汉加油","value": 15},
+					]
+                    that.hostWordChart.option.series[0].data=arr
+					maskImage.onload = function() {
+						that.hostWordChart.option.series[0].maskImage = maskImage;
+                        that.updateEach('hostWordChart')
+					}
+                },
                 // 分割线--------全网检索方法
                 // 根矩新闻来源返回不同的图标
                 getIconClass(type){
