@@ -399,7 +399,20 @@ html,body {
       font-family: SiYuan;
     }
 }
-
+// 全局红色字体样式
+em{
+    color: @graphic-color3;
+}
+// 两行省略样式
+.textEllipsis{
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
 
 
 

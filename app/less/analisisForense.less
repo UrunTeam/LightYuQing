@@ -14,7 +14,8 @@
     }
     li{
         height: 0.22rem;
-        width: 0.54rem;
+        // width: 0.54rem;
+        padding: 0 0.1rem;
         line-height: 0.22rem;
         box-sizing: border-box;
         cursor: pointer;
@@ -99,15 +100,15 @@
         align-items: center;
     }
 
-
-
- 
-
-
-   
 }
    // 全网检索功能弹窗样式
    .webSearch{
+       overflow: hidden;
+       .el-dialog{
+           position: relative;
+           top:50%;
+           transform: translateY(-50%);
+       }
     .searchInput{
         width: 5.84rem;
         height: 0.6rem;
@@ -152,6 +153,7 @@
     }
     .el-dialog__body{
         max-height: 9.4rem;
+        padding-top: 0;
     }
     .radioGroup{
         display: flex;
@@ -163,10 +165,12 @@
         font-size: 0.18rem;
     }
     .scroll-container{
-        height: 6.4rem;
+        height: 6.6rem !important;
     }
     .el-dialog__footer .dialog-footer {
         text-align:left;
+        display: flex;
+        align-items: center;
         .el-pager li{
             background-color: transparent;
             border:1px solid rgba(90,176,243,1);
@@ -178,5 +182,58 @@
             border:1px solid rgba(90,176,243,1);
             color: #fff;
         }
+        .footRight{
+            font-size: 0.18rem;
+            color:#81A0D3;
+            margin-left: 0.18rem;
+            -webkit-line-clamp: 1;
+            line-clamp: 1;
+        }
+    }
+    .resultBox{
+        flex-wrap: wrap;
+        color: #fff;
+        li{
+            width: 49%;
+            font-size: 0.18rem;
+            background-color: @theme-color;
+            padding: 0.18rem 0.24rem 0.18rem 0.18rem;
+            margin-bottom: 0.24rem;
+            img{
+                width: 0.96rem;
+                height: 0.7rem;
+                margin-right: 0.14rem;
+            }
+        }
+        .itemTop{
+            margin-bottom: 0.16rem;
+        }
+        .textContent{
+            margin-top: 0.08rem;
+            font-size: 0.14rem;
+            opacity: .8;
+          
+        }
+        .itemBottom{
+            color: #81A0D3;
+        }
+        .bottomleft{
+            margin-right: 0.2rem;
+            i{
+                font-size:0.14rem;
+                color: @graphic-color1;
+            }
+        }
+    }
+   
+    .flexStart{
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+    .flexBetween{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 }

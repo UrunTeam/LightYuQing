@@ -414,5 +414,17 @@ body {
   font-size: .22rem;
   font-family: SiYuan;
 }
+em {
+  color: #F2476B;
+}
+.textEllipsis {
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
 
 /*# sourceMappingURL=layout.css.map */
