@@ -552,6 +552,15 @@ em {
   border-color: #F3Af1B;
   color: #000000;
 }
+.el-button--success {
+  background-color: #44BC86;
+  border-color: #44BC86;
+}
+.el-button--success:focus,
+.el-button--success:hover {
+  background-color: #44BC86;
+  border-color: #44BC86;
+}
 .el-button--none {
   background-color: transparent;
   border-color: transparent;
