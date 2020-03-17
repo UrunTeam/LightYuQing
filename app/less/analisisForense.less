@@ -103,6 +103,12 @@
 }
    // 全网检索功能弹窗样式
    .webSearch{
+       overflow: hidden;
+       .el-dialog{
+           position: relative;
+           top:50%;
+           transform: translateY(-50%);
+       }
     .searchInput{
         width: 5.84rem;
         height: 0.6rem;
@@ -147,6 +153,7 @@
     }
     .el-dialog__body{
         max-height: 9.4rem;
+        padding-top: 0;
     }
     .radioGroup{
         display: flex;
