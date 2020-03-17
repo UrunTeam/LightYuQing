@@ -29,7 +29,7 @@
                     </div>
                     <div class="conterLeft-bottom-item">
                         <ul class="scroll-container">
-                            <li class="sort-list flexStart" v-for='(item,index) in hostArr' :key='index'>
+                            <li class="sort-list flexStart" @click='weiboDialog=true' v-for='(item,index) in hostArr' :key='index'>
                                 <span class="hostSort" :class="index>2?'number':'sort'+index+' img'">
                                     ${index>2?index+1:''}
                                 </span>
@@ -176,6 +176,61 @@
                     <el-button type="primary" @click="dialog= false">确 定</el-button> -->
                   </div>
             </el-dialog>
+            <!-- 弹窗 全网搜索结束 -->
+            <!-- 弹窗 微博详情 -->
+            <el-dialog :visible.sync='weiboDialog' title='' width='7.84rem' top='0' class="weiboDetail">
+                <div class="weiboTitle flexStart">
+                    <img src="../images/hj.png" alt="">
+                    <div class="weiboHead">
+                        <div class="weiboMedia">澎湃新闻</div>
+                        <div class="weiboTime">
+                            3月7日 19:26 来自 微博视屏
+                        </div>
+                    </div>
+                </div>
+                <div class="weiboContent">
+                    <div class="text">
+                        【福建#泉州倒塌酒店被困人员约70人#，为医学观察点】3月7日19时15分，
+                        福建泉 州鲤城区欣佳快捷酒店发生坍塌约70人被困，目前已救出35人。该酒店系当地新冠肺炎医学观察点，
+                        应急管理部已派出工作组赶赴现场。L澎湃新闻的微博视频 . #泉州欣佳酒店# #泉州坍塌酒店为密切接触者
+                        隔离酒店# ​​​​
+                    </div>
+                    <div class="picture">
+                        <img src="../images/weiboDetail.png" alt="">
+                    </div>
+                    
+                </div>
+                <div class="weiboHost">
+                    <ul class="weiboHost-total">
+                        <li>转发406</li>
+                        <li class="active">评论1027 </li>
+                        <li>点赞15725</li>
+                    </ul>
+                    <!-- 评论模块 -->
+                    <ul class="weibo-comment">
+                        <li class="flexStart" v-for='(item,index) in 2'>
+                            <img src="../images/hj.png" alt="">
+                            <div class="commentDetail">
+                                <div class="detailText textEllipsis">
+                                    <span class="userName">hahaha倩：</span>
+                                    我本来是要去隔离的，因为养猫实在没办法去，就在家里自我隔离了，
+                                    今天隔离第十天，我的两只猫救了我一命，余生真的会更加好好对他们
+                                </div>
+                                <div class="detailTime">
+                                    <span>3月7日 21:36</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+
+
+                <div slot='footer' class="dialog-footer">
+                    <span>查看更多 <i class="iconfont iconzu9"></i></span>
+                </div>
+            </el-dialog>
+            <!-- 弹窗 微博详情结束 -->
 
         </div>
         <%- include('../templates/foot') %>
@@ -203,12 +258,16 @@
                 }
                 return {
                     // 以下为全网检索数据
-                    dialog:true,
+                    dialog:false,
                     mediaType:1,// 媒体类型
                     timeType:1,// 时间类型
                     seachValue:'',
                     // 全网检索数据结束
 
+
+                    // 弹窗 微博详情
+                    weiboDialog:false,
+                    // 弹窗 微博详情结束
                     // 湖南热点数据
 
                     hostArr: Array(50).fill({ title: '钟南山为何说有信息4月底基本控制疫情？这份研究给了答案', media: '澎湃新闻', host: 3658, date: '03-03 13:18' }),
