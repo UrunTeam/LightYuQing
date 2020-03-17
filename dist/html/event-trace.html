@@ -349,7 +349,7 @@
                   </div>
                 </div>
               </div>
-              <div class="body-box"></div>
+              <div class="body-box" id="js_wordClouds"></div>
             </div>
           </div>
         </div>
@@ -398,6 +398,9 @@
 
 </body>
 <script>
+  console.log(vm_yuqing.$data)
+  vm_yuqing.$data.pageDetail = {name:'事件跟踪',url:'event-trace.html',active:false,ordenar:false,setting:false,seachInput:true,icon:'1'};
+  
   //echart基本样式
   var optionStyle = {
     legend: {
@@ -663,6 +666,53 @@
     myChart.setOption(option);
   }
 
+  function wordClouds(id, wordCloudList) {
+    var myChart = echarts.init(document.getElementById(id));
+
+    var option = {
+      tooltip: {
+        show: true
+      },
+      series: [{
+        type: 'wordCloud', //类型为字符云
+        //shape: 'triangle', //平滑
+        // size: ['50%', '50%'],
+        left: 'center',// 居中
+        width: '100%', //图像宽高
+        height: '100%', //图像宽高
+        gridSize: 10, //词与词之间的距离
+        sizeRange: [12, 32],// 字体大小范围
+        rotationRange: [0, 90],// 旋转的角度范围
+        rotationStep: 90,// 每次旋转的角度步数
+        drawOutOfBound: false, //设置为true以允许部分在画布外部绘制单词。允许字号大于要绘制的画布大小
+        textStyle: {
+          normal: {
+            fontFamily: 'sans-serif',
+            color: function () {
+              var colors = ['#71DEBF', '#04C6D5'];
+              return colors[parseInt(Math.random() * 2)];
+            }
+          },
+          emphasis: {
+            shadowBlur: 5, //阴影距离
+            shadowColor: '#333' //阴影颜色
+          }
+        },
+        data: wordCloudList,
+      }]
+    };
+
+
+
+    var maskImage = new Image();
+    maskImage.src = "../images/bgworld.png"
+    maskImage.onload = function () {
+      console.log(option)
+      option.series[0].maskImage = maskImage;
+      myChart.setOption(option)
+    }
+  }
+  
   $(function () {
 
     var vm_Container = new Vue({
@@ -678,6 +728,7 @@
           this.sound();
           this.source(); // 来源分布
           this.mood();
+          this.yulunword();
 
         },
         sound() {
@@ -704,6 +755,66 @@
             { value: 100, name: "正面" },
           ];
           pie('js_mood', data)
+        },
+
+        yulunword() {
+          var data = [{
+            "name": "武汉加油",
+            "value": 1446
+          },
+          {
+            "name": "野生动物",
+            "value": 928
+          },
+          {
+            "name": "境外疫情",
+            "value": 906
+          },
+          {
+            "name": "新增病历",
+            "value": 825
+          },
+          {
+            "name": "武汉加油",
+            "value": 15
+          },
+          {
+            "name": "野生动物",
+            "value": 10
+          },
+          {
+            "name": "境外疫情",
+            "value": 60
+          },
+          {
+            "name": "新增病历",
+            "value": 22
+          },
+          {
+            "name": "武汉加油",
+            "value": 15
+          },
+          {
+            "name": "野生动物",
+            "value": 10
+          },
+          {
+            "name": "境外疫情",
+            "value": 60
+          },
+          {
+            "name": "境外疫情",
+            "value": 60
+          },
+          {
+            "name": "新增病历",
+            "value": 22
+          },
+          {
+            "name": "武汉加油",
+            "value": 15
+          }];
+          wordClouds('js_wordClouds', data)
         }
       },
       mounted() {
