@@ -169,6 +169,8 @@
     }
     .el-dialog__footer .dialog-footer {
         text-align:left;
+        display: flex;
+        align-items: center;
         .el-pager li{
             background-color: transparent;
             border:1px solid rgba(90,176,243,1);
@@ -179,6 +181,13 @@
             background-color: transparent;
             border:1px solid rgba(90,176,243,1);
             color: #fff;
+        }
+        .footRight{
+            font-size: 0.18rem;
+            color:#81A0D3;
+            margin-left: 0.18rem;
+            -webkit-line-clamp: 1;
+            line-clamp: 1;
         }
     }
     .resultBox{
@@ -203,6 +212,7 @@
             margin-top: 0.08rem;
             font-size: 0.14rem;
             opacity: .8;
+          
         }
         .itemBottom{
             color: #81A0D3;
@@ -215,7 +225,7 @@
             }
         }
     }
-
+   
     .flexStart{
         display: flex;
         align-items: center;
