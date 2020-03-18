@@ -342,7 +342,7 @@ textarea::placeholder {
 }
 .el-table th,
 .el-table tr {
-  background-color: transparent;
+  background-color: #1B418D;
   color: #ffffff;
 }
 .el-table th {
@@ -373,6 +373,32 @@ textarea::placeholder {
   font-weight: normal;
   font-size: .18rem;
   color: #52D4E0;
+}
+.el-table--scrollable-x .el-table__body-wrapper::-webkit-scrollbar {
+  height: .1rem;
+  background: rgba(255, 255, 255, 0.3);
+}
+.el-table--scrollable-x .el-table__body-wrapper::-webkit-scrollbar-corner,
+.el-table--scrollable-x .el-table__body-wrapper::-webkit-scrollbar-thumb,
+.el-table--scrollable-x .el-table__body-wrapper::-webkit-scrollbar-track {
+  border-radius: .04rem;
+}
+.el-table--scrollable-x .el-table__body-wrapper::-webkit-scrollbar-corner,
+.el-table--scrollable-x .el-table__body-wrapper::-webkit-scrollbar-track {
+  /* 滚动条轨道 */
+  background-color: rgba(180, 160, 120, 0);
+  box-shadow: inset 0 0 0.01rem rgba(180, 160, 120, 0.5);
+}
+.el-table--scrollable-x .el-table__body-wrapper::-webkit-scrollbar-thumb {
+  /* 滚动条手柄 */
+  background-color: #52D4E0;
+}
+.el-table__fixed-right,
+.el-table__fixed {
+  height: 100% !important;
+}
+.el-table--border::after {
+  background-color: #2551A2;
 }
 .el-date-picker__time-header {
   border-color: #5AB0F3;
