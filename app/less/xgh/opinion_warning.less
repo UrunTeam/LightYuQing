@@ -4,6 +4,24 @@
 	
 	// 中间
 	.conter-middle-reset {
+		.middle-top{
+			position: relative;
+			
+			// 更新时间
+			.update-range-time {
+			  text-align: center;
+			  i {
+			    float: right;
+			    margin-right: .49rem;
+			  }
+			}
+			
+			.iconlujing1{
+				position: absolute;
+				right: .4rem;
+			}
+		}
+		
 		// 时间
 		.analysis-time {
 			justify-content: center;
@@ -34,6 +52,7 @@
 		
 		.coner-wrap .wrap-top {
 			height: 100%;
+			position: relative;
 			
 			.comTitleBox {
 				justify-content: space-between;
@@ -42,9 +61,8 @@
 					padding: 0 0.6rem;
 					
 					.el-select{
-						width: 1.1rem;
+						width: 1.2rem;
 						height: 0.51rem;
-						font-size: 0.18rem;
 						border-radius: 3px;
 						
 						.el-input input {
@@ -57,7 +75,8 @@
 			
 			.sort-list{
 				padding: 0 0rem 0 0.05rem;
-				height: 5.6rem;
+				
+				height: calc(~'100% - .9rem');
 				.content {
 					width: calc(100% - .36rem);
 				}
@@ -66,65 +85,40 @@
 		
 		
 	}	
-	
-	
-	
-	#wordClouds{
-		height: 3.5rem;
-		width: 100%; 
-		
-		background:url(../images/world_bg.png) no-repeat center center;
-		background-size: 100% 93%;
-		//margin: .15rem auto;
-	}
-	
-	
-	#warnpieChart{
-		height: 3.3rem;
-	}
-	
-	.conterLeft-top {
-		.body-box{
-			height: 2.75rem;
-			box-shadow: 0 0 black;
-		}
+	// 图表
+	.warncharts{
+		height: calc(~'100% - .78rem');
+		box-shadow: 0 0 black;
 	}
 	
 }
 
-
-
-
-// 更新时间
-.update-range-time {
-  text-align: center;
-  i {
-    float: right;
-    margin-right: .49rem;
-  }
-}
+// 数据统计
 .number-total {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 6.4rem;
   border-top: .01rem solid @graphic-color2;
   border-bottom: .01rem solid @graphic-color2;
   padding: 0.25rem 0;
-  margin: 0 auto .1rem;
+  margin: 0 auto;
   dl {
-    flex: 1;
-    text-align: center;
-    border-right: .01rem solid #ffffff;
-    &:last-child {
-      border-right-color: transparent;
-    }
-    dt {
-      &:extend(.fSy);
-      font-size: .44rem;
-      color: @graphic-color4;
-    }
-    
+	flex: 1;
+	text-align: center;
+	border-right: .01rem solid #ffffff;
+	&:last-child {
+	  border-right-color: transparent;
+	}
+	dt {
+	  &:extend(.fSy);
+	  font-size: .44rem;
+	  color: @graphic-color4;
+	}
+	
   }
 }
+
+
+
+
 

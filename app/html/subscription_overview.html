@@ -1,0 +1,153 @@
+<%- include('../templates/head') %>
+
+<body>
+
+	<div class="yuQingContainer">
+		<%- include('../templates/header') %>
+
+		<div class="conter subscription subscription-overview" id="subscriptionOverview" v-cloak>
+			<div class="conter-left">
+				<div class="conterLeft-top">
+					<div class="comTitleBox flatAngle newInfo">
+						<i class="iconfont iconlujing1 incnEdit"></i>
+						<div class="modulTitle">
+							<i class="iconfont iconlujing2"></i>
+							最近24h订阅概况
+						</div>
+					</div>
+					<!-- 订阅概况 -->
+					<div class="number-total overview">
+						<dl>
+							<dt>1688</dt>
+							<dd class="f18">声量总和</dd>
+						</dl>
+						<dl>
+							<dt>69</dt>
+							<dd class="f18">正面声量</dd>
+						</dl>
+						<dl>
+							<dt>127</dt>
+							<dd class="f18">负面声量</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="conterLeft-center">
+					<div class="comTitleBox">
+						<i class="iconfont iconlujing1 incnEdit"></i>
+						<div class="modulTitle">
+							<i class="iconfont iconlujing5"></i>
+							发布区域分布
+						</div>
+					</div>
+					<!-- 订阅概况 -->
+					<div class="release-area">
+				
+					</div>
+				</div>
+				<div class="conterLeft-bottom">
+					<div class="comTitleBox">
+						<i class="iconfont iconlujing1 incnEdit"></i>
+						<div class="modulTitle">
+							<i class="iconfont iconzu10"></i>
+							媒体发布分布
+						</div>
+					</div>
+					<!-- 媒体发布 -->
+					<div class="media-area">
+						<ul class="f18">
+							<li class="head-title f22"><span>媒体</span><span>发文量</span><span>占比</span></li>
+							<li><span class="blue-name">人民网</span><span>1500</span><span>约35%</span></li>
+							<li><span class="blue-name">湖南日报</span><span>1500</span><span>约35%</span></li>
+							<li><span class="blue-name">人民日报</span><span>1500</span><span>约35%</span></li>
+						</ul>
+						<ul class="f18">
+							<li class="head-title f22"><span>媒体</span><span>发文量</span><span>占比</span></li>
+							<li><span class="blue-name">人民网</span><span>1500</span><span>约35%</span></li>
+							<li><span class="blue-name">湖南日报</span><span>1500</span><span>约35%</span></li>
+							<li><span class="blue-name">人民日报</span><span>1500</span><span>约35%</span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="conter-middle conter-middle-reset">
+				<div class="middle-top">
+					<p class="update-range-time">分析周期：最近7天 <i class="iconfont iconlujing1"></i></p>
+					<div class="number-total">
+						<dl>
+							<dt>1688</dt>
+							<dd class="f18">声量总和</dd>
+						</dl>
+						<dl>
+							<dt>69</dt>
+							<dd class="f18">正面声量</dd>
+						</dl>
+						<dl>
+							<dt>127</dt>
+							<dd class="f18">负面声量</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="coner-wrap">
+					<div class="wrap-top">
+						<div class="radiusBox-top">
+							<div class="comTitleBox">
+								<i class="iconfont iconlujing1 incnEdit"></i>
+								<div class="modulTitle">
+									<i class="iconfont iconqushi"></i>
+									订阅声量分布
+								</div>
+							</div>
+						</div>
+						<div class="body-box" id="overviewLine"></div>
+					</div>
+					<div class="wrap-bottom">
+						<div class="comTitleBox flatAngle ">
+							<i class="iconfont iconlujing1 incnEdit"></i>
+							<div class="modulTitle">
+								<i class="iconfont iconqushi"></i>
+								声量趋势
+							</div>
+						</div>
+						<div class="center-bottom">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="conter-right">
+				<!-- 来源分布 -->
+				<div class="radiusBox-top">
+
+					<div class="comTitleBox ">
+						<i class="iconfont iconlujing1 incnEdit"></i>
+						<div class="modulTitle">
+							<i class="iconfont iconzu5"></i>
+							情绪分布
+						</div>
+					</div>
+					<div class="body-box" id="overviewPie"></div>
+				</div>
+				<!-- 发布区域分布 -->
+				<div class="radiusBox-bottom">
+					<div class="comTitleBox">
+						<i class="iconfont iconlujing1 incnEdit"></i>
+						<div class="modulTitle">
+							<i class="iconfont iconlujing5"></i>
+							舆论热词
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<%- include('../templates/foot') %>
+</body>
+
+<script>
+	
+</script>
+
+</html>

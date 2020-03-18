@@ -3,11 +3,151 @@
         <div class="container">
             <div class="navbar-header flexBetween">
                 <div class="navbar-title flexStatr">
-                    <div class="navbarIcon" @click='showNav=!showNav'>图</div>
+                    <div class="navbarIcon" @click='showNav=!showNav'>
+						<i class="iconfont iconcaidan"></i>
+					</div>
                     <span class="navbar-line"></span>
                     <h2>${pageDetail.name}</h2>
-                    <div class="seachInput" v-if='pageDetail.seachInput'>dfsadfasdf</div>
                 </div>
+				<div class="seachInput" v-if='pageDetail.seachInput'>
+					<el-input
+					  v-model="search.state"
+					  placeholder="请输入内容"
+					  @blur="handleSelect"
+					  @focus="handleSelect"
+					  >
+					
+					   <i class="iconfont iconzu6" slot="prepend"></i>
+					  <i
+					    class="iconfont iconlujing8 el-input__icon"
+					    slot="suffix">
+					  </i>
+					  <i
+						v-bind:class="[{ rotateActive: search.rotateActive }, 'el-collapse-item__arrow', 'el-icon-arrow-right','el-input__icon']"
+					    slot="suffix">
+					  </i>
+					</el-input>
+					<div class="drop-contain" v-show="search.isShow" >
+						<div class="button-top">
+							<el-button type="primary" size="small">订阅总览</el-button>
+							<el-button type="warning " size="small">创建订阅</el-button>
+						</div>
+						<div class="accordion-center">
+							<el-collapse v-model="search.activeName" accordion>
+							  <el-collapse-item title="湖南监控" name="1">
+							   <div class="boxs-center">
+							   	<div class="boxs-title">
+							   		<p class="fl8">
+							   			湖南治安
+							   		</p>
+							   		<p  class="dl-info">
+							   			更新：2019/12/27 16:32
+							   		</p>
+							   	</div>
+							   	<div class="boxs-icon">
+							   		<i class="iconfont iconshezhi">
+							   		</i>
+							   		<i
+							   		  class="iconfont iconzu11">
+							   		</i>
+							   	</div>
+							   </div>
+							   <div class="boxs-center">
+									<div class="boxs-title">
+										<p class="fl8">
+											湖南治安
+										</p>
+										<p  class="dl-info">
+											更新：2019/12/27 16:32
+										</p>
+									</div>
+									<div class="boxs-echart" id="pieEchartIcon" ref='pieEchartIcon'>
+										
+									</div>
+							   </div>
+							  </el-collapse-item>
+							  <el-collapse-item title="上海监控" name="2">
+							    <div class="boxs-center">
+							    	<div class="boxs-title">
+							    		<p class="fl8">
+							    			湖南治安
+							    		</p>
+							    		<p  class="dl-info">
+							    			更新：2019/12/27 16:32
+							    		</p>
+							    	</div>
+							    	<div class="boxs-icon">
+							    		<i class="iconfont iconshezhi">
+							    		</i>
+							    		<i
+							    		  class="iconfont iconzu11">
+							    		</i>
+							    	</div>
+							    </div>
+							  </el-collapse-item>
+							  <el-collapse-item title="广东监控" name="3">
+							    <div class="boxs-center">
+							    	<div class="boxs-title">
+							    		<p class="fl8">
+							    			湖南治安
+							    		</p>
+							    		<p  class="dl-info">
+							    			更新：2019/12/27 16:32
+							    		</p>
+							    	</div>
+							    	<div class="boxs-icon">
+							    		<i class="iconfont iconshezhi">
+							    		</i>
+							    		<i
+							    		  class="iconfont iconzu11">
+							    		</i>
+							    	</div>
+							    </div>
+							  </el-collapse-item>
+							  <el-collapse-item title="天津监控" name="4">
+							    <div class="boxs-center">
+							    	<div class="boxs-title">
+							    		<p class="fl8">
+							    			湖南治安
+							    		</p>
+							    		<p  class="dl-info">
+							    			更新：2019/12/27 16:32
+							    		</p>
+							    	</div>
+							    	<div class="boxs-icon">
+							    		<i class="iconfont iconshezhi">
+							    		</i>
+							    		<i
+							    		  class="iconfont iconzu11">
+							    		</i>
+							    	</div>
+							    </div>
+							  </el-collapse-item>
+							</el-collapse>
+						</div>
+						<div class="boxs-center">
+							<div class="boxs-title">
+								<p class="fl8">
+									湖南治安
+								</p>
+								<p  class="dl-info">
+									更新：2019/12/27 16:32
+								</p>
+							</div>
+							<div class="boxs-icon">
+								<i class="iconfont iconshezhi">
+								</i>
+								<i
+								  class="iconfont iconzu11">
+								</i>
+							</div>
+						</div>
+						<div class="border-dash f14">
+						  注意：1.该组内容，将默认作用于全系统的数据过滤配置；
+						  2.当某项功能组，具备下面独立的配置时，将优先应用其独立配置；
+						</div>
+					</div>
+				</div>
                 <div class="navbar-right flexAround">
                         <div class="navbar-time">
                             ${year}年${month}月${day}日 
@@ -21,15 +161,15 @@
                         <!-- 数据整理 -->
                         <div class="navbar-Ordenar rightIcon" @click='pageDetail.ordenar=!pageDetail.ordenar'>
                             <div class="topTooltip">数据整理</div>
-                            整
+                            <i class="iconfont iconshuju"></i>
                         </div> 
                         <div class="navbar-setting rightIcon"  @click='pageDetail.setting=!pageDetail.setting'>
                             <div class="topTooltip">基础设置</div>
-                            设
+                            <i class="iconfont iconshezhi"></i>
                         </div> 
                         <div class="navbar-signOut rightIcon"  @click='signOut'>
                             <div class="topTooltip">退出登录</div>
-                            退
+                            <i class="iconfont icontuichu-"></i>
                         </div> 
                 </div>
             </div>
@@ -39,13 +179,13 @@
             <div class="container">
                <ul class="navbar-ul">
                    <li v-for='(item,index) in pageArr' :key='index'  :class="item.active?'active':''">
-                       <span :class="item.icon"></span>
-                       <!-- ${item.name} --> 图
+                       <span :class="['iconfont',item.icon]"></span>
+                       <!-- ${item.name} --> 
                     </li>
                </ul>
                <ul class="navbar-big">
                    <li v-for='(item,index) in pageArr' :key='index' @click='checkActive(item,index)'  :class="item.active?'active':''">
-                        <span :class="item.icon">图</span>
+                        <span :class="['iconfont',item.icon]"></span>
                         <br>   
                         ${item.name.slice(0,4)}
                     </li>
