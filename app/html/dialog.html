@@ -8,6 +8,67 @@
     <div class="conter" id="conter">
       <el-button type="text" @click="dialogFormVisible = true">打开嵌套表单的 Dialog</el-button>
 
+      <el-dialog :visible.sync="dialogFormVisible" title="基础数据配置" :width="dialogWidth">
+        <!-- <div slot="title" class="el-dialog__title">
+          收获<el-tooltip class="item" effect="dark" content="Right Center 提示文字" placement="top">
+          <i class="iconfont iconzu8"></i>
+        </div> -->
+        <!-- 单选框 -->
+        <el-radio-group v-model="radio1" style="margin-bottom: .14rem;">
+          <el-radio-button label="1">全局数据调控</el-radio-button>
+          <el-radio-button label="2">属地舆情研判-配置</el-radio-button>
+          <el-radio-button label="3">舆情预警-配置</el-radio-button>
+        </el-radio-group>
+
+        <div style="display: flex;">
+          <div class="configuration f18" v-show="radio1==1">
+            <div class="border-dash f14">
+              注意：1.该组内容，将默认作用于全系统的数据过滤配置；
+              2.当某项功能组，具备下面独立的配置时，将优先应用其独立配置；
+            </div>
+            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+              <el-form-item label="默认不匹配关键词：">
+                <el-input type="textarea" maxlength="1000" show-word-limit
+                  placeholder="该组关键词将用于“境内综合（不含微博）”和“微博”的分析，作用为过滤目的无效数据；支持汉字、英文字母、阿拉伯数字作为关键词，上限为1000个汉字；仅支持以“|”英文字符分隔号为指定表达符号，“|”表示或关系；例子:招聘|[招聘启事|合租广告"
+                  v-model="ruleForm.name" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="活动区域：">
+                <el-select v-model="ruleForm.region" placeholder="请选择活动区域">
+                  <el-option label="区域一" value="shanghai"></el-option>
+                  <el-option label="区域二" value="beijing"></el-option>
+                </el-select>
+              </el-form-item>
+    
+              <el-form-item label="默认完全匹配：" prop="isNeed">
+                <el-radio-group v-model="ruleForm.isNeed">
+                  <el-radio label="1">需要</el-radio>
+                  <el-radio label="2">不需要</el-radio>
+                </el-radio-group>
+              </el-form-item>
+    
+              <el-form-item label="默认数据来源" prop="source">
+                <div class="trans-wrap f18">
+                  <div class="left">
+                    <!-- 搜索框 -->
+                    <el-input class="search" placeholder="站点或标签名称" suffix-icon="iconfont iconlujing"
+                      v-model="ruleForm.source"></el-input>
+                    <!-- 树 -->
+                    <el-tree :props="props" :load="loadNode" lazy show-checkbox @check-change="handleCheckChange">
+                    </el-tree>
+                  </div>
+                  <div class="right">
+                    <div class="top f18">
+                      <span>已选择:<em class="count warn">3</em></span>
+                      <span>还可选择:<em class="count primary">12</em></span>
+                    </div>
+                    <!-- 标签 -->
+                    <el-tag v-for="tag in tags" :key="tag.name" closable :type="tag.type" @close="handleClose(tag)">
+                      ${tag.name}
+                    </el-tag>
+                  </div>
+                </div>
+              </el-form-item>
+            </el-form>
       <el-dialog :visible.sync="dialogFormVisible"  :width="showPreview?'15.8rem':'7.84rem'" class="basic-dialog">
         <div slot="title" class="el-dialog__title">
           <div class="left">

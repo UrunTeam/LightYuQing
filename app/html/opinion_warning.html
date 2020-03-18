@@ -8,14 +8,14 @@
 			<div class="conter-left">
 				<!-- 预警趋势 -->
 				<div class="conterLeft-top">
-					<div class="comTitleBox flatAngle">
+					<div class="comTitleBox flatAngle newInfo">
 						<i class="iconfont iconlujing1 incnEdit"></i>
 						<div class="modulTitle">
 							<i class="iconfont iconqushi"></i>
 							预警趋势
 						</div>
 					</div>
-					<div id="warn-line" class="body-box"></div>
+					<div id="warn-line" class="warncharts"></div>
 				</div>
 				<!-- 区域排行 -->
 				<div class="conterLeft-bottom">
@@ -246,6 +246,7 @@
 				<div class="middle-top">
 					<div class="analysis-time">
 						<span class="update-range-time">分析周期:</span>
+						<i class="iconfont iconlujing1"></i>
 						<ul class="f18">
 							<li>24小时</li>
 							<li class="active">7天</li>
@@ -282,7 +283,7 @@
 							</div>
 							<div class="modulSelect">
 								<label>信息状态：</label>
-								<el-select v-model="value" clearable placeholder="请选择">
+								<el-select class="f18" v-model="value" clearable placeholder="请选择">
 								    <el-option
 								      v-for="item in infoOptions"
 								      :key="item.value"
@@ -462,8 +463,7 @@
 						</div>
 
 					</div>
-					<div id="warnpieChart">
-						fsdfsdf
+					<div id="warnpieChart" class="warncharts">
 					</div>
 				</div>
 				<!-- 舆论热词 -->
@@ -475,7 +475,7 @@
 							舆论热词
 						</div>
 					</div>
-					<div id="wordClouds"></div>
+					<div id="wordClouds" class="warncharts word-cloud"></div>
 				</div>
 			</div>
 
@@ -596,6 +596,7 @@
 			delimiters: ['${', '}'],
 			data() {
 				return {
+					value:"",
 					word: [{
 							"name": "武汉加油",
 							"value": 1446

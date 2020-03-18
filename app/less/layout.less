@@ -234,14 +234,21 @@ html,body {
         height: 100%;
         .navbarIcon{
             width: 0.46rem;
-            font-size: 0.46rem;
             cursor: pointer;
             color: @graphic-color4;
+			
+			i.iconfont {
+				font-size: 0.46rem;
+			}
             
         }
     }
     .navbar-right{
         height: 100%;
+		
+		i.iconfont{
+			font-size: .2rem;
+		}
     }
     .navbar-line{
         display: block;
@@ -312,6 +319,170 @@ html,body {
     .navbar-Ordenar{
       
     }
+	
+	// 输入框
+	.seachInput{
+		position: relative;
+		
+		.el-input {
+			width: 5.7rem;
+				.el-input-group__prepend{
+					background-color: #1B418D;
+					border-color: #1B418D;
+					
+					&:after{
+						content: " ";
+						display: block;
+						position: absolute;
+						border-right: 1px solid #467DAB;
+						width: 1px;
+						height: 0.4rem;
+						right: 0;
+						top: 0.1rem;
+					}
+				}
+				
+				
+				.el-input__inner{
+					height: 0.58rem;
+					background-color: #1B418D;
+					border-color: #1B418D;
+					font-size: .32rem;
+					color: #ffffff;
+				}
+				
+				
+				.iconzu6 {
+					color: @graphic-color4;
+					font-size: 0.3rem;
+				}
+				
+				.iconlujing8 {
+					font-size: .18rem;
+					color: #FFFFFF;
+				}
+				
+				.el-input__icon {
+					width: 0.3rem;
+				}
+				
+				.rotateActive {
+					transform: rotate(-180deg);
+				}
+		}
+		
+		.el-collapse-item__arrow{
+			color: #FFFFFF;
+			opacity: 0.3;
+			
+			&:before {
+				font-family: "iconfont" !important;
+				content: "\e620";
+				color: #ffffff;
+				font-size: 0.12rem;
+			}
+		}
+		
+		.drop-contain {
+			width: 5.7rem;
+			max-height: 6.94rem;
+			position: absolute;
+			left: 0;
+			background: @theme-color3;
+			z-index: 9;
+			top: 0.62rem;
+			box-shadow: 0px 3px 6px rgba(0,0,0,0.52);
+			border-radius: 6px;
+			padding: 0.3rem;
+			
+			.button-top {
+				display: flex; 
+				justify-content: space-between;
+				 
+				.el-button{
+					font-size: .18rem;
+					color: #000000;
+				}
+			}
+			
+			.accordion-center {
+				position: relative;
+				padding-top: 0.14rem;
+				
+				.el-collapse{
+					border: none;
+				}
+				.el-collapse-item__header{
+					border: none;
+					background:@theme-color3;
+					font-size: .22rem;
+					color: @graphic-color4!important;
+					height: 0.42rem;
+					padding-left: 0.3rem;
+					
+					
+				}
+				.el-collapse-item__wrap{
+					border: none;
+					background:@theme-color3;
+				}
+				
+				.el-collapse-item__content{
+					color: #FFFFFF;
+					padding-bottom: 0;
+				}
+				
+				.el-collapse-item__arrow{
+					position: absolute;
+					z-index: 1;
+					left: 0;
+					&:before {
+						content: "\e625";
+						font-size: 0.12rem;
+					}
+				}
+			}
+			
+			.boxs-center {
+				height: 0.82rem;
+				background: #305297;
+				border-radius: 5px;
+				margin: 0.14rem 0;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: space-between;
+				padding: 0 0.2rem;
+				
+				.boxs-icon {
+					cursor: pointer;
+					i{
+						padding-right:0.08rem ;
+					}
+				}
+				.dl-info {
+					font-size: .14rem;
+				}
+				
+				p{
+					line-height: 2;
+					font-size: .18rem;
+				}
+			}
+			
+			.border-dash {
+				margin-bottom: 0;
+			}
+			
+			.boxs-echart {
+				width: .52rem;
+				height: 0.82rem;
+			}
+		}
+	}
 }
 
 // 侧边栏样式
@@ -339,6 +510,10 @@ html,body {
             &:hover,&:active,&.active{
                 color:  @graphic-color2;
             }
+			
+			span.iconfont {
+				font-size: 0.34rem;
+			}
         }
     }
     .navbar-big{
@@ -365,6 +540,9 @@ html,body {
                 color:  @graphic-color4;
                 background-color: @theme-color2;
             }
+			span.iconfont {
+				font-size: 0.34rem;
+			}
         }
     }
 

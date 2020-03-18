@@ -77,11 +77,11 @@
                 <!-- <el-date-picker v-model="ruleForm.date" type="datetime" placeholder="选择日期时间" align="right"
                   :picker-options="pickerOptions">
                 </el-date-picker> -->
-                
+
                 <el-date-picker v-model="ruleForm.date" type="datetimerange" :picker-options="pickerOptions"
                   range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" align="right">
                 </el-date-picker>
-              </el-radio-group>
+                </el-radio-group>
 
             </el-form>
           </div>
@@ -140,19 +140,19 @@
         </div>
 
         <el-table :data="tableData" border style="width: 100%" :cell-style="CellName">
-          <el-table-column fixed prop="date" label="日期" width="150">
+          <el-table-column fixed prop="date" label="日期">
           </el-table-column>
-          <el-table-column prop="name" label="姓名" width="120">
+          <el-table-column prop="name" label="姓名">
           </el-table-column>
-          <el-table-column prop="province" label="省份" width="120">
+          <el-table-column prop="province" label="省份">
           </el-table-column>
-          <el-table-column prop="city" label="市区" width="120">
+          <el-table-column prop="city" label="市区">
           </el-table-column>
           <el-table-column prop="address" label="地址">
           </el-table-column>
           <el-table-column prop="zip" label="邮编">
           </el-table-column>
-          <el-table-column fixed="right" label="操作" width="200">
+          <el-table-column fixed="right" label="操作">
             <template slot-scope="scope">
               <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
               <el-button type="text" size="small">编辑</el-button>
@@ -160,6 +160,24 @@
           </el-table-column>
         </el-table>
         <el-button type="primary">新增一项</el-button>
+        <!-- 文章详情 start-->
+        <div class="msg-detail">
+          <h3>法国新增新冠肺炎确诊病例1097例，累计确诊7730例</h3>
+          <div class="msg-info f14">
+            <span class="source">澎湃新闻</span>
+            <span class="time">3月7日 19:26 </span>
+          </div>
+          <div class="content">
+            <p>在发布会上，有记者提问，有外媒报道，近期的疫情对全产业链产生影响，并且进一步加剧了外资企业的外迁，请问如何看待这一说法？同时，我国的产业链受到了哪些影响？</p>
+
+            <p> 吴红亮坦言，外资企业一直是我国参与全球产业链的重要组成部分，疫情发生以来，因为多种原因，比如说交通物流受阻、人员因为隔离无法到岗，还有因为防疫物资不足等因素，外资企业跟内资企业一样遇到了经营上的困难。发改委通过跟外国商会和很多跨国公司保持密切联系，了解到部分企业也出现了难以接到订单，或者接到订单也难以完成的情况，的确存在一些订单转移的问题。但是随着复工复产工作大力推进，我们看到产业链上下游各个环节在逐步打通，总体来讲形势在逐步好转。特别是进入3月份以来，随着全国疫情防控形势不断向好，企业复工复产率也不断提升，外资企业在华生产经营逐步走向正常，订单完成情况不断好转，因此企业的信心加快恢复。</p>
+
+            <p>同时，我国拥有世界上规模最大、门类最全、配套最完备的产业体系，在这个产业体系下能够实现从产品的研发成果到量化生产的快速转化，而且在生产过程当中，保持了高频灵活的产品升级迭代，这对很多行业都非常重要，也是外资企业高度重视的。</p>
+
+            <p>吴红亮强调，下一步，发改委将继续抓好稳外资的各项工作，继续帮助外资企业解决复工复产的难点堵点问题，特别是尽快实现满产达产，同时在政策层面抓好缩减外资准入负面清单，扩大鼓励外商投资的范围，加大标志性的重大外资项目推进力度。我们相信，随着开放红利的进一步释放，将有助于增强外资企业在华长期发展的信心，能够保持产业链的稳定，对此我们是有信心的。(中新经纬APP)</p>
+          </div>
+        </div>
+        <!-- 文章详情 end-->
         <div slot="footer" class="dialog-footer">
           <el-button type="warning" @click="dialogFormVisible = false">取 消</el-button>
           <el-button type="primary" @click="submitForm('ruleForm')">确 定</el-button>
@@ -309,8 +327,8 @@
     },
     computed: {
       dialogWidth() {
-        // return '7.84rem'
-        return '15.8rem'
+        return '7.84rem'
+        // return '15.8rem'
 
       }
     },

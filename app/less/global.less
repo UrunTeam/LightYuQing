@@ -434,6 +434,16 @@
   flex: 1;
   color: #ffffff;
 }
+
+
+// 字符云背景
+.word-cloud{
+	width: 100%; 
+	
+	background:url(../images/world_bg.png) no-repeat center center;
+	background-size: 100% 93%;
+}
+
 .el-input__suffix-inner {
   .iconfont {
     font-size: .16rem;
@@ -494,5 +504,28 @@
 
   .el-dialog__title {
     display: flex;
+  }
+}
+
+
+// 新闻详情
+.msg-detail {
+  color: #ffffff;
+  h3 {
+    font-size: .32rem;
+  }
+  .msg-info {
+    padding: .15rem 0 .12rem;
+    border-bottom: .01rem solid rgba(255,255,255,.19);
+    color: @graphic-color12;
+  }
+  .content {
+    font-family: SiYuan;
+    font-size: .18rem;
+    line-height: .24rem;
+    text-align: justify;
+    p {
+      margin-bottom: .3rem;
+    }
   }
 }

@@ -262,12 +262,17 @@ body {
 }
 #app .navbar-title .navbarIcon {
   width: 0.46rem;
-  font-size: 0.46rem;
   cursor: pointer;
   color: #F3Af1B;
 }
+#app .navbar-title .navbarIcon i.iconfont {
+  font-size: 0.46rem;
+}
 #app .navbar-right {
   height: 100%;
+}
+#app .navbar-right i.iconfont {
+  font-size: .2rem;
 }
 #app .navbar-line {
   display: block;
@@ -331,6 +336,150 @@ body {
   z-index: -1;
   bottom: -12%;
 }
+#app .seachInput {
+  position: relative;
+}
+#app .seachInput .el-input {
+  width: 5.7rem;
+}
+#app .seachInput .el-input .el-input-group__prepend {
+  background-color: #1B418D;
+  border-color: #1B418D;
+}
+#app .seachInput .el-input .el-input-group__prepend:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  border-right: 1px solid #467DAB;
+  width: 1px;
+  height: 0.4rem;
+  right: 0;
+  top: 0.1rem;
+}
+#app .seachInput .el-input .el-input__inner {
+  height: 0.58rem;
+  background-color: #1B418D;
+  border-color: #1B418D;
+  font-size: .32rem;
+  color: #ffffff;
+}
+#app .seachInput .el-input .iconzu6 {
+  color: #F3Af1B;
+  font-size: 0.3rem;
+}
+#app .seachInput .el-input .iconlujing8 {
+  font-size: .18rem;
+  color: #FFFFFF;
+}
+#app .seachInput .el-input .el-input__icon {
+  width: 0.3rem;
+}
+#app .seachInput .el-input .rotateActive {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+}
+#app .seachInput .el-collapse-item__arrow {
+  color: #FFFFFF;
+  opacity: 0.3;
+}
+#app .seachInput .el-collapse-item__arrow:before {
+  font-family: "iconfont" !important;
+  content: "\e620";
+  color: #ffffff;
+  font-size: 0.12rem;
+}
+#app .seachInput .drop-contain {
+  width: 5.7rem;
+  max-height: 6.94rem;
+  position: absolute;
+  left: 0;
+  background: #1B418D;
+  z-index: 9;
+  top: 0.62rem;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.52);
+  border-radius: 6px;
+  padding: 0.3rem;
+}
+#app .seachInput .drop-contain .button-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+#app .seachInput .drop-contain .button-top .el-button {
+  font-size: .18rem;
+  color: #000000;
+}
+#app .seachInput .drop-contain .accordion-center {
+  position: relative;
+  padding-top: 0.14rem;
+}
+#app .seachInput .drop-contain .accordion-center .el-collapse {
+  border: none;
+}
+#app .seachInput .drop-contain .accordion-center .el-collapse-item__header {
+  border: none;
+  background: #1B418D;
+  font-size: .22rem;
+  color: #F3Af1B !important;
+  height: 0.42rem;
+  padding-left: 0.3rem;
+}
+#app .seachInput .drop-contain .accordion-center .el-collapse-item__wrap {
+  border: none;
+  background: #1B418D;
+}
+#app .seachInput .drop-contain .accordion-center .el-collapse-item__content {
+  color: #FFFFFF;
+  padding-bottom: 0;
+}
+#app .seachInput .drop-contain .accordion-center .el-collapse-item__arrow {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+}
+#app .seachInput .drop-contain .accordion-center .el-collapse-item__arrow:before {
+  content: "\e625";
+  font-size: 0.12rem;
+}
+#app .seachInput .drop-contain .boxs-center {
+  height: 0.82rem;
+  background: #305297;
+  border-radius: 5px;
+  margin: 0.14rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: space-between;
+  padding: 0 0.2rem;
+}
+#app .seachInput .drop-contain .boxs-center .boxs-icon {
+  cursor: pointer;
+}
+#app .seachInput .drop-contain .boxs-center .boxs-icon i {
+  padding-right: 0.08rem ;
+}
+#app .seachInput .drop-contain .boxs-center .dl-info {
+  font-size: .14rem;
+}
+#app .seachInput .drop-contain .boxs-center p {
+  line-height: 2;
+  font-size: .18rem;
+}
+#app .seachInput .drop-contain .border-dash {
+  margin-bottom: 0;
+}
+#app .seachInput .drop-contain .boxs-echart {
+  width: .52rem;
+  height: 0.82rem;
+}
 #navbar-right {
   position: absolute;
   left: 0;
@@ -358,6 +507,9 @@ body {
 #navbar-right .navbar-ul li.active {
   color: #5AB0F3;
 }
+#navbar-right .navbar-ul li span.iconfont {
+  font-size: 0.34rem;
+}
 #navbar-right .navbar-big {
   position: absolute;
   display: none;
@@ -383,6 +535,9 @@ body {
 #navbar-right .navbar-big li.active {
   color: #F3Af1B;
   background-color: #305297;
+}
+#navbar-right .navbar-big li span.iconfont {
+  font-size: 0.34rem;
 }
 .comTitleBox {
   display: -webkit-box;
