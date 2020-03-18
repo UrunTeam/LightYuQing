@@ -86,9 +86,9 @@
                 <!-- 声量趋势 -->
                 <div class="conterLeft-top">
                     <div class="comTitleBox flatAngle">
-                        <i class="iconfont iconlujing1 incnEdit"></i>
+                        <i class="iconfont iconlujing1 incnEdit" @click='dialog=true'></i>
                         <div class="modulTitle">
-                            <i class="iconfont iconqushi"></i>
+                            <i class="iconfont iconqushi" ></i>
                             声量趋势
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                     </div>
                     <div class="conterLeft-bottom-item">
                         <ul class="scroll-container">
-                            <li class="sort-list flexStart" v-for='(item,index) in hostArr' :key='index'>
+                            <li class="sort-list flexStart" @click='weiboDialog=true' v-for='(item,index) in hostArr' :key='index'>
                                 <span class="hostSort" :class="index>2?'number':'sort'+index+' img'">
                                     ${index>2?index+1:''}
                                 </span>
@@ -165,9 +165,7 @@
                             情绪分布
                         </div>
                     </div>
-                    <div id="pieChart" ref='pieChart'>
-                        fsdfsdf
-                    </div>
+                    <div id="pieChart" ref='pieChart'></div>
                 </div>
                 <!-- 舆论热词 -->
                 <div class="radiusBox-bottom">
@@ -178,16 +176,142 @@
                             舆论热词
                         </div>
                     </div>
+                    <div id="hostWordChart" ref="hostWordChart"></div>
 
                 </div>
             </div>
 
 
+            <!-- 弹窗 全网检索功能-->
+
+            <el-dialog :visible.sync="dialog" title="" width="12.68rem" top='0' class="webSearch">
+                <div class="searchInput">
+                    <input type="text" autocomplete="off" v-model='seachValue' placeholder="请输入关键词">
+                    <span class="searchInput-icon">
+                        <i class="iconfont iconlujing"></i>
+                    </span>
+                </div>
+                <div class="radioGroup">
+                    <el-radio-group v-model="mediaType" size="medium">
+                        <el-radio-button label="1">综合</el-radio-button>
+                        <el-radio-button label="2">新闻</el-radio-button>
+                        <el-radio-button label="3">微博</el-radio-button>
+                        <el-radio-button label="4">微信</el-radio-button>
+                        <el-radio-button label="5">APP</el-radio-button>
+                        <el-radio-button label="6">其他</el-radio-button>
+                      </el-radio-group>
+                      <div class="groupRight">
+                        <span>时间：</span>
+                        <el-radio-group v-model="timeType" size="medium">
+                            <el-radio-button label="1">近24小时</el-radio-button>
+                            <el-radio-button label="2">近7天</el-radio-button>
+                            <el-radio-button label="3">近15天</el-radio-button>
+                            <el-radio-button label="4">近30天</el-radio-button>
+                          </el-radio-group>
+                      </div>
+                    
+                </div>
+                <div class="resultConten scroll-container" >
+                    <ul class="resultBox flexBetween">
+                        <li v-for='(item,index) in 20'>
+                            <div class="itemTop flexStart">
+                                <img src="../images/hj.png" alt="">
+                                <div class="rightText">
+                                    <div class="textTitle">湖南<em>长沙</em>"黑老大"犯10宗罪判死刑</div>
+                                    <div class="textContent textEllipsis">
+                                        长沙环江滨水大道附近，一辆白色SUV驶过中心线，撞上一辆正常行驶的摩托车，
+                                        造成摩托车上一家四口3死1伤
+                                        长沙环江滨水大道附近，一辆白色SUV驶过中心线，撞上一辆正常行驶的摩托车，
+                                        造成摩托车上一家四口3死1伤
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="itemBottom flexStart">
+                                <div class="bottomleft">
+                                    <span><i class="iconfont" :class='getIconClass(mediaType)'></i></span>
+                                    澎湃新闻
+                                </div>
+                                <div class="rightTime">
+                                    2018-08-19 19:00 发布
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div slot="footer" class="dialog-footer">
+                    <el-pagination
+                    background
+                    layout="prev, pager, next"
+                    :total="1000">
+                    </el-pagination>
+                    <div class="footRight textEllipsis">
+                        <span>柳州|柳州市|广西柳州)+ (派出所|公安局) + 黑老大+涉黑</span>
+                    </div>
+                    <!-- <el-button type="warning" @click="dialog = false">取 消</el-button>
+                    <el-button type="primary" @click="dialog= false">确 定</el-button> -->
+                  </div>
+            </el-dialog>
+            <!-- 弹窗 全网搜索结束 -->
+            <!-- 弹窗 微博详情 -->
+            <el-dialog :visible.sync='weiboDialog' title='' width='7.84rem' top='0' class="weiboDetail">
+                <div class="weiboTitle flexStart">
+                    <img src="../images/hj.png" alt="">
+                    <div class="weiboHead">
+                        <div class="weiboMedia">澎湃新闻</div>
+                        <div class="weiboTime">
+                            3月7日 19:26 来自 微博视屏
+                        </div>
+                    </div>
+                </div>
+                <div class="weiboContent">
+                    <div class="text">
+                        【福建#泉州倒塌酒店被困人员约70人#，为医学观察点】3月7日19时15分，
+                        福建泉 州鲤城区欣佳快捷酒店发生坍塌约70人被困，目前已救出35人。该酒店系当地新冠肺炎医学观察点，
+                        应急管理部已派出工作组赶赴现场。L澎湃新闻的微博视频 . #泉州欣佳酒店# #泉州坍塌酒店为密切接触者
+                        隔离酒店# ​​​​
+                    </div>
+                    <div class="picture">
+                        <img src="../images/weiboDetail.png" alt="">
+                    </div>
+                    
+                </div>
+                <div class="weiboHost">
+                    <ul class="weiboHost-total">
+                        <li>转发406</li>
+                        <li class="active">评论1027 </li>
+                        <li>点赞15725</li>
+                    </ul>
+                    <!-- 评论模块 -->
+                    <ul class="weibo-comment">
+                        <li class="flexStart" v-for='(item,index) in 2'>
+                            <img src="../images/hj.png" alt="">
+                            <div class="commentDetail">
+                                <div class="detailText textEllipsis">
+                                    <span class="userName">hahaha倩：</span>
+                                    我本来是要去隔离的，因为养猫实在没办法去，就在家里自我隔离了，
+                                    今天隔离第十天，我的两只猫救了我一命，余生真的会更加好好对他们
+                                </div>
+                                <div class="detailTime">
+                                    <span>3月7日 21:36</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+
+
+                <div slot='footer' class="dialog-footer">
+                    <span>查看更多 <i class="iconfont iconzu9"></i></span>
+                </div>
+            </el-dialog>
+            <!-- 弹窗 微博详情结束 -->
 
         </div>
         
 <script src="../libs/jquery/jquery.min.js"></script>
 <script src="../libs/echarts/echarts.min.js"></script>
+<script src="../libs/echarts/echarts-wordcloud.min.js"></script>
 <script src="../js/resize.js"></script>
 <script src="../js/vue.js"></script>
 <script src="../libs/ElementUI/index.js"></script>
@@ -217,6 +341,17 @@
                             return div.html();
                 }
                 return {
+                    // 以下为全网检索数据
+                    dialog:false,
+                    mediaType:1,// 媒体类型
+                    timeType:1,// 时间类型
+                    seachValue:'',
+                    // 全网检索数据结束
+
+
+                    // 弹窗 微博详情
+                    weiboDialog:false,
+                    // 弹窗 微博详情结束
                     // 湖南热点数据
 
                     hostArr: Array(50).fill({ title: '钟南山为何说有信息4月底基本控制疫情？这份研究给了答案', media: '澎湃新闻', host: 3658, date: '03-03 13:18' }),
@@ -410,15 +545,6 @@
                     // 地图图表
                     mapChart: {
                         option: {
-                            // backgroundColor: '#044060',
-                            // title: {
-                            //     text: "长清区示例",
-
-                            //     left: 'center',
-                            //     textStyle: {
-                            //         color: '#ffffff'
-                            //     }
-                            // },
                             tooltip:{
                                 trigger:'item',
                                 formatter:function(params){
@@ -445,6 +571,9 @@
                                 textStyle: {
                                     color: '#ffffff'
                                 },
+                                // 翻转的原因宽高对调
+                                itemWidth:10,//长条的高度度
+                                itemHeight:90,//长条的宽度
                                 show:true,
                             },
                             series: [{
@@ -480,22 +609,65 @@
                         eachart: null,
                         $el: null
                     },
-                    mapName: 'hunan',
-                    eachartNameList: ['pieChart', 'trendChart','mapChart'],
+                    // 舆论热词图表
+                    hostWordChart:{
+                        option:{
+                            tooltip: {
+							show: true
+						},
+						series: [{
+							type: 'wordCloud', //类型为字符云
+							//shape: 'triangle', //平滑
+							// size: ['50%', '50%'],
+							left: 'center',// 居中
+							width: '100%', //图像宽高
+							height: '100%', //图像宽高
+							gridSize: 10, //词与词之间的距离
+							sizeRange: [12, 32],// 字体大小范围
+							rotationRange: [0, 90],// 旋转的角度范围
+							rotationStep: 90,// 每次旋转的角度步数
+							drawOutOfBound: false, //设置为true以允许部分在画布外部绘制单词。允许字号大于要绘制的画布大小
+							textStyle: {
+								normal: {
+									fontFamily: 'sans-serif',
+									color: function() {
+										var colors = ['#71DEBF', '#04C6D5'];
+										return colors[parseInt(Math.random() * 2)];
+									}
+								},
+								emphasis: {
+									shadowBlur: 5, //阴影距离
+									shadowColor: '#333' //阴影颜色
+								}
+							},
+							data: [],
+						}]
+                        },
+                        eachart:null,
+                        $el:null,
+                    },
+                    eachartNameList: ['pieChart', 'trendChart','mapChart','hostWordChart'],
                 };
             },
             created() {
-               
+                let that=this 
+                // 视口发生变化重置所有图表大小
+                window.onresize = function () {
+                    that.eachartNameList.map((item,index)=>{
+                        that[item].eachart.resize();
+                    })
+                };
             },
             mounted() {
                 let that = this
-                // echarts.registerMap(that.mapName, that.hunan);
                 this.initEachDom();
                 this.initPieChart()
                 this.initTrendChart()
                 this.initMapChart()
+                this.initHostWordChart()
             },
             methods: {
+                // 实例所有图表
                 initEachDom() {
                     let that = this;
                     that.eachartNameList.map((item, index) => {
@@ -513,6 +685,7 @@
                 updateEach(name) {
                     this[name].eachart.setOption(this[name].option);
                 },
+                // 情绪分布饼图图表
                 initPieChart() {
                     let dataList = [
                         { value: 300, name: "中立" },
@@ -522,6 +695,7 @@
                     this.pieChart.option.series[0].data = dataList;
                     this.updateEach("pieChart");
                 },
+                // 声量趋势图表数据
                 initTrendChart() {
                     let arr = [{ name: '微信', data: [75, 56, 36, 67, 10, 20] },
                     { name: 'APP', data: [54, 65, 89, 20, 10, 20] },
@@ -534,6 +708,7 @@
                     })
                     this.updateEach("trendChart");
                 },
+                //  地图图表
                 initMapChart(){
                     let data=[{name:'常德市',value:0},{name:'张家界市',value:100},
                               {name:'湘西土家族苗族自治州',value:20},{name:'岳阳市',value:80},
@@ -550,9 +725,45 @@
                     console.log(chinaJson)
                     that.updateEach("mapChart");
                 });
-                }
-
-
+                },
+                // 舆论热词图表
+                initHostWordChart(){
+                    let that=this
+                    var maskImage = new Image();
+					maskImage.src = "../images/bgworld.png"
+                    let arr=[{"name": "武汉加油","value": 1446},
+						{"name": "野生动物","value": 928},
+						{"name": "境外疫情","value": 906},
+						{"name": "新增病历","value": 825},
+						{"name": "武汉加油","value": 15},
+						{"name": "野生动物","value": 10},
+						{"name": "境外疫情","value": 60},
+						{"name": "新增病历","value": 22},
+						{"name": "武汉加油","value": 15},
+						{"name": "野生动物","value": 10},
+						{"name": "境外疫情","value": 60},
+						{"name": "境外疫情","value": 60},
+						{"name": "新增病历","value": 22},
+						{"name": "武汉加油","value": 15},
+					]
+                    that.hostWordChart.option.series[0].data=arr
+					maskImage.onload = function() {
+						that.hostWordChart.option.series[0].maskImage = maskImage;
+                        that.updateEach('hostWordChart')
+					}
+                },
+                // 分割线--------全网检索方法
+                // 根矩新闻来源返回不同的图标
+                getIconClass(type){
+                    let obj={
+                        2:'iconzu1',//新闻
+                        3:'iconzu13',//微博
+                        4:'iconzu3',//微信
+                        5:'iconzu1',//APP
+                        6:'iconzu1',//其他
+                    }
+                    return obj[type]||'iconzu1'
+                },
 
             }
         });

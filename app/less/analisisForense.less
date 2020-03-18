@@ -14,7 +14,8 @@
     }
     li{
         height: 0.22rem;
-        width: 0.54rem;
+        // width: 0.54rem;
+        padding: 0 0.1rem;
         line-height: 0.22rem;
         box-sizing: border-box;
         cursor: pointer;
@@ -62,6 +63,9 @@
 #mapChart{
     height: 6.1rem;
 }
+#hostWordChart{
+    height: 3.32rem;
+}
 .div-tip-warp{
     background-color: #F2476B;
     // padding: 10px 20px;
@@ -86,17 +90,258 @@
  }
 
 
-       // 
-    // 公用样式
-    .flexStart{
-        display: flex;
-        align-items: center;
-        justify-content: start;
+}
+   // 全网检索功能弹窗样式
+   .webSearch{
+       overflow: hidden;
+       .el-dialog{
+           position: relative;
+           top:50%;
+           transform: translateY(-50%);
+       }
+    .searchInput{
+        width: 5.84rem;
+        height: 0.6rem;
+        margin: 0 auto 0.4rem;
+        position: relative;
+        input{
+            height: 100%;
+            width: 100%;
+            background-color: @theme-color;
+            background-image: none;
+            color: #fff;
+            border-radius: 0.04rem;
+            border: 1px solid transparent;
+            box-sizing: border-box;
+            display: inline-block;
+            font-size: 0.22rem;
+            line-height: 0.6rem;
+            outline: 0;
+            padding: 0 0.14rem 0 0.18rem;
+            transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+            &:hover{
+            //    border-color: #C0C4CC;
+            }
+        }
+        .searchInput-icon{
+            position: absolute;
+            top: 0;
+            height: 100%;
+            line-height: 0.6rem;
+            color: @graphic-color1;
+            text-align: center;
+            right: 0.12rem;
+            text-align: center;
+            i{
+                font-size: 0.34rem;
+            }
+
+        }
+        .el-input__prefix{
+            right: 0.12rem;
+        }
     }
-    .flexBetween{
+    .el-dialog__body{
+        max-height: 9.4rem;
+        padding-top: 0;
+    }
+    .radioGroup{
         display: flex;
         justify-content: space-between;
+        margin-bottom: 0.24rem;
+    }
+    .groupRight{
+        color: #fff;
+        font-size: 0.18rem;
+    }
+    .scroll-container{
+        height: 6.6rem !important;
+    }
+    .el-dialog__footer .dialog-footer {
+        text-align:left;
+        display: flex;
         align-items: center;
+        .el-pager li{
+            background-color: transparent;
+            border:1px solid rgba(90,176,243,1);
+            color: #81A0D3;
+            // font-size: 0.18rem;
+        }
+        .btn-prev,.btn-next{
+            background-color: transparent;
+            border:1px solid rgba(90,176,243,1);
+            color: #fff;
+        }
+        .footRight{
+            font-size: 0.18rem;
+            color:#81A0D3;
+            margin-left: 0.18rem;
+            -webkit-line-clamp: 1;
+            line-clamp: 1;
+        }
+    }
+    .resultBox{
+        flex-wrap: wrap;
+        color: #fff;
+        li{
+            width: 49%;
+            font-size: 0.18rem;
+            background-color: @theme-color;
+            padding: 0.18rem 0.24rem 0.18rem 0.18rem;
+            margin-bottom: 0.24rem;
+            img{
+                width: 0.96rem;
+                height: 0.7rem;
+                margin-right: 0.14rem;
+            }
+        }
+        .itemTop{
+            margin-bottom: 0.16rem;
+        }
+        .textContent{
+            margin-top: 0.08rem;
+            font-size: 0.14rem;
+            opacity: .8;
+          
+        }
+        .itemBottom{
+            color: #81A0D3;
+        }
+        .bottomleft{
+            margin-right: 0.2rem;
+            i{
+                font-size:0.14rem;
+                color: @graphic-color1;
+            }
+        }
     }
    
+}
+
+// 微博详情弹窗样式
+.weiboDetail{
+    overflow: hidden;
+    
+    .el-dialog{
+           position: relative;
+           top:50%;
+           transform: translateY(-50%);
+    }
+    .el-dialog__body{
+        max-height: 9.4rem;
+        padding-top: 0;
+        padding-bottom: 0;
+        color: #fff;
+    }
+    .weiboTitle{
+        margin-bottom: 0.18rem;
+        img{
+            border-radius: 50%;
+            width: 0.5rem;
+            height: 0.5rem;
+            margin-right:0.1rem;
+        }
+        .weiboHead{
+            font-size: 0.18rem;
+        }
+        .weiboMedia{
+            font-size: 0.22rem;
+        }
+    }
+    .weiboContent{
+        .text{
+            font-size: 0.18rem;
+        }
+        .picture{
+            margin: 0.16rem 0;
+            height: 3.75rem;
+            img{
+                width: 100%;
+                height: 3.75rem;
+            }
+        }
+    }
+    .weiboHost{
+        .weiboHost-total{
+            display: flex;
+            background:rgba(68,121,186,.5);
+            li{
+                flex:1;
+                height: 0.4rem;
+                line-height: 0.4rem;
+                text-align: center;
+                position: relative;
+                &::after{
+                    content:'';
+                    display: block;
+                    height: 0.14rem;
+                    width: 1px;
+                    background-color: #fff;
+                    opacity: .2;
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+                &:last-child::after{
+                    display: none;
+                }
+                &.active::before{
+                    content:'';
+                    display: block;
+                    width:0;
+                    height: 0;
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    z-index: 9;
+                    border-left: 0.08rem solid transparent;
+                    border-right: 0.08rem solid transparent;
+                    border-bottom: 0.08rem solid @theme-color3;
+                }
+            }
+            
+        }
+        // 评论模块样式
+        .weibo-comment{
+            font-size: 0.18rem;
+            li{
+                padding: 0.2rem 0;
+                align-items: flex-start;
+                border-bottom: 1px solid #3262A9;
+                &:last-child{
+                    border:none;
+                }
+            }
+            img{
+                width: 0.4rem;
+                height: 0.4rem;
+                margin-right:0.18rem;
+            }
+            .userName{
+                color: @graphic-color4;
+            }
+            .detailTime{
+                padding-top: 0.18rem;
+            }
+        }
+    }
+    
+
+
+    .el-dialog__footer{
+        padding: 0.22rem 0;
+        border-top: 1px solid #3262A9;
+    }
+    .dialog-footer{
+        font-size: 0.14rem;
+        color: #fff;
+        span{
+            cursor: pointer;
+        }
+        i{
+            font-size: 0.14rem;
+        }
+    }
 }

@@ -8,7 +8,6 @@
     <div class="conter" id="conter">
       <el-button type="text" @click="dialogFormVisible = true">打开嵌套表单的 Dialog</el-button>
 
-<<<<<<< HEAD
       <el-dialog :visible.sync="dialogFormVisible" title="基础数据配置" :width="dialogWidth">
         <!-- <div slot="title" class="el-dialog__title">
           收获<el-tooltip class="item" effect="dark" content="Right Center 提示文字" placement="top">
@@ -28,11 +27,6 @@
               2.当某项功能组，具备下面独立的配置时，将优先应用其独立配置；
             </div>
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-			<el-form-item label="名称：">
-			  <el-input  maxlength="1000" 
-			    placeholder="该组关键词将用于“境内综合（不含微博）”和“微博”的分析，作用为过滤目的无效数据；支持汉字、英文字母、阿拉伯数字作为关键词，上限为1000个汉字；仅支持以“|”英文字符分隔号为指定表达符号，“|”表示或关系；例子:招聘|[招聘启事|合租广告"
-			    v-model="ruleForm.name" autocomplete="off"></el-input>
-			</el-form-item>
               <el-form-item label="默认不匹配关键词：">
                 <el-input type="textarea" maxlength="1000" show-word-limit
                   placeholder="该组关键词将用于“境内综合（不含微博）”和“微博”的分析，作用为过滤目的无效数据；支持汉字、英文字母、阿拉伯数字作为关键词，上限为1000个汉字；仅支持以“|”英文字符分隔号为指定表达符号，“|”表示或关系；例子:招聘|[招聘启事|合租广告"
@@ -44,20 +38,25 @@
                   <el-option label="区域二" value="beijing"></el-option>
                 </el-select>
               </el-form-item>
-    
+
               <el-form-item label="默认完全匹配：" prop="isNeed">
                 <el-radio-group v-model="ruleForm.isNeed">
                   <el-radio label="1">需要</el-radio>
                   <el-radio label="2">不需要</el-radio>
                 </el-radio-group>
+                <div class="independent" v-show="ruleForm.isNeed==2">
+                  <el-input type="textarea" maxlength="1000" show-word-limit
+                    placeholder="该组关键词将用于“境内综合（不含微博）”和“微博”的分析，作用为过滤目的无效数据；支持汉字、英文字母、阿拉伯数字作为关键词，上限为1000个汉字；仅支持以“|”英文字符分隔号为指定表达符号，“|”表示或关系；例子:招聘|[招聘启事|合租广告"
+                    v-model="ruleForm.name" autocomplete="off"></el-input>
+                </div>
               </el-form-item>
-    
+
               <el-form-item label="默认数据来源" prop="source">
                 <div class="trans-wrap f18">
                   <div class="left">
                     <!-- 搜索框 -->
-                    <el-input class="search" placeholder="站点或标签名称" suffix-icon="iconfont iconlujing"
-                      v-model="ruleForm.source"></el-input>
+                    <el-input class="search" placeholder="站点或标签名称" v-model="ruleForm.source"><i slot="suffix"
+                        class="iconfont iconlujing"></i></el-input>
                     <!-- 树 -->
                     <el-tree :props="props" :load="loadNode" lazy show-checkbox @check-change="handleCheckChange">
                     </el-tree>
@@ -74,37 +73,96 @@
                   </div>
                 </div>
               </el-form-item>
+              <el-form-item label="默认完全匹配：" prop="date">
+                <!-- <el-date-picker v-model="ruleForm.date" type="datetime" placeholder="选择日期时间" align="right"
+                  :picker-options="pickerOptions">
+                </el-date-picker> -->
+                
+                <el-date-picker v-model="ruleForm.date" type="datetimerange" :picker-options="pickerOptions"
+                  range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" align="right">
+                </el-date-picker>
+              </el-radio-group>
+
             </el-form>
-=======
-      <el-dialog :visible.sync="dialogFormVisible"  :width="showPreview?'15.8rem':'7.84rem'" class="basic-dialog">
-        <div slot="title" class="el-dialog__title">
-          <div class="left">
-           <div class="head">
-            收获<el-tooltip class="item" effect="dark" content="Right Center 提示文字" placement="top">
-              <i class="iconfont iconzu8"></i>
-           </div>
->>>>>>> e38b491d5a2c9dfd6df74395d312e1f63fd80f7a
           </div>
-          <div class="right" v-show="showPreview">
-            <div class="head">
-              数据预览
+
+          <div class="configuration f18" v-show="radio1==2">属地舆情研判-配置</div>
+          <div class="configuration f18" v-show="radio1==3">舆情预警-配置</div>
+          <div class="data-preview f18" v-show="radio1==2" style="width: 600px;">
+            <el-radio-group v-model="preview">
+              <el-radio-button label="1">
+                <span>新闻</span>
+                <p>（约3786）</p>
+              </el-radio-button>
+              <el-radio-button label="2">
+                <span>微博</span>
+                <p>（约3786）</p>
+              </el-radio-button>
+              <el-radio-button label="3">
+                <span>微信</span>
+                <p>（约3786）</p>
+              </el-radio-button>
+              <el-radio-button label="4">
+                <span>APP</span>
+                <p>（约3786）</p>
+              </el-radio-button>
+              <el-radio-button label="4">
+                <span>其他</span>
+                <p>（约3786）</p>
+              </el-radio-button>
+            </el-radio-group>
+
+            <!-- 新闻列表 -->
+            <div class="news-list">
+              <ul class="sort-list f18">
+                <li v-for="item in 12">
+                  <div>
+                    <span class="suqare f14">1</span>
+                  </div>
+                  <div class="content">
+                    <p class="title">
+                      <a href="javascript:;">王忠林主持召开市防控指挥部视频会议 保持定力 慎终如始 统筹做好疫情防控各项工作</a>
+                    </p>
+                    <dl class="dl-info">
+                      <dt>
+                        <span class="source">澎湃新闻</span>
+                      </dt>
+                      <dd>
+                        <span class="time">03-03 13:18</span>
+                      </dd>
+                    </dl>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
+
         </div>
-        <!-- 单选框 -->
-        <div style="display: flex;width: 100%;">
-          <div class="left f18" style="flex: 1;">左边</div>
-          <div class="right f18" style="flex: 1;" v-show="showPreview">右边</div>
-        </div>
+
+        <el-table :data="tableData" border style="width: 100%" :cell-style="CellName">
+          <el-table-column fixed prop="date" label="日期" width="150">
+          </el-table-column>
+          <el-table-column prop="name" label="姓名" width="120">
+          </el-table-column>
+          <el-table-column prop="province" label="省份" width="120">
+          </el-table-column>
+          <el-table-column prop="city" label="市区" width="120">
+          </el-table-column>
+          <el-table-column prop="address" label="地址">
+          </el-table-column>
+          <el-table-column prop="zip" label="邮编">
+          </el-table-column>
+          <el-table-column fixed="right" label="操作" width="200">
+            <template slot-scope="scope">
+              <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+              <el-button type="text" size="small">编辑</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+        <el-button type="primary">新增一项</el-button>
         <div slot="footer" class="dialog-footer">
-          <div class="left footer">
-            <el-button type="success" @click="showPreview = true">数据预览</el-button>
-            <el-button type="warning" @click="dialogFormVisible = false">取 消</el-button>
-            <el-button type="primary" @click="submitForm('ruleForm')">确 定</el-button>
-          </div>
-          <div class="right footer" v-show="showPreview">
-            <el-button type="primary" @click="showPreview=false">确 定</el-button>
-          </div>
+          <el-button type="warning" @click="dialogFormVisible = false">取 消</el-button>
+          <el-button type="primary" @click="submitForm('ruleForm')">确 定</el-button>
         </div>
       </el-dialog>
     </div>
@@ -118,7 +176,6 @@
     delimiters: ['${', '}'],
     data() {
       return {
-        showPreview: true,
         gridData: [{
           date: '2016-05-02',
           name: '王小虎',
@@ -136,7 +193,8 @@
           name: '王小虎',
           address: '上海市普陀区金沙江路 1518 弄'
         }],
-        dialogFormVisible: true,
+        dialogTableVisible: false,
+        dialogFormVisible: false,
         ruleForm: {
           name: '',
           region: '',
