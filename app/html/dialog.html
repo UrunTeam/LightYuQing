@@ -8,7 +8,6 @@
     <div class="conter" id="conter">
       <el-button type="text" @click="dialogFormVisible = true">打开嵌套表单的 Dialog</el-button>
 
-<<<<<<< HEAD
       <el-dialog :visible.sync="dialogFormVisible" title="基础数据配置" :width="dialogWidth">
         <!-- <div slot="title" class="el-dialog__title">
           收获<el-tooltip class="item" effect="dark" content="Right Center 提示文字" placement="top">
@@ -28,11 +27,6 @@
               2.当某项功能组，具备下面独立的配置时，将优先应用其独立配置；
             </div>
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-			<el-form-item label="名称：">
-			  <el-input  maxlength="1000" 
-			    placeholder="该组关键词将用于“境内综合（不含微博）”和“微博”的分析，作用为过滤目的无效数据；支持汉字、英文字母、阿拉伯数字作为关键词，上限为1000个汉字；仅支持以“|”英文字符分隔号为指定表达符号，“|”表示或关系；例子:招聘|[招聘启事|合租广告"
-			    v-model="ruleForm.name" autocomplete="off"></el-input>
-			</el-form-item>
               <el-form-item label="默认不匹配关键词：">
                 <el-input type="textarea" maxlength="1000" show-word-limit
                   placeholder="该组关键词将用于“境内综合（不含微博）”和“微博”的分析，作用为过滤目的无效数据；支持汉字、英文字母、阿拉伯数字作为关键词，上限为1000个汉字；仅支持以“|”英文字符分隔号为指定表达符号，“|”表示或关系；例子:招聘|[招聘启事|合租广告"
@@ -75,7 +69,6 @@
                 </div>
               </el-form-item>
             </el-form>
-=======
       <el-dialog :visible.sync="dialogFormVisible"  :width="showPreview?'15.8rem':'7.84rem'" class="basic-dialog">
         <div slot="title" class="el-dialog__title">
           <div class="left">
@@ -83,7 +76,6 @@
             收获<el-tooltip class="item" effect="dark" content="Right Center 提示文字" placement="top">
               <i class="iconfont iconzu8"></i>
            </div>
->>>>>>> e38b491d5a2c9dfd6df74395d312e1f63fd80f7a
           </div>
           <div class="right" v-show="showPreview">
             <div class="head">
