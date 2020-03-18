@@ -226,9 +226,9 @@ function initHeardVue(){
             })
         },
 		// 展示下拉框
-		handleSelect() {
-			this.search.isShow= true;
-			this.search.rotateActive = true;// 旋转class
+		handleSelect(state) {
+			this.search.isShow= state;
+			this.search.rotateActive = state;// 旋转class
 		},
 		// 实例化(更新)图表
 		updateEach(name) {

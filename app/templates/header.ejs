@@ -13,7 +13,7 @@
 					<el-input
 					  v-model="search.state"
 					  placeholder="请输入内容"
-					  @focus="handleSelect"
+					  @focus="handleSelect(true)"
 					  >
 					
 					   <i class="iconfont iconzu6" slot="prepend"></i>
@@ -23,7 +23,8 @@
 					  </i>
 					  <i
 						v-bind:class="[{ rotateActive: search.rotateActive }, 'el-collapse-item__arrow', 'el-icon-arrow-right','el-input__icon']"
-					    slot="suffix">
+					    slot="suffix"
+						@click="handleSelect(false)">
 					  </i>
 					</el-input>
 					<div class="drop-contain" v-show="search.isShow" >
