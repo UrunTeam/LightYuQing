@@ -84,7 +84,7 @@ function initHeardVue(){
             		active: false,
             		ordenar: false,
             		setting: false,
-            		seachInput: false,
+            		seachInput: true,
             		icon: 'iconzu6'
             	},
             	{
